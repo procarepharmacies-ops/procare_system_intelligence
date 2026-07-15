@@ -1,0 +1,40 @@
+{
+  "network_host": "192.168.1.2",
+  "estock_sources": [
+    {
+      "name": "mashala",
+      "driver": "ODBC Driver 18 for SQL Server",
+      "server": "192.168.1.2,1433",
+      "database": "stock",
+      "username": "ahmedibrahim",
+      "password": "Egstart211078$",
+      "encrypt": "yes",
+      "trust_server_certificate": "yes"
+    },
+    {
+      "name": "elsanta",
+      "driver": "ODBC Driver 18 for SQL Server",
+      "server": "196.202.93.37,1433",
+      "database": "stock",
+      "username": "ahmedpharm22",
+      "password": "Egstart211078$",
+      "encrypt": "yes",
+      "trust_server_certificate": "yes"
+    }
+  ],
+  "branches": {
+    "mashala": { "name_ar": "المشاعلة", "name_en": "Mashala", "source": "mashala" },
+    "elsanta": { "name_ar": "السنتا", "name_en": "Elsanta", "source": "elsanta" }
+  },
+  "ai": {
+    "provider": "ollama",
+    "model": "hermes3",
+    "base_url": "http://localhost:11434"
+  },
+  "ui": {
+    "default_language": "ar",
+    "default_theme": "dark",
+    "port_frontend": 3000,
+    "port_backend": 8000
+  }
+}
