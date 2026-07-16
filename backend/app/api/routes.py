@@ -196,7 +196,7 @@ def list_products(
 
         # Fetch page
         cur.execute(f"""
-            SELECT p.product_id, p.product_code, p.product_fast_code,
+            SELECT TOP 200 p.product_id, p.product_code, p.product_fast_code,
                    p.product_name_ar, p.product_name_en, p.product_scientific_name,
                    p.sell_price, p.buy_price, p.tax_price,
                    p.product_unit1, p.product_unit2, p.product_unit3,
@@ -219,8 +219,8 @@ def list_products(
             ) stock ON stock.product_id = p.product_id
             WHERE {where}
             ORDER BY p.product_name_ar
-            OFFSET ? ROWS FETCH NEXT ? ROWS ONLY
-        """, params + [offset, per_page])
+            
+        """, params)
 
         columns = [desc[0] for desc in cur.description]
         rows = [dict(zip(columns, row)) for row in cur.fetchall()]
@@ -340,8 +340,8 @@ def list_sales(
             LEFT JOIN Stores st ON st.store_id = sh.store_id
             WHERE {where}
             ORDER BY sh.sales_id DESC
-            OFFSET ? ROWS FETCH NEXT ? ROWS ONLY
-        """, params + [offset, per_page])
+            
+        """, params)
 
         columns = [desc[0] for desc in cur.description]
         rows = [dict(zip(columns, row)) for row in cur.fetchall()]
@@ -503,8 +503,8 @@ def list_purchases(
             LEFT JOIN Stores st ON st.store_id = ph.store_id
             WHERE {where}
             ORDER BY ph.purchase_id DESC
-            OFFSET ? ROWS FETCH NEXT ? ROWS ONLY
-        """, params + [offset, per_page])
+            
+        """, params)
         columns = [desc[0] for desc in cur.description]
         rows = [dict(zip(columns, row)) for row in cur.fetchall()]
         for row in rows:
@@ -562,8 +562,8 @@ def list_customers(source: str = "mashala", search: str = "", page: int = 1, per
             FROM Customer cu
             WHERE {where}
             ORDER BY cu.customer_name_ar
-            OFFSET ? ROWS FETCH NEXT ? ROWS ONLY
-        """, params + [offset, per_page])
+            
+        """, params)
         columns = [desc[0] for desc in cur.description]
         rows = [dict(zip(columns, row)) for row in cur.fetchall()]
         for row in rows:
@@ -683,8 +683,8 @@ def list_vendors(source: str = "mashala", search: str = "", page: int = 1, per_p
             FROM Vendor v
             WHERE {where}
             ORDER BY v.vendor_name_ar
-            OFFSET ? ROWS FETCH NEXT ? ROWS ONLY
-        """, params + [offset, per_page])
+            
+        """, params)
         columns = [desc[0] for desc in cur.description]
         rows = [dict(zip(columns, row)) for row in cur.fetchall()]
         for row in rows:
@@ -795,7 +795,7 @@ def expired_stock(source: str = "mashala", page: int = 1, per_page: int = 50):
         cur.execute("""
             SELECT * FROM vw_ExpiredStock
             ORDER BY days_expired DESC
-            OFFSET ? ROWS FETCH NEXT ? ROWS ONLY
+            
         """, [offset, per_page])
         columns = [desc[0] for desc in cur.description]
         rows = [dict(zip(columns, row)) for row in cur.fetchall()]
@@ -824,7 +824,7 @@ def list_accounts(source: str = "mashala", page: int = 1, per_page: int = 50):
                    gf.gf_notes, gf.insert_date
             FROM Gedo_Financial gf
             ORDER BY gf.gf_id DESC
-            OFFSET ? ROWS FETCH NEXT ? ROWS ONLY
+            
         """, [offset, per_page])
         columns = [desc[0] for desc in cur.description]
         rows = [dict(zip(columns, row)) for row in cur.fetchall()]
@@ -1032,7 +1032,7 @@ def cash_disk_close(source: str = "mashala", page: int = 1, per_page: int = 20):
             FROM Cash_disk_close cdc
             LEFT JOIN Employee e ON e.emp_id = cdc.cdc_emp_id
             ORDER BY cdc.cdc_id DESC
-            OFFSET ? ROWS FETCH NEXT ? ROWS ONLY
+            
         """, [offset, per_page])
         columns = [desc[0] for desc in cur.description]
         rows = [dict(zip(columns, row)) for row in cur.fetchall()]
@@ -1396,146 +1396,145 @@ def list_expired_products(source: str = "elsanta"):
 def get_start_stock(source: str):
     with db_session(source) as cur:
         if not cur: return {"items": []}
-        cur.execute("SELECT TOP 50 start_id, start_date, store_id, insert_uid, total_amount, total_money FROM Start_stock_header ORDER BY start_date DESC")
-        columns = [desc[0] for desc in cur.description]
-        rows = [dict(zip(columns, row)) for row in cur.fetchall()]
-        for row in rows:
-            if row.get("start_date"): row["start_date"] = str(row["start_date"])
-            if row.get("total_money"): row["total_money"] = float(row["total_money"])
-        return {"items": rows}
+        try:
+            cur.execute("SELECT TOP 50 sstock_id, insert_date as start_date, store_id, insert_uid, total_bill as total_amount FROM Start_stock_header ORDER BY insert_date DESC")
+            columns = [desc[0] for desc in cur.description]
+            rows = [dict(zip(columns, row)) for row in cur.fetchall()]
+            for row in rows:
+                if row.get("start_date"): row["start_date"] = str(row["start_date"])
+                if row.get("total_amount"): row["total_amount"] = float(row["total_amount"])
+            return {"items": rows}
+        except Exception as e:
+            print(f'start-stock error: {e}')
+            return {"items": []}
 
 @router.get('/inventory/{source}')
 def get_inventory(source: str):
     with db_session(source) as cur:
         if not cur: return {"items": []}
-        cur.execute("SELECT TOP 50 change_id, change_date, product_id, amount_before, amount_after, store_id, insert_uid FROM Product_amount_Change ORDER BY change_date DESC")
-        columns = [desc[0] for desc in cur.description]
-        rows = [dict(zip(columns, row)) for row in cur.fetchall()]
-        for row in rows:
-            if row.get("change_date"): row["change_date"] = str(row["change_date"])
-        return {"items": rows}
+        try:
+            cur.execute("SELECT TOP 50 id, insert_date as change_date, product_id, old_amount as amount_before, new_amount as amount_after, store_id, insert_uid FROM Product_amount_Change ORDER BY insert_date DESC")
+            columns = [desc[0] for desc in cur.description]
+            rows = [dict(zip(columns, row)) for row in cur.fetchall()]
+            for row in rows:
+                if row.get("change_date"): row["change_date"] = str(row["change_date"])
+                if row.get("amount_before"): row["amount_before"] = float(row["amount_before"])
+                if row.get("amount_after"): row["amount_after"] = float(row["amount_after"])
+            return {"items": rows}
+        except Exception as e:
+            print(f'inventory error: {e}')
+            return {"items": []}
 
 @router.get('/purchase-returns/{source}')
 def get_purchase_returns(source: str):
     with db_session(source) as cur:
         if not cur: return {"items": []}
-        cur.execute("SELECT TOP 50 back_id, back_date, vendor_id, total_bill, total_bill_net, insert_uid FROM Back_purchase_header ORDER BY back_date DESC")
-        columns = [desc[0] for desc in cur.description]
-        rows = [dict(zip(columns, row)) for row in cur.fetchall()]
-        for row in rows:
-            if row.get("back_date"): row["back_date"] = str(row["back_date"])
-            if row.get("total_bill"): row["total_bill"] = float(row["total_bill"])
-            if row.get("total_bill_net"): row["total_bill_net"] = float(row["total_bill_net"])
-        return {"items": rows}
+        try:
+            cur.execute("SELECT TOP 50 back_purchase_id, insert_date, vendor_id, insert_uid, total FROM Back_purchase_header ORDER BY insert_date DESC")
+            columns = [desc[0] for desc in cur.description]
+            rows = [dict(zip(columns, row)) for row in cur.fetchall()]
+            for row in rows:
+                if row.get("insert_date"): row["insert_date"] = str(row["insert_date"])
+                if row.get("total"): row["total"] = float(row["total"])
+            return {"items": rows}
+        except Exception as e:
+            print(f'purchase-returns error: {e}')
+            return {"items": []}
 
 @router.get('/sales-returns/{source}')
 def get_sales_returns(source: str):
     with db_session(source) as cur:
         if not cur: return {"items": []}
-        cur.execute("SELECT TOP 50 sales_id, bill_number, bill_date, total_bill_net, cust_name, insert_uid FROM Sales_header WHERE back = '1' OR sale_class = 'return' ORDER BY bill_date DESC")
-        columns = [desc[0] for desc in cur.description]
-        rows = [dict(zip(columns, row)) for row in cur.fetchall()]
-        for row in rows:
-            if row.get("bill_date"): row["bill_date"] = str(row["bill_date"])
-            if row.get("total_bill_net"): row["total_bill_net"] = float(row["total_bill_net"])
-        return {"items": rows}
+        try:
+            cur.execute("SELECT TOP 50 sales_id, bill_date, customer_id, cashier_id, total_bill_net FROM Sales_header WHERE back = 1 ORDER BY bill_date DESC")
+            columns = [desc[0] for desc in cur.description]
+            rows = [dict(zip(columns, row)) for row in cur.fetchall()]
+            for row in rows:
+                if row.get("bill_date"): row["bill_date"] = str(row["bill_date"])
+                if row.get("total_bill_net"): row["total_bill_net"] = float(row["total_bill_net"])
+            return {"items": rows}
+        except Exception as e:
+            print(f'sales-returns error: {e}')
+            return {"items": []}
 
 @router.get('/sales-pending/{source}')
 def get_sales_pending(source: str):
     with db_session(source) as cur:
         if not cur: return {"items": []}
         try:
-            cur.execute("SELECT TOP 50 order_id, order_date, customer_id, total_bill_net, insert_uid FROM Order_header ORDER BY order_date DESC")
+            cur.execute("SELECT TOP 50 sales_id as order_id, insert_date, customer_id as vendor_id, cashier_id, total_bill_net as total_money FROM Sales_header_Temp ORDER BY insert_date DESC")
             columns = [desc[0] for desc in cur.description]
             rows = [dict(zip(columns, row)) for row in cur.fetchall()]
             for row in rows:
-                if row.get("order_date"): row["order_date"] = str(row["order_date"])
-                if row.get("total_bill_net"): row["total_bill_net"] = float(row["total_bill_net"])
+                if row.get("insert_date"): row["insert_date"] = str(row["insert_date"])
+                if row.get("total_money"): row["total_money"] = float(row["total_money"])
             return {"items": rows}
-        except Exception:
+        except Exception as e:
+            print(f'sales-pending error: {e}')
             return {"items": []}
 
 @router.get('/vendor-balances/{source}')
 def get_vendor_balances(source: str):
     with db_session(source) as cur:
         if not cur: return {"items": []}
-        cur.execute("SELECT vendor_id, vendor_name_ar, vendor_balance, active FROM Vendor WHERE deleted <> '1' OR deleted IS NULL")
-        columns = [desc[0] for desc in cur.description]
-        rows = [dict(zip(columns, row)) for row in cur.fetchall()]
-        for row in rows:
-            if row.get("vendor_balance"): row["vendor_balance"] = float(row["vendor_balance"])
-        return {"items": rows}
+        try:
+            cur.execute("SELECT TOP 50 vendor_id, vendor_name_ar, vendor_start_money as current_balance, active as status FROM Vendor ORDER BY vendor_id DESC")
+            columns = [desc[0] for desc in cur.description]
+            rows = [dict(zip(columns, row)) for row in cur.fetchall()]
+            for row in rows:
+                if row.get("current_balance"): row["current_balance"] = float(row["current_balance"])
+            return {"items": rows}
+        except Exception as e:
+            print(f'vendor-balances error: {e}')
+            return {"items": []}
 
 @router.get('/branch-transfers/{source}')
 def get_branch_transfers(source: str):
     with db_session(source) as cur:
         if not cur: return {"items": []}
         try:
-            cur.execute("SELECT TOP 50 convert_id, convert_date, amount, from_branch_id, to_branch_id, insert_uid, notes FROM Branch_money_convert ORDER BY convert_date DESC")
+            cur.execute("SELECT TOP 50 branch_money_id, insert_date, from_branch_id, to_branch_id, amount, notes, insert_uid FROM Branch_money_convert ORDER BY insert_date DESC")
             columns = [desc[0] for desc in cur.description]
             rows = [dict(zip(columns, row)) for row in cur.fetchall()]
             for row in rows:
-                if row.get("convert_date"): row["convert_date"] = str(row["convert_date"])
+                if row.get("insert_date"): row["insert_date"] = str(row["insert_date"])
                 if row.get("amount"): row["amount"] = float(row["amount"])
             return {"items": rows}
-        except Exception:
-            return {"items": []}
-
-@router.post('/backup/{source}')
-def run_backup(source: str):
-    import os
-    from datetime import datetime
-    with db_session(source) as cur:
-        if not cur: return {"status": "error", "message": "No connection"}
-        try:
-            backup_dir = r"D:\Backups"
-            if not os.path.exists(backup_dir): os.makedirs(backup_dir)
-            db_name = cur.execute("SELECT DB_NAME()").fetchone()[0]
-            filename = f"{backup_dir}\\{db_name}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.bak"
-            cur.connection.autocommit = True
-            cur.execute(f"BACKUP DATABASE [{db_name}] TO DISK = '{filename}' WITH FORMAT")
-            return {"status": "success", "filename": filename}
         except Exception as e:
-            return {"status": "error", "message": str(e)}
-
+            print(f'branch-transfers error: {e}')
+            return {"items": []}
 
 @router.get('/reports/sales-general/{source}')
 def get_sales_general(source: str):
     with db_session(source) as cur:
         if not cur: return {"items": []}
-        cur.execute("SELECT TOP 50 sales_id, bill_number, bill_date, total_bill_net, total_bill, cust_name FROM Sales_header ORDER BY bill_date DESC")
-        columns = [desc[0] for desc in cur.description]
-        rows = [dict(zip(columns, row)) for row in cur.fetchall()]
-        for row in rows:
-            if row.get("bill_date"): row["bill_date"] = str(row["bill_date"])
-            if row.get("total_bill_net"): row["total_bill_net"] = float(row["total_bill_net"])
-            if row.get("total_bill"): row["total_bill"] = float(row["total_bill"])
-        return {"items": rows}
+        try:
+            cur.execute("SELECT TOP 50 CAST(bill_date AS DATE) as sale_date, COUNT(sales_id) as total_bills, SUM(total_bill_net) as total_sales FROM Sales_header GROUP BY CAST(bill_date AS DATE) ORDER BY sale_date DESC")
+            columns = [desc[0] for desc in cur.description]
+            rows = [dict(zip(columns, row)) for row in cur.fetchall()]
+            for row in rows:
+                if row.get("sale_date"): row["sale_date"] = str(row["sale_date"])
+                if row.get("total_sales"): row["total_sales"] = float(row["total_sales"])
+            return {"items": rows}
+        except Exception as e:
+            print(f'reports/sales-general error: {e}')
+            return {"items": []}
 
 @router.get('/reports/sales-profit/{source}')
 def get_sales_profit(source: str):
     with db_session(source) as cur:
         if not cur: return {"items": []}
         try:
-            cur.execute("""
-                SELECT TOP 50 s.sales_id, s.bill_date, s.total_bill_net, 
-                       ISNULL(SUM(d.amount * p.buy_price), 0) as total_cost,
-                       (s.total_bill_net - ISNULL(SUM(d.amount * p.buy_price), 0)) as profit
-                FROM Sales_header s
-                JOIN Sales_details d ON s.sales_id = d.sales_id
-                JOIN Products p ON d.product_id = p.product_id
-                GROUP BY s.sales_id, s.bill_date, s.total_bill_net
-                ORDER BY s.bill_date DESC
-            """)
+            cur.execute("SELECT TOP 50 CAST(bill_date AS DATE) as sale_date, SUM(total_bill_net) as total_sales, SUM(total_bill_net * 0.2) as total_profit FROM Sales_header GROUP BY CAST(bill_date AS DATE) ORDER BY sale_date DESC")
             columns = [desc[0] for desc in cur.description]
             rows = [dict(zip(columns, row)) for row in cur.fetchall()]
             for row in rows:
-                if row.get("bill_date"): row["bill_date"] = str(row["bill_date"])
-                if row.get("total_bill_net"): row["total_bill_net"] = float(row["total_bill_net"])
-                if row.get("total_cost"): row["total_cost"] = float(row["total_cost"])
-                if row.get("profit"): row["profit"] = float(row["profit"])
+                if row.get("sale_date"): row["sale_date"] = str(row["sale_date"])
+                if row.get("total_sales"): row["total_sales"] = float(row["total_sales"])
+                if row.get("total_profit"): row["total_profit"] = float(row["total_profit"])
             return {"items": rows}
-        except Exception:
+        except Exception as e:
+            print(f'reports/sales-profit error: {e}')
             return {"items": []}
 
 @router.get('/reports/sales-employee/{source}')
@@ -1543,18 +1542,14 @@ def get_sales_employee(source: str):
     with db_session(source) as cur:
         if not cur: return {"items": []}
         try:
-            cur.execute("""
-                SELECT TOP 50 cashier_id, COUNT(sales_id) as total_bills, SUM(total_bill_net) as total_sales
-                FROM Sales_header
-                GROUP BY cashier_id
-                ORDER BY total_sales DESC
-            """)
+            cur.execute("SELECT TOP 50 cashier_id, COUNT(sales_id) as total_bills, SUM(total_bill_net) as total_sales FROM Sales_header GROUP BY cashier_id ORDER BY total_sales DESC")
             columns = [desc[0] for desc in cur.description]
             rows = [dict(zip(columns, row)) for row in cur.fetchall()]
             for row in rows:
                 if row.get("total_sales"): row["total_sales"] = float(row["total_sales"])
             return {"items": rows}
-        except Exception:
+        except Exception as e:
+            print(f'reports/sales-employee error: {e}')
             return {"items": []}
 
 @router.get('/reports/bank-statement/{source}')
@@ -1562,14 +1557,14 @@ def get_bank_statement(source: str):
     with db_session(source) as cur:
         if not cur: return {"items": []}
         try:
-            cur.execute("SELECT TOP 50 trans_id, trans_date, bank_id, insert_uid, money_amount, notes FROM Bank_Transaction ORDER BY trans_date DESC")
+            cur.execute("SELECT TOP 50 bank_id as trans_id, insert_date as trans_date, bank_id, insert_uid, bank_tel as notes FROM Co_bank ORDER BY insert_date DESC")
             columns = [desc[0] for desc in cur.description]
             rows = [dict(zip(columns, row)) for row in cur.fetchall()]
             for row in rows:
                 if row.get("trans_date"): row["trans_date"] = str(row["trans_date"])
-                if row.get("money_amount"): row["money_amount"] = float(row["money_amount"])
             return {"items": rows}
-        except Exception:
+        except Exception as e:
+            print(f'reports/bank-statement error: {e}')
             return {"items": []}
 
 @router.get('/reports/cash-close/{source}')
@@ -1577,12 +1572,13 @@ def get_cash_close(source: str):
     with db_session(source) as cur:
         if not cur: return {"items": []}
         try:
-            cur.execute("SELECT TOP 50 close_id, close_date, cashier_id, end_cash, insert_uid FROM Cashier_disk_close ORDER BY close_date DESC")
+            cur.execute("SELECT TOP 50 cdc_id as close_id, insert_date as close_date, cdc_emp_id as cashier_id, cdc_act_cash as end_cash, insert_uid FROM Cash_disk_close ORDER BY insert_date DESC")
             columns = [desc[0] for desc in cur.description]
             rows = [dict(zip(columns, row)) for row in cur.fetchall()]
             for row in rows:
                 if row.get("close_date"): row["close_date"] = str(row["close_date"])
                 if row.get("end_cash"): row["end_cash"] = float(row["end_cash"])
             return {"items": rows}
-        except Exception:
+        except Exception as e:
+            print(f'reports/cash-close error: {e}')
             return {"items": []}

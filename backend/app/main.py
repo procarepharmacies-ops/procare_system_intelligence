@@ -22,7 +22,7 @@ async def lifespan(app: FastAPI):
     print("=" * 60)
     for source in get_all_sources():
         result = test_connection(source)
-        status = "✅" if result["status"] == "connected" else "❌"
+        status = "[OK]" if result["status"] == "connected" else "[FAILED]"
         print(f"  {status} {source}: {result.get('server', result.get('error', 'unknown'))}")
     print("=" * 60 + "\n")
     yield
