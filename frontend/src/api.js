@@ -172,3 +172,13 @@ export const getGedoFinancial = async (source = 'elsanta') => {
   const response = await fetch(${API_URL}/gedo-financial/);
   return response.json();
 };
+
+export const getPartners = async (source = 'elsanta') => {
+  const response = await fetch(${API_URL}/partners/);
+  return response.json();
+};
+
+export const getExpiredProducts = async (source = 'elsanta') => {
+  const response = await fetch(${API_URL}/reports/expired/);
+  return response.json();
+};

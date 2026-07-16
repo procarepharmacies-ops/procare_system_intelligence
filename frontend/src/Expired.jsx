@@ -1,108 +1,109 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getExpired } from './api';
-import { AlertCircle, ArrowRight, ArrowLeft } from 'lucide-react';
+import { getExpiredProducts } from './api';
+import { AlertTriangle, Download, RefreshCw, PackageX } from 'lucide-react';
 
-const Expired = () => {
-  const { i18n } = useTranslation();
-  const isRTL = i18n.language === 'ar';
-
+export default function Expired() {
+  const { t } = useTranslation();
   const [expired, setExpired] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-
-  const fetchExpired = async (pageToFetch = 1) => {
-    setLoading(true);
-    try {
-      const data = await getExpired('elsanta', { page: pageToFetch, per_page: 20 });
-      setExpired(data.items || []);
-      setTotalPages(data.pages || Math.ceil((data.total || 1) / 20));
-      setPage(data.page || 1);
-    } catch (error) {
-      console.error('Error fetching expired products:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [source, setSource] = useState('elsanta');
 
   useEffect(() => {
-    fetchExpired(page);
-  }, [page]);
+    fetchExpired();
+  }, [source]);
+
+  const fetchExpired = async () => {
+    setLoading(true);
+    try {
+      const data = await getExpiredProducts(source);
+      setExpired(data.items || []);
+    } catch (e) {
+      console.error(e);
+    }
+    setLoading(false);
+  };
 
   return (
-    <div className="flex flex-col gap-6 animate-in fade-in duration-500 h-full">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="p-3 bg-red-500/20 text-red-500 rounded-xl shadow-inner">
-            <AlertCircle className="w-6 h-6" />
+    <div className="p-6 h-full flex flex-col space-y-6 overflow-hidden">
+      <div className="flex justify-between items-center bg-card/50 backdrop-blur p-4 rounded-2xl border border-red-500/20 shadow-sm">
+        <div className="flex items-center gap-4">
+          <div className="p-3 bg-red-500/10 text-red-500 rounded-xl">
+            <AlertTriangle size={24} />
           </div>
-          <h1 className="text-3xl font-bold text-foreground">المنتهي الصلاحية</h1>
+          <div>
+            <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-rose-600">
+              {t('menus.products_inactive')}
+            </h1>
+            <p className="text-sm text-red-500/70 mt-1">Review products that have passed their expiration date</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-3">
+          <select 
+            value={source} 
+            onChange={(e) => setSource(e.target.value)}
+            className="input max-w-[150px] border-red-500/20 focus:border-red-500/50"
+          >
+            <option value="elsanta">{t('branches.elsanta')}</option>
+            <option value="mashala">{t('branches.mashala')}</option>
+          </select>
+          <button className="btn bg-red-500 text-white shadow-lg shadow-red-500/20 hover:bg-red-600 border-0">
+            <Download size={18} className="mr-2" />
+            Export Report
+          </button>
         </div>
       </div>
 
-      <div className="flex-1 glass rounded-2xl border border-white/10 overflow-hidden flex flex-col">
-        <div className="overflow-x-auto flex-1">
-          <table className="w-full text-sm text-left">
-            <thead className="text-xs uppercase bg-black/5 dark:bg-white/5 text-foreground/70 sticky top-0 backdrop-blur-md">
-              <tr>
-                <th className="px-6 py-4 font-semibold">كود المنتج</th>
-                <th className="px-6 py-4 font-semibold">اسم المنتج</th>
-                <th className="px-6 py-4 font-semibold">تاريخ الانتهاء</th>
-                <th className="px-6 py-4 font-semibold text-right">الكمية</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-border/50">
-              {loading ? (
+      <div className="flex-1 overflow-auto bg-card/30 backdrop-blur rounded-2xl border border-red-500/10 p-4">
+        {loading ? (
+          <div className="flex h-full items-center justify-center">
+            <div className="animate-spin text-red-500">
+              <RefreshCw size={32} />
+            </div>
+          </div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm text-left">
+              <thead className="text-xs uppercase bg-red-500/5 text-red-500/70">
                 <tr>
-                  <td colSpan="4" className="px-6 py-8 text-center text-muted-foreground">
-                    <div className="flex items-center justify-center gap-3">
-                      <div className="w-6 h-6 border-2 border-red-500 border-t-transparent rounded-full animate-spin" />
-                      جاري التحميل...
-                    </div>
-                  </td>
+                  <th className="px-6 py-4 rounded-tl-xl font-semibold">Code</th>
+                  <th className="px-6 py-4 font-semibold">Product Name</th>
+                  <th className="px-6 py-4 font-semibold">Expired On</th>
+                  <th className="px-6 py-4 font-semibold">Stock Left</th>
+                  <th className="px-6 py-4 font-semibold text-right rounded-tr-xl">Est. Loss Value</th>
                 </tr>
-              ) : expired.length === 0 ? (
-                <tr>
-                  <td colSpan="4" className="px-6 py-8 text-center text-muted-foreground">لا يوجد منتجات منتهية الصلاحية</td>
-                </tr>
-              ) : (
-                expired.map((e, index) => (
-                  <tr key={index} className="hover:bg-black/5 dark:hover:bg-white/5 transition-colors group">
-                    <td className="px-6 py-4 whitespace-nowrap text-muted-foreground font-mono">{e.product_code}</td>
-                    <td className="px-6 py-4 font-medium text-foreground">{e.product_name_ar}</td>
-                    <td className="px-6 py-4 text-muted-foreground font-mono">{e.expire_date}</td>
-                    <td className="px-6 py-4 text-right font-mono text-muted-foreground">{e.quantity}</td>
+              </thead>
+              <tbody className="divide-y divide-red-500/10">
+                {expired.length > 0 ? expired.map((e, idx) => {
+                  const lossValue = (e.amount || 0) * (e.buy_price || 0);
+                  return (
+                    <tr key={idx} className="hover:bg-red-500/5 transition-colors">
+                      <td className="px-6 py-4 font-medium">{e.product_code}</td>
+                      <td className="px-6 py-4 font-bold text-foreground">{e.product_name_ar}</td>
+                      <td className="px-6 py-4">
+                        <span className="px-2.5 py-1 bg-red-500/10 text-red-500 rounded-full font-semibold">
+                          {e.patch_expire_date ? new Date(e.patch_expire_date).toLocaleDateString() : 'Unknown'}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 font-bold">{e.amount}</td>
+                      <td className="px-6 py-4 text-right font-black text-red-500">
+                        {lossValue.toLocaleString()} <span className="text-xs font-normal">EGP</span>
+                      </td>
+                    </tr>
+                  )
+                }) : (
+                  <tr>
+                    <td colSpan="5" className="text-center py-12 text-muted-foreground">
+                      <PackageX size={48} className="mx-auto mb-4 opacity-20" />
+                      No expired products found! Stock is healthy.
+                    </td>
                   </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        </div>
-        <div className="p-4 border-t border-border/50 flex items-center justify-between bg-black/5 dark:bg-white/5">
-          <button
-            className="px-4 py-2 bg-background/50 border border-border rounded-lg hover:bg-background transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-            disabled={page <= 1}
-            onClick={() => setPage(p => p - 1)}
-          >
-            {isRTL ? <ArrowRight className="w-4 h-4" /> : <ArrowLeft className="w-4 h-4" />}
-            السابق
-          </button>
-          <span className="text-sm text-muted-foreground font-medium">
-            صفحة {page} من {totalPages}
-          </span>
-          <button
-            className="px-4 py-2 bg-background/50 border border-border rounded-lg hover:bg-background transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-            disabled={page >= totalPages}
-            onClick={() => setPage(p => p + 1)}
-          >
-            التالي
-            {isRTL ? <ArrowLeft className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
-          </button>
-        </div>
+                )}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   );
-};
-
-export default Expired;
+}

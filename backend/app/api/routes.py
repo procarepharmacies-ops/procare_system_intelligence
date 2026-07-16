@@ -1342,3 +1342,51 @@ def list_gedo_financial(source: str = "elsanta"):
             if row.get("insert_date"):
                 row["insert_date"] = str(row["insert_date"])
         return {"items": rows}
+
+# ??????????????????????????? Partners & Company Owners (Phase 3) ???????????????????????????
+
+@router.get("/partners/{source}")
+def list_partners(source: str = "elsanta"):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        cur.execute("""
+            SELECT coow_id, coow_code, coow_name_ar, mobile, 
+                   coow_current_money, coow_start_money, active
+            FROM company_Owner
+            WHERE deleted <> '1' OR deleted IS NULL
+            ORDER BY coow_name_ar
+        """)
+        columns = [desc[0] for desc in cur.description]
+        rows = [dict(zip(columns, row)) for row in cur.fetchall()]
+        for row in rows:
+            for k in ["coow_current_money", "coow_start_money"]:
+                if row.get(k) is not None:
+                    row[k] = float(row[k])
+        return {"items": rows}
+
+# ??????????????????????????? Reports: Inactive/Expired Products ???????????????????????????
+
+@router.get("/reports/expired/{source}")
+def list_expired_products(source: str = "elsanta"):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        # Fetching products whose patches are expired (patch_expire_date <= GETDATE())
+        cur.execute("""
+            SELECT TOP 100 
+                   p.product_id, p.product_code, p.product_name_ar,
+                   a.patch_expire_date, a.amount, p.buy_price
+            FROM Product_Amount a
+            JOIN Products p ON a.product_id = p.product_id
+            WHERE a.patch_expire_date <= GETDATE() 
+              AND a.amount > 0
+              AND (p.deleted <> '1' OR p.deleted IS NULL)
+            ORDER BY a.patch_expire_date ASC
+        """)
+        columns = [desc[0] for desc in cur.description]
+        rows = [dict(zip(columns, row)) for row in cur.fetchall()]
+        for row in rows:
+            if row.get("buy_price") is not None:
+                row["buy_price"] = float(row["buy_price"])
+            if row.get("patch_expire_date"):
+                row["patch_expire_date"] = str(row["patch_expire_date"])
+        return {"items": rows}

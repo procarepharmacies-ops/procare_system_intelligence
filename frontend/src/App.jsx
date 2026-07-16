@@ -30,6 +30,8 @@ import Salary from './Salary';
 import Tuning from './Tuning';
 import AccountsTree from './AccountsTree';
 import PrivateAccounts from './PrivateAccounts';
+import Partners from './Partners';
+import Expired from './Expired';
 
 const Placeholder = ({ title }) => (
   <div style={{
@@ -53,8 +55,8 @@ function App() {
           <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           
-          {/* General Data */}
-          <Route path="general" element={<Placeholder title="البيانات العامة" />} />
+          {/* Partners */}
+          <Route path="partners" element={<Partners />} />
           <Route path="general/company" element={<CompanyInfo />} />
           <Route path="general/backup" element={<Placeholder title="النسخ الاحتياطي" />} />
           
