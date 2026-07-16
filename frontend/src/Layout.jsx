@@ -83,8 +83,8 @@ const Layout = () => {
       label: t('menus.purchases'), 
       path: '/purchases-menu',
       items: [
-        { label: t('menus.purchase_request'), path: '/purchases/request' },
-        { label: t('menus.branch_order'), path: '/purchases/branch-order' },
+        { label: t('menus.purchase_request'), path: '/orders/request' },
+        { label: t('menus.branch_order'), path: '/orders/branch-order' },
         { label: t('menus.purchase_bill'), path: '/purchases' },
         { label: t('menus.purchase_return'), path: '/purchases/return' },
         { 
@@ -119,14 +119,7 @@ const Layout = () => {
         { label: t('menus.partners_data'), path: '/partners' }
       ]
     },
-    {
-      label: t('menus.orders'),
-      path: '/orders-menu',
-      items: [
-        { label: t('menus.purchase_request'), path: '/orders/request' },
-        { label: t('menus.branch_order'), path: '/orders/branch-order' }
-      ]
-    },
+
     {
       label: t('menus.shortages_notebook'),
       path: '/shortages',

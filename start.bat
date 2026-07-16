@@ -7,5 +7,5 @@ timeout /t 3 /nobreak > nul
 start "eStock Frontend" cmd /c "%~dp0start-frontend.bat"
 echo.
 echo   Backend:  http://localhost:8000/docs
-echo   Frontend: http://localhost:3000
+echo   Frontend: http://localhost:5173
 echo.
