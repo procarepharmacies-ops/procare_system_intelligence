@@ -1171,3 +1171,77 @@ def list_transfers():
                 row["insert_date"] = str(row["insert_date"])
         return {"items": rows}
 
+# ??????????????????????????? Orders & Branch Orders ???????????????????????????
+
+@router.get("/orders/{source}")
+def list_orders(source: str = "elsanta"):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        cur.execute("""
+            SELECT TOP 100 order_id, order_class, vendor_id, product_number, 
+                   insert_uid, insert_date, buy_money, product_money
+            FROM Order_header
+            ORDER BY insert_date DESC
+        """)
+        columns = [desc[0] for desc in cur.description]
+        rows = [dict(zip(columns, row)) for row in cur.fetchall()]
+        for row in rows:
+            for k in ["buy_money", "product_money"]:
+                if row.get(k) is not None:
+                    row[k] = float(row[k])
+            if row.get("insert_date"):
+                row["insert_date"] = str(row["insert_date"])
+        return {"items": rows}
+
+@router.get("/branch-orders/{source}")
+def list_branch_orders(source: str = "elsanta"):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        cur.execute("""
+            SELECT TOP 100 branch_order_id, from_branch_id, to_branch_id,
+                   total_sell_price, total_buy_price, is_open, insert_date
+            FROM Branch_order_header
+            ORDER BY insert_date DESC
+        """)
+        columns = [desc[0] for desc in cur.description]
+        rows = [dict(zip(columns, row)) for row in cur.fetchall()]
+        for row in rows:
+            for k in ["total_sell_price", "total_buy_price"]:
+                if row.get(k) is not None:
+                    row[k] = float(row[k])
+            if row.get("insert_date"):
+                row["insert_date"] = str(row["insert_date"])
+        return {"items": rows}
+
+# ??????????????????????????? Core Accounts (Treasury & Banks) ???????????????????????????
+
+@router.get("/treasury/{source}")
+def list_treasury(source: str = "elsanta"):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        cur.execute("""
+            SELECT cash_depot_id, cash_depot_code, cash_depot_name_ar, 
+                   cash_depot_class, cash_depot_current_money, account_number, bank_id
+            FROM Cash_depots
+            ORDER BY cash_depot_name_ar
+        """)
+        columns = [desc[0] for desc in cur.description]
+        rows = [dict(zip(columns, row)) for row in cur.fetchall()]
+        for row in rows:
+            if row.get("cash_depot_current_money") is not None:
+                row["cash_depot_current_money"] = float(row["cash_depot_current_money"])
+        return {"items": rows}
+
+@router.get("/banks/{source}")
+def list_banks(source: str = "elsanta"):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        cur.execute("""
+            SELECT bank_id, bank_code, bank_name_ar, bank_address, bank_tel
+            FROM Co_bank
+            ORDER BY bank_name_ar
+        """)
+        columns = [desc[0] for desc in cur.description]
+        rows = [dict(zip(columns, row)) for row in cur.fetchall()]
+        return {"items": rows}
+

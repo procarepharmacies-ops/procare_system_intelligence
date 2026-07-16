@@ -21,6 +21,10 @@ import CashInventory from './CashInventory';
 import ProductUnits from './ProductUnits';
 import Manufacturers from './Manufacturers';
 import ProductGroups from './ProductGroups';
+import PurchaseRequest from './PurchaseRequest';
+import BranchOrder from './BranchOrder';
+import Treasury from './Treasury';
+import Banks from './Banks';
 
 const Placeholder = ({ title }) => (
   <div style={{
@@ -69,8 +73,8 @@ function App() {
           <Route path="purchases/return" element={<Placeholder title="مرتجع مشتريات" />} />
           
           {/* Orders */}
-          <Route path="orders/request" element={<Placeholder title="طلب شراء" />} />
-          <Route path="orders/branch-order" element={<Placeholder title="إرسال طلبية للفرع" />} />
+          <Route path="orders/request" element={<PurchaseRequest />} />
+          <Route path="orders/branch-order" element={<BranchOrder />} />
 
           {/* Partners */}
           <Route path="partners" element={<Partners />} />
@@ -85,8 +89,8 @@ function App() {
           
           {/* Accounts */}
           <Route path="accounts" element={<Accounts />} />
-          <Route path="accounts/treasury" element={<Placeholder title="الخزينة" />} />
-          <Route path="accounts/banks" element={<Placeholder title="حسابات البنوك" />} />
+          <Route path="accounts/treasury" element={<Treasury />} />
+          <Route path="accounts/banks" element={<Banks />} />
           <Route path="accounts/tuning" element={<Placeholder title="تسوية الحسابات" />} />
           
           {/* Private Accounts */}

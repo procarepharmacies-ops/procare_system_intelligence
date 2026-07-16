@@ -127,3 +127,23 @@ export const getDividends = (source) => apiFetch(`/dividends/${source}`);
 export const getTransfers = () => apiFetch(`/transfers`);
 
 export const getHealth = () => apiFetch("/health");
+
+export const getOrders = async (source = 'elsanta') => {
+  const response = await fetch(${API_URL}/orders/);
+  return response.json();
+};
+
+export const getBranchOrders = async (source = 'elsanta') => {
+  const response = await fetch(${API_URL}/branch-orders/);
+  return response.json();
+};
+
+export const getTreasury = async (source = 'elsanta') => {
+  const response = await fetch(${API_URL}/treasury/);
+  return response.json();
+};
+
+export const getBanks = async (source = 'elsanta') => {
+  const response = await fetch(${API_URL}/banks/);
+  return response.json();
+};
