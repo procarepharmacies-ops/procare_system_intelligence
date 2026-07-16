@@ -194,33 +194,37 @@ def list_products(
         cur.execute(f"SELECT COUNT(*) FROM Products p WHERE {where}", params)
         total = cur.fetchone()[0]
 
-        # Fetch page
+        # Fetch page using CTE for SQL Server 2008 pagination
         cur.execute(f"""
-            SELECT TOP 200 p.product_id, p.product_code, p.product_fast_code,
-                   p.product_name_ar, p.product_name_en, p.product_scientific_name,
-                   p.sell_price, p.buy_price, p.tax_price,
-                   p.product_unit1, p.product_unit2, p.product_unit3,
-                   p.group_id, p.company_id, p.site_id, p.pd_id,
-                   p.product_int_code, p.product_int_code1,
-                   p.active, p.deleted,
+            WITH PageCTE AS (
+                SELECT p.product_id, p.product_code, p.product_fast_code,
+                       p.product_name_ar, p.product_name_en, p.product_scientific_name,
+                       p.sell_price, p.buy_price, p.tax_price,
+                       p.product_unit1, p.product_unit2, p.product_unit3,
+                       p.group_id, p.company_id, p.site_id, p.pd_id,
+                       p.product_int_code, p.product_int_code1,
+                       p.active, p.deleted,
+                       ROW_NUMBER() OVER(ORDER BY p.product_name_ar) as RowNum
+                FROM Products p
+                WHERE {where}
+            )
+            SELECT cte.*,
                    c.co_name_ar AS company_name,
                    g.group_name_ar AS group_name,
                    u.unit_name_ar AS unit_name,
                    ISNULL(stock.total_amount, 0) AS total_stock
-            FROM Products p
-            LEFT JOIN Companys c ON c.company_id = p.company_id
-            LEFT JOIN Product_groups g ON g.group_id = p.group_id
-            LEFT JOIN Product_units u ON u.unit_id = p.product_unit1
-            LEFT JOIN (
-                SELECT product_id, SUM(amount) AS total_amount
+            FROM PageCTE cte
+            LEFT JOIN Companys c ON c.company_id = cte.company_id
+            LEFT JOIN Product_groups g ON g.group_id = cte.group_id
+            LEFT JOIN Product_units u ON u.unit_id = cte.product_unit1
+            OUTER APPLY (
+                SELECT SUM(amount) AS total_amount
                 FROM Product_Amount
-                WHERE amount > 0
-                GROUP BY product_id
-            ) stock ON stock.product_id = p.product_id
-            WHERE {where}
-            ORDER BY p.product_name_ar
-            
-        """, params)
+                WHERE amount > 0 AND product_id = cte.product_id
+            ) stock
+            WHERE cte.RowNum > ? AND cte.RowNum <= ?
+            ORDER BY cte.RowNum
+        """, params + [offset, offset + per_page])
 
         columns = [desc[0] for desc in cur.description]
         rows = [dict(zip(columns, row)) for row in cur.fetchall()]
@@ -326,22 +330,27 @@ def list_sales(
         total = cur.fetchone()[0]
 
         cur.execute(f"""
-            SELECT sh.sales_id, sh.bill_number, sh.bill_date, sh.insert_date,
-                   sh.store_id, sh.customer_id, sh.class,
-                   sh.product_number, sh.total_bill, sh.total_disc_money,
-                   sh.total_product_disc, sh.total_bill_net, sh.bill_cash,
-                   sh.money_change, sh.network_money, sh.cashier_id, sh.notes,
+            WITH PageCTE AS (
+                SELECT sh.sales_id, sh.bill_number, sh.bill_date, sh.insert_date,
+                       sh.store_id, sh.customer_id, sh.class,
+                       sh.product_number, sh.total_bill, sh.total_disc_money,
+                       sh.total_product_disc, sh.total_bill_net, sh.bill_cash,
+                       sh.money_change, sh.network_money, sh.cashier_id, sh.notes,
+                       ROW_NUMBER() OVER(ORDER BY sh.sales_id DESC) as RowNum
+                FROM Sales_header sh
+                WHERE {where}
+            )
+            SELECT cte.*,
                    cu.customer_name_ar,
                    e.emp_name_ar AS cashier_name,
                    st.store_name_ar
-            FROM Sales_header sh
-            LEFT JOIN Customer cu ON cu.customer_id = sh.customer_id
-            LEFT JOIN Employee e ON e.username = sh.cashier_id
-            LEFT JOIN Stores st ON st.store_id = sh.store_id
-            WHERE {where}
-            ORDER BY sh.sales_id DESC
-            
-        """, params)
+            FROM PageCTE cte
+            LEFT JOIN Customer cu ON cu.customer_id = cte.customer_id
+            LEFT JOIN Employee e ON e.username = cte.cashier_id
+            LEFT JOIN Stores st ON st.store_id = cte.store_id
+            WHERE cte.RowNum > ? AND cte.RowNum <= ?
+            ORDER BY cte.RowNum
+        """, params + [offset, offset + per_page])
 
         columns = [desc[0] for desc in cur.description]
         rows = [dict(zip(columns, row)) for row in cur.fetchall()]

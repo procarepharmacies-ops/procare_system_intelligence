@@ -132,7 +132,7 @@ const Home = () => {
         
         {/* Moving Logo / Graphic */}
         <div className="z-10 hidden lg:block mr-10 animate-float">
-          <img src="/logo.png" alt="ProCare Logo" className="w-32 h-auto dark:brightness-0 dark:invert opacity-90 drop-shadow-xl" />
+          <img src="/favicon.svg" alt="ProCare Logo" className="w-24 h-auto drop-shadow-2xl" />
         </div>
       </div>
 

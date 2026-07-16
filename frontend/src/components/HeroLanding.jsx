@@ -42,58 +42,27 @@ const HeroLanding = ({ onComplete }) => {
 
           <div className="relative z-10 flex flex-col items-center justify-center">
             
-            {/* LOGO ASSEMBLY CONTAINER */}
-            <div className="relative w-48 h-48 mb-8 flex items-center justify-center">
-              
-              {/* Pestle (يد الهون) */}
-              <motion.svg 
-                viewBox="0 0 24 24" 
-                className="absolute w-20 h-20 text-blue-300 z-10 -ml-4 -mt-10 drop-shadow-xl"
-                initial={{ opacity: 0, x: -100, y: -100, rotate: -90 }}
-                animate={{ opacity: 1, x: 0, y: 0, rotate: 0 }}
-                transition={{ duration: 1.2, type: "spring", bounce: 0.5 }}
-              >
-                <path d="M17 3 L10 16" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-                <circle cx="17" cy="3" r="3" fill="currentColor" />
-              </motion.svg>
-              
-              {/* Mortar (الهون) */}
-              <motion.svg 
-                viewBox="0 0 24 24" 
-                className="absolute w-28 h-28 text-problue z-20 mt-4 drop-shadow-2xl"
-                initial={{ opacity: 0, y: 100, scale: 0.2 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 1.2, delay: 0.3, type: "spring", bounce: 0.6 }}
-              >
-                <path d="M4 10 H20 L17 20 C17 21 15 22 12 22 C9 22 7 21 7 20 L4 10 Z" fill="currentColor" />
-                <path d="M2 10 H22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                {/* Plus sign in the middle representing healthcare */}
-                <path d="M12 13 V19 M9 16 H15" stroke="white" strokeWidth="2" strokeLinecap="round" />
-              </motion.svg>
-
-              {/* Leaf (ورقة الشجر) */}
-              <motion.svg 
-                viewBox="0 0 24 24" 
-                className="absolute w-16 h-16 text-progreen z-30 ml-16 -mt-8 drop-shadow-lg"
-                initial={{ opacity: 0, x: 100, y: -50, rotate: 90, scale: 0 }}
-                animate={{ opacity: 1, x: 0, y: 0, rotate: 15, scale: 1 }}
-                transition={{ duration: 1, delay: 0.8, type: "spring", bounce: 0.5 }}
-              >
-                <path d="M12 2 C18 2 22 6 22 12 C22 18 12 22 12 22 C12 22 2 18 2 12 C2 6 6 2 12 2 Z" fill="currentColor" />
-                {/* Leaf vein */}
-                <path d="M12 22 L12 12" stroke="#0f1729" strokeWidth="1" strokeLinecap="round" />
-              </motion.svg>
-
-            </div>
-
-            {/* Word "PROCARE" */}
-            <motion.div
+            {/* LOGO AND TEXT */}
+            <motion.div 
+              className="flex items-center justify-center gap-4 md:gap-6 mb-8"
               initial={{ opacity: 0, y: 20, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.8, delay: 1.4 }}
-              className="text-5xl md:text-6xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400 font-sans mb-6 drop-shadow-sm"
+              transition={{ duration: 1.2, type: "spring", bounce: 0.5, delay: 0.5 }}
             >
-              PROCARE
+              {/* The P Logo (favicon.svg) */}
+              <motion.img 
+                src="/favicon.svg" 
+                alt="ProCare Icon"
+                className="w-24 h-24 md:w-32 md:h-32 drop-shadow-2xl"
+                initial={{ rotate: -45, opacity: 0, scale: 0.5 }}
+                animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                transition={{ duration: 1.2, type: "spring", bounce: 0.6 }}
+              />
+              
+              {/* Word "PROCARE" */}
+              <div className="text-5xl md:text-7xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400 font-sans drop-shadow-sm">
+                PROCARE
+              </div>
             </motion.div>
             
             {/* Tagline centered and smaller, fading in words */}
