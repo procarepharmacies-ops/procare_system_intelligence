@@ -67,7 +67,14 @@
       "employee_commission": "Employee Commission",
       "branch_menu": "Branches",
       "money_convert": "Cash Transfer",
-      "settings": "Settings"
+      "settings": "Settings",
+      "partners": "Partners",
+      "partners_data": "Partner Data",
+      "private_accounts": "Private Accounts",
+      "public_accounts": "Public Accounts",
+      "orders": "Orders",
+      "shortages_notebook": "Shortages Notebook",
+      "main_and_sub": "Main and Sub"
     },
     "quick": {
       "shortages": "Shortages",

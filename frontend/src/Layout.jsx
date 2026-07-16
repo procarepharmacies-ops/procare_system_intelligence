@@ -113,6 +113,26 @@ const Layout = () => {
       ]
     },
     { 
+      label: t('menus.partners'), 
+      path: '/partners-menu',
+      items: [
+        { label: t('menus.partners_data'), path: '/partners' }
+      ]
+    },
+    {
+      label: t('menus.orders'),
+      path: '/orders-menu',
+      items: [
+        { label: t('menus.purchase_request'), path: '/orders/request' },
+        { label: t('menus.branch_order'), path: '/orders/branch-order' }
+      ]
+    },
+    {
+      label: t('menus.shortages_notebook'),
+      path: '/shortages',
+      items: []
+    },
+    { 
       label: t('menus.sales'), 
       path: '/sales-menu',
       items: [
@@ -147,6 +167,16 @@ const Layout = () => {
         }
       ]
     },
+    {
+      label: t('menus.private_accounts'),
+      path: '/private-accounts',
+      items: []
+    },
+    {
+      label: t('menus.public_accounts'),
+      path: '/public-accounts',
+      items: []
+    },
     { 
       label: t('menus.employees'), 
       path: '/employees-menu',
@@ -164,7 +194,7 @@ const Layout = () => {
       ]
     },
     { 
-      label: t('menus.branch_menu'), 
+      label: t('menus.main_and_sub'), 
       path: '/branches-menu',
       items: [
         { label: t('menus.money_convert'), path: '/branches/money-convert' },

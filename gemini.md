@@ -22,6 +22,10 @@ The application connects directly to the `elsanta` SQL Server database. The prim
 
 ## Architectural Invariants
 - 3-Layer Build: Architecture, Navigation, Tools
+- **Branch Business Rules**:
+  - `elsanta` is a company/partnership (شركة). It has shareholders (`company_Owner`) and distributes profits (`Gedo_Dividends_paied`).
+  - `mashala` is entirely owned by the user (ملكي). It does not have shareholders.
+  - Cash transfers (`Branch_money_convert`) between the two branches' treasuries are critical due to this ownership difference.
 
 ## Maintenance Log (Phase 5: Trigger)
 - **Data Aggregation**: The `routes.py` API endpoints for `/dashboard` and `/sales-chart` dynamically sum metrics across all branches in `connections.json` when `source="all"` is requested.

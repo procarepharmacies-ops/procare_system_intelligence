@@ -881,6 +881,18 @@ def company_info(source: str = "mashala"):
 
 # ─────────────────────────── Stores ───────────────────────────
 
+class StoreCreate(BaseModel):
+    store_code: Optional[str] = None
+    store_name_ar: str
+    store_name_en: Optional[str] = None
+    active: Optional[str] = "1"
+
+class StoreUpdate(BaseModel):
+    store_code: Optional[str] = None
+    store_name_ar: Optional[str] = None
+    store_name_en: Optional[str] = None
+    active: Optional[str] = None
+
 @router.get("/stores/{source}")
 def list_stores(source: str = "mashala"):
     with db_session(source) as conn:
@@ -888,6 +900,70 @@ def list_stores(source: str = "mashala"):
         cur.execute("SELECT * FROM Stores ORDER BY store_id")
         columns = [desc[0] for desc in cur.description]
         return {"items": [dict(zip(columns, r)) for r in cur.fetchall()]}
+
+@router.post("/stores/{source}")
+def create_store(store: StoreCreate, source: str = "mashala"):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        query = """
+            INSERT INTO Stores (
+                store_code, store_name_ar, store_name_en, active, insert_date
+            )
+            VALUES (?, ?, ?, ?, GETDATE())
+        """
+        params = (
+            store.store_code, store.store_name_ar, store.store_name_en, store.active
+        )
+        try:
+            cur.execute(query, params)
+            conn.commit()
+            return {"status": "success", "message": "Store created successfully"}
+        except Exception as e:
+            conn.rollback()
+            raise HTTPException(status_code=500, detail=str(e))
+
+@router.put("/stores/{source}/{store_id}")
+def update_store(store_id: int, store: StoreUpdate, source: str = "mashala"):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        update_fields = []
+        params = []
+        for field, value in store.dict(exclude_unset=True).items():
+            update_fields.append(f"{field} = ?")
+            params.append(value)
+            
+        if not update_fields:
+            return {"status": "success", "message": "No fields to update"}
+            
+        params.append(store_id)
+        query = f"UPDATE Stores SET {', '.join(update_fields)} WHERE store_id = ?"
+        
+        try:
+            cur.execute(query, params)
+            if cur.rowcount == 0:
+                raise HTTPException(status_code=404, detail="Store not found")
+            conn.commit()
+            return {"status": "success", "message": "Store updated successfully"}
+        except Exception as e:
+            conn.rollback()
+            raise HTTPException(status_code=500, detail=str(e))
+
+@router.delete("/stores/{source}/{store_id}")
+def delete_store(store_id: int, source: str = "mashala"):
+    # Note: Stores table doesn't have a deleted column, so we might just set active to 0 or delete
+    # Given typical pharmacy systems, we set active='0' instead of hard delete
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        query = "UPDATE Stores SET active = '0' WHERE store_id = ?"
+        try:
+            cur.execute(query, (store_id,))
+            if cur.rowcount == 0:
+                raise HTTPException(status_code=404, detail="Store not found")
+            conn.commit()
+            return {"status": "success", "message": "Store deleted successfully"}
+        except Exception as e:
+            conn.rollback()
+            raise HTTPException(status_code=500, detail=str(e))
 
 
 # ─────────────────────────── Product Groups ───────────────────────────
@@ -968,3 +1044,130 @@ def cash_disk_close(source: str = "mashala", page: int = 1, per_page: int = 20):
                 if row.get(key):
                     row[key] = str(row[key])
         return {"total": total, "page": page, "per_page": per_page, "items": rows}
+
+
+# ─────────────────────────── Partners (Shareholders) ───────────────────────────
+
+@router.get("/partners/{source}")
+def list_partners(source: str = "elsanta", search: str = ""):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        if search:
+            cur.execute("""
+                SELECT coow_id as partner_id, coow_code as partner_code, 
+                       coow_name_ar as partner_name_ar, coow_name_en as partner_name_en, 
+                       mobile, ISNULL(coow_current_money, 0) as balance, active
+                FROM company_Owner
+                WHERE (deleted <> '1' OR deleted IS NULL)
+                  AND (coow_name_ar LIKE ? OR coow_name_en LIKE ?)
+            """, [f"%{search}%", f"%{search}%"])
+        else:
+            cur.execute("""
+                SELECT coow_id as partner_id, coow_code as partner_code, 
+                       coow_name_ar as partner_name_ar, coow_name_en as partner_name_en, 
+                       mobile, ISNULL(coow_current_money, 0) as balance, active
+                FROM company_Owner
+                WHERE deleted <> '1' OR deleted IS NULL
+            """)
+        columns = [desc[0] for desc in cur.description]
+        rows = [dict(zip(columns, row)) for row in cur.fetchall()]
+        for row in rows:
+            row["balance"] = float(row["balance"])
+            # Assuming equal shares for now or a specific field if it exists, mock share_percentage
+            row["share_percentage"] = 50.0
+        return {"items": rows}
+
+@router.post("/partners/{source}")
+def create_partner(source: str, data: dict):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        query = """
+            INSERT INTO company_Owner 
+            (coow_code, coow_name_ar, coow_name_en, mobile, active, insert_date)
+            VALUES (?, ?, ?, ?, ?, GETDATE())
+        """
+        try:
+            cur.execute(query, (
+                data.get("partner_code", ""),
+                data.get("partner_name_ar", ""),
+                data.get("partner_name_en", ""),
+                data.get("mobile", ""),
+                data.get("active", "1")
+            ))
+            conn.commit()
+            return {"status": "success"}
+        except Exception as e:
+            conn.rollback()
+            raise HTTPException(status_code=500, detail=str(e))
+
+@router.put("/partners/{source}/{partner_id}")
+def update_partner(source: str, partner_id: int, data: dict):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        query = """
+            UPDATE company_Owner 
+            SET coow_code = ?, coow_name_ar = ?, coow_name_en = ?, mobile = ?, active = ?, update_date = GETDATE()
+            WHERE coow_id = ?
+        """
+        try:
+            cur.execute(query, (
+                data.get("partner_code", ""),
+                data.get("partner_name_ar", ""),
+                data.get("partner_name_en", ""),
+                data.get("mobile", ""),
+                data.get("active", "1"),
+                partner_id
+            ))
+            conn.commit()
+            return {"status": "success"}
+        except Exception as e:
+            conn.rollback()
+            raise HTTPException(status_code=500, detail=str(e))
+
+
+# ─────────────────────────── Profit Distribution (Dividends) ───────────────────────────
+
+@router.get("/dividends/{source}")
+def list_dividends(source: str = "elsanta"):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        cur.execute("""
+            SELECT d.dividends_id, d.coow_id, d.paied_money, d.insert_date,
+                   c.coow_name_ar
+            FROM Gedo_Dividends_paied d
+            LEFT JOIN company_Owner c ON d.coow_id = c.coow_id
+            ORDER BY d.insert_date DESC
+        """)
+        columns = [desc[0] for desc in cur.description]
+        rows = [dict(zip(columns, row)) for row in cur.fetchall()]
+        for row in rows:
+            if row.get("paied_money"):
+                row["paied_money"] = float(row["paied_money"])
+            if row.get("insert_date"):
+                row["insert_date"] = str(row["insert_date"])
+        return {"items": rows}
+
+
+# ─────────────────────────── Branch Money Transfers ───────────────────────────
+
+@router.get("/transfers")
+def list_transfers():
+    # Typically transfers are fetched from the source database, e.g., elsanta
+    source = "elsanta" 
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        cur.execute("""
+            SELECT branch_money_id, from_branch_id, from_cash_id, 
+                   to_branch_id, to_cash_id, amount, notes, insert_date, is_open
+            FROM Branch_money_convert
+            ORDER BY insert_date DESC
+        """)
+        columns = [desc[0] for desc in cur.description]
+        rows = [dict(zip(columns, row)) for row in cur.fetchall()]
+        for row in rows:
+            if row.get("amount"):
+                row["amount"] = float(row["amount"])
+            if row.get("insert_date"):
+                row["insert_date"] = str(row["insert_date"])
+        return {"items": rows}
+

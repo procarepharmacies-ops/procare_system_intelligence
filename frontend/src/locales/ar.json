@@ -67,7 +67,14 @@
       "employee_commission": "عمولة الموظف",
       "branch_menu": "فروع",
       "money_convert": "تحويل نقدي لفرع",
-      "settings": "إعدادات"
+      "settings": "إعدادات",
+      "partners": "الشركاء",
+      "partners_data": "بيانات الشركاء",
+      "private_accounts": "الحسابات الخاصة",
+      "public_accounts": "الحسابات العامة",
+      "orders": "الطلبيات",
+      "shortages_notebook": "كشكول النواقص",
+      "main_and_sub": "رئيسي وفرعي"
     },
     "quick": {
       "shortages": "النواقص",

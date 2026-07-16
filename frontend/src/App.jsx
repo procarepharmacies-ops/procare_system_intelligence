@@ -12,6 +12,7 @@ import Customers from './Customers';
 import Vendors from './Vendors';
 import Employees from './Employees';
 import Accounts from './Accounts';
+import Partners from './Partners';
 import Shortages from './Shortages';
 import Expired from './Expired';
 import CompanyInfo from './CompanyInfo';
@@ -65,9 +66,14 @@ function App() {
           
           {/* Purchases */}
           <Route path="purchases" element={<PurchaseInvoice />} />
-          <Route path="purchases/request" element={<Placeholder title="طلب شراء" />} />
-          <Route path="purchases/branch-order" element={<Placeholder title="إرسال طلبية للفرع" />} />
           <Route path="purchases/return" element={<Placeholder title="مرتجع مشتريات" />} />
+          
+          {/* Orders */}
+          <Route path="orders/request" element={<Placeholder title="طلب شراء" />} />
+          <Route path="orders/branch-order" element={<Placeholder title="إرسال طلبية للفرع" />} />
+
+          {/* Partners */}
+          <Route path="partners" element={<Partners />} />
           
           {/* Customers */}
           <Route path="customers" element={<Customers />} />
@@ -82,6 +88,12 @@ function App() {
           <Route path="accounts/treasury" element={<Placeholder title="الخزينة" />} />
           <Route path="accounts/banks" element={<Placeholder title="حسابات البنوك" />} />
           <Route path="accounts/tuning" element={<Placeholder title="تسوية الحسابات" />} />
+          
+          {/* Private Accounts */}
+          <Route path="private-accounts" element={<Placeholder title="الحسابات الخاصة" />} />
+
+          {/* Public Accounts */}
+          <Route path="public-accounts" element={<Placeholder title="الحسابات العامة" />} />
           
           {/* Employees */}
           <Route path="employees" element={<Employees />} />

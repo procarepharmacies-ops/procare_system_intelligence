@@ -62,6 +62,22 @@ export const getAccounts = (source, params = {}) => {
 };
 export const getShortcoming = (source) => apiFetch(`/shortcoming/${source}`);
 export const getStores = (source) => apiFetch(`/stores/${source}`);
+export const createStore = (source, data) => 
+  apiFetch(`/stores/${source}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+export const updateStore = (source, id, data) => 
+  apiFetch(`/stores/${source}/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+export const deleteStore = (source, id) => 
+  apiFetch(`/stores/${source}/${id}`, {
+    method: 'DELETE'
+  });
 export const getCashDisk = (source, params = {}) => {
   const q = new URLSearchParams(params).toString();
   return apiFetch(`/cash-disk/${source}?${q}`);
@@ -91,4 +107,23 @@ export const deleteCustomer = (source, id) =>
     method: 'DELETE'
   });
 export const getManufacturers = (source, search = '') => apiFetch(`/companies/${source}?search=${encodeURIComponent(search)}`);
+
+export const getPartners = (source, params = {}) => {
+  const q = new URLSearchParams(params).toString();
+  return apiFetch(`/partners/${source}?${q}`);
+};
+export const createPartner = (source, data) => 
+  apiFetch(`/partners/${source}`, {
+    method: 'POST',
+    body: JSON.stringify(data)
+  });
+export const updatePartner = (source, id, data) => 
+  apiFetch(`/partners/${source}/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(data)
+  });
+
+export const getDividends = (source) => apiFetch(`/dividends/${source}`);
+export const getTransfers = () => apiFetch(`/transfers`);
+
 export const getHealth = () => apiFetch("/health");
