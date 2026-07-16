@@ -77,7 +77,7 @@ export default function EmployeeCard() {
                       <p className="text-xs text-muted-foreground">ID: {emp.emp_code}</p>
                     </div>
                   </div>
-                  <span className={\px-2 py-1 rounded text-xs font-semibold \\}>
+                  <span className={`px-2 py-1 rounded text-xs font-semibold ${emp.active === '1' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-red-500/10 text-red-500'}`}>
                     {emp.active === '1' ? 'Active' : 'Inactive'}
                   </span>
                 </div>

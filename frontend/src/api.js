@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:8001/api";
+const API_BASE = "/api";
 
 export async function apiFetch(path, options = {}) {
   const res = await fetch(`${API_BASE}${path}`, {
@@ -128,57 +128,26 @@ export const getTransfers = () => apiFetch(`/transfers`);
 
 export const getHealth = () => apiFetch("/health");
 
-export const getOrders = async (source = 'elsanta') => {
-  const response = await fetch(${API_URL}/orders/);
-  return response.json();
-};
+export const getOrders = (source = 'elsanta') => apiFetch(`/orders/${source}`);
+export const getBranchOrders = (source = 'elsanta') => apiFetch(`/branch-orders/${source}`);
+export const getTreasury = (source = 'elsanta') => apiFetch(`/treasury/${source}`);
+export const getBanks = (source = 'elsanta') => apiFetch(`/banks/${source}`);
+export const getSalaries = (source = 'elsanta') => apiFetch(`/salaries/${source}`);
+export const getTuningAccounts = (source = 'elsanta') => apiFetch(`/tuning/${source}`);
+export const getAccountTree = (source = 'elsanta') => apiFetch(`/account-tree/${source}`);
+export const getGedoFinancial = (source = 'elsanta') => apiFetch(`/gedo-financial/${source}`);
+export const getExpiredProducts = (source = 'elsanta') => apiFetch(`/reports/expired/${source}`);
 
-export const getBranchOrders = async (source = 'elsanta') => {
-  const response = await fetch(${API_URL}/branch-orders/);
-  return response.json();
-};
-
-export const getTreasury = async (source = 'elsanta') => {
-  const response = await fetch(${API_URL}/treasury/);
-  return response.json();
-};
-
-export const getBanks = async (source = 'elsanta') => {
-  const response = await fetch(${API_URL}/banks/);
-  return response.json();
-};
-
-export const getEmployees = async (source = 'elsanta') => {
-  const response = await fetch(${API_URL}/employees/);
-  return response.json();
-};
-
-export const getSalaries = async (source = 'elsanta') => {
-  const response = await fetch(${API_URL}/salaries/);
-  return response.json();
-};
-
-export const getTuningAccounts = async (source = 'elsanta') => {
-  const response = await fetch(${API_URL}/tuning/);
-  return response.json();
-};
-
-export const getAccountTree = async (source = 'elsanta') => {
-  const response = await fetch(${API_URL}/account-tree/);
-  return response.json();
-};
-
-export const getGedoFinancial = async (source = 'elsanta') => {
-  const response = await fetch(${API_URL}/gedo-financial/);
-  return response.json();
-};
-
-export const getPartners = async (source = 'elsanta') => {
-  const response = await fetch(${API_URL}/partners/);
-  return response.json();
-};
-
-export const getExpiredProducts = async (source = 'elsanta') => {
-  const response = await fetch(${API_URL}/reports/expired/);
-  return response.json();
-};
+export const getStartStock = (source = 'elsanta') => apiFetch(`/start-stock/${source}`);
+export const getInventory = (source = 'elsanta') => apiFetch(`/inventory/${source}`);
+export const getPurchaseReturns = (source = 'elsanta') => apiFetch(`/purchase-returns/${source}`);
+export const getSalesReturns = (source = 'elsanta') => apiFetch(`/sales-returns/${source}`);
+export const getSalesPending = (source = 'elsanta') => apiFetch(`/sales-pending/${source}`);
+export const getVendorBalances = (source = 'elsanta') => apiFetch(`/vendor-balances/${source}`);
+export const getBranchTransfers = (source = 'elsanta') => apiFetch(`/branch-transfers/${source}`);
+export const getSalesGeneral = (source = 'elsanta') => apiFetch(`/reports/sales-general/${source}`);
+export const getSalesProfit = (source = 'elsanta') => apiFetch(`/reports/sales-profit/${source}`);
+export const getSalesEmployee = (source = 'elsanta') => apiFetch(`/reports/sales-employee/${source}`);
+export const getBankStatement = (source = 'elsanta') => apiFetch(`/reports/bank-statement/${source}`);
+export const getCashClose = (source = 'elsanta') => apiFetch(`/reports/cash-close/${source}`);
+export const runBackup = (source = 'elsanta') => apiFetch(/backup/, { method: 'POST' });

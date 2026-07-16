@@ -30,8 +30,20 @@ import Salary from './Salary';
 import Tuning from './Tuning';
 import AccountsTree from './AccountsTree';
 import PrivateAccounts from './PrivateAccounts';
-import Partners from './Partners';
-import Expired from './Expired';
+import StartStock from './StartStock';
+import Inventory from './Inventory';
+import PurchaseReturn from './PurchaseReturn';
+import SalesReturn from './SalesReturn';
+import SalesPending from './SalesPending';
+import VendorBalances from './VendorBalances';
+import BranchTransfer from './BranchTransfer';
+import SalesGeneral from './SalesGeneral';
+import SalesProfit from './SalesProfit';
+import SalesEmployee from './SalesEmployee';
+import BankStatement from './BankStatement';
+import CashClose from './CashClose';
+import Backup from './Backup';
+
 
 const Placeholder = ({ title }) => (
   <div style={{
@@ -58,7 +70,7 @@ function App() {
           {/* Partners */}
           <Route path="partners" element={<Partners />} />
           <Route path="general/company" element={<CompanyInfo />} />
-          <Route path="general/backup" element={<Placeholder title="النسخ الاحتياطي" />} />
+          <Route path="general/backup" element={<Backup />} />
           
           {/* Products */}
           <Route path="products" element={<Products />} />
@@ -67,32 +79,30 @@ function App() {
           
           {/* Stores */}
           <Route path="stores" element={<Stores />} />
-          <Route path="stores/start-stock" element={<Placeholder title="الأرصدة الافتتاحية للمخزون" />} />
-          <Route path="stores/inventory" element={<Placeholder title="جرد مخزني" />} />
+          <Route path="stores/start-stock" element={<StartStock />} />
+          <Route path="stores/inventory" element={<Inventory />} />
           
           {/* Vendors */}
           <Route path="vendors" element={<Vendors />} />
-          <Route path="vendors/opening-balances" element={<Placeholder title="الأرصدة الافتتاحية للموردين" />} />
+          <Route path="vendors/opening-balances" element={<VendorBalances />} />
           <Route path="vendors/manufacturers" element={<Manufacturers />} />
           
           {/* Purchases */}
           <Route path="purchases" element={<PurchaseInvoice />} />
-          <Route path="purchases/return" element={<Placeholder title="مرتجع مشتريات" />} />
+          <Route path="purchases/return" element={<PurchaseReturn />} />
           
           {/* Orders */}
           <Route path="orders/request" element={<PurchaseRequest />} />
           <Route path="orders/branch-order" element={<BranchOrder />} />
 
-          {/* Partners */}
-          <Route path="partners" element={<Partners />} />
-          
+
           {/* Customers */}
           <Route path="customers" element={<Customers />} />
           
           {/* Sales */}
           <Route path="sales" element={<SalesInvoice />} />
-          <Route path="sales/return" element={<Placeholder title="مرتبط مبيعات" />} />
-          <Route path="sales/pending" element={<Placeholder title="مبيعات معلقة" />} />
+          <Route path="sales/return" element={<SalesReturn />} />
+          <Route path="sales/pending" element={<SalesPending />} />
           
           {/* Accounts */}
           <Route path="accounts" element={<Accounts />} />
@@ -113,10 +123,16 @@ function App() {
           
           {/* Branches */}
           <Route path="branches" element={<Branches />} />
-          <Route path="branches/money-convert" element={<Placeholder title="تحويل نقدي لفرع" />} />
+          <Route path="branches/money-convert" element={<BranchTransfer />} />
           
           {/* Reports */}
           <Route path="reports/products-inactive" element={<Expired />} />
+          
+          <Route path="reports/sales-general" element={<SalesGeneral />} />
+          <Route path="reports/sales-profit" element={<SalesProfit />} />
+          <Route path="reports/sales-employee" element={<SalesEmployee />} />
+          <Route path="reports/bank-statement" element={<BankStatement />} />
+          <Route path="reports/cash-close" element={<CashClose />} />
           <Route path="reports/*" element={<Placeholder title="تقرير (قيد التطوير)" />} />
           
           {/* Quick Access */}

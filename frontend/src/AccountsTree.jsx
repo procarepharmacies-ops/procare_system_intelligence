@@ -66,7 +66,7 @@ export default function AccountsTree() {
           </div>
         </div>
         <div className="font-bold text-cyan-500">
-          {node.account_start_money ? \\ EGP\ : ''}
+          {node.account_start_money ? `${node.account_start_money.toLocaleString()} EGP` : ''}
         </div>
       </div>
       {node.children.length > 0 && (
