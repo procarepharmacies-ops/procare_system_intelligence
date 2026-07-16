@@ -501,19 +501,24 @@ def list_purchases(
         total = cur.fetchone()[0]
 
         cur.execute(f"""
-            SELECT ph.purchase_id, ph.bill_number, ph.bill_date, ph.insert_date,
-                   ph.store_id, ph.vendor_id, ph.class,
-                   ph.product_number, ph.total_bill,
-                   ph.bill_disc_per, ph.bill_disc_money, ph.bill_other_expenses,
-                   ph.notes, ph.back,
+            WITH PageCTE AS (
+                SELECT ph.purchase_id, ph.bill_number, ph.bill_date, ph.insert_date,
+                       ph.store_id, ph.vendor_id, ph.class,
+                       ph.product_number, ph.total_bill,
+                       ph.bill_disc_per, ph.bill_disc_money, ph.bill_other_expenses,
+                       ph.notes, ph.back,
+                       ROW_NUMBER() OVER(ORDER BY ph.purchase_id DESC) as RowNum
+                FROM Purchase_header ph
+                WHERE {where}
+            )
+            SELECT cte.*,
                    v.vendor_name_ar, st.store_name_ar
-            FROM Purchase_header ph
-            LEFT JOIN Vendor v ON v.vendor_id = ph.vendor_id
-            LEFT JOIN Stores st ON st.store_id = ph.store_id
-            WHERE {where}
-            ORDER BY ph.purchase_id DESC
-            
-        """, params)
+            FROM PageCTE cte
+            LEFT JOIN Vendor v ON v.vendor_id = cte.vendor_id
+            LEFT JOIN Stores st ON st.store_id = cte.store_id
+            WHERE cte.RowNum > ? AND cte.RowNum <= ?
+            ORDER BY cte.RowNum
+        """, params + [offset, offset + per_page])
         columns = [desc[0] for desc in cur.description]
         rows = [dict(zip(columns, row)) for row in cur.fetchall()]
         for row in rows:
@@ -565,14 +570,19 @@ def list_customers(source: str = "mashala", search: str = "", page: int = 1, per
         total = cur.fetchone()[0]
 
         cur.execute(f"""
-            SELECT cu.customer_id, cu.customer_code, cu.customer_name_ar,
-                   cu.customer_name_en, cu.mobile, cu.tel, cu.address,
-                   cu.customer_max_money, cu.customer_current_money, cu.active
-            FROM Customer cu
-            WHERE {where}
-            ORDER BY cu.customer_name_ar
-            
-        """, params)
+            WITH PageCTE AS (
+                SELECT cu.customer_id, cu.customer_code, cu.customer_name_ar,
+                       cu.customer_name_en, cu.mobile, cu.tel, cu.address,
+                       cu.customer_max_money, cu.customer_current_money, cu.active,
+                       ROW_NUMBER() OVER(ORDER BY cu.customer_name_ar) as RowNum
+                FROM Customer cu
+                WHERE {where}
+            )
+            SELECT cte.*
+            FROM PageCTE cte
+            WHERE cte.RowNum > ? AND cte.RowNum <= ?
+            ORDER BY cte.RowNum
+        """, params + [offset, offset + per_page])
         columns = [desc[0] for desc in cur.description]
         rows = [dict(zip(columns, row)) for row in cur.fetchall()]
         for row in rows:
@@ -686,14 +696,19 @@ def list_vendors(source: str = "mashala", search: str = "", page: int = 1, per_p
         total = cur.fetchone()[0]
 
         cur.execute(f"""
-            SELECT v.vendor_id, v.vendor_code, v.vendor_name_ar,
-                   v.vendor_name_en, v.mobile, v.tel, v.address,
-                   v.vendor_max_money, v.vendor_current_money, v.active
-            FROM Vendor v
-            WHERE {where}
-            ORDER BY v.vendor_name_ar
-            
-        """, params)
+            WITH PageCTE AS (
+                SELECT v.vendor_id, v.vendor_code, v.vendor_name_ar,
+                       v.vendor_name_en, v.mobile, v.tel, v.address,
+                       v.vendor_max_money, v.vendor_current_money, v.active,
+                       ROW_NUMBER() OVER(ORDER BY v.vendor_name_ar) as RowNum
+                FROM Vendor v
+                WHERE {where}
+            )
+            SELECT cte.*
+            FROM PageCTE cte
+            WHERE cte.RowNum > ? AND cte.RowNum <= ?
+            ORDER BY cte.RowNum
+        """, params + [offset, offset + per_page])
         columns = [desc[0] for desc in cur.description]
         rows = [dict(zip(columns, row)) for row in cur.fetchall()]
         for row in rows:
