@@ -67,7 +67,9 @@ const HeroLanding = ({ onComplete }) => {
               transition={{ duration: 1, delay: 0.8 }}
               className="text-white text-3xl md:text-4xl font-light tracking-widest mt-8 font-sans"
             >
-              PROCARE <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">ESTOCK</span>
+              PROCARE <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">
+                not just a pharmacy but a family for all needs<br/>ليست مجرد صيدليه لكنها عائله لكل احتياجاتك
+              </span>
             </motion.h1>
           </motion.div>
         </motion.div>
