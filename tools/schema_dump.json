@@ -1,0 +1,8374 @@
+{
+  "Employee_deduction": [
+    {
+      "name": "emp_id",
+      "type": "decimal"
+    },
+    {
+      "name": "emp_deduction",
+      "type": "money"
+    },
+    {
+      "name": "month_salary",
+      "type": "datetime"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    }
+  ],
+  "Branches_mail": [
+    {
+      "name": "mail_id",
+      "type": "decimal"
+    },
+    {
+      "name": "mail_address",
+      "type": "varchar"
+    },
+    {
+      "name": "mail_notes",
+      "type": "text"
+    },
+    {
+      "name": "is_read",
+      "type": "char"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "decimal"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "decimal"
+    },
+    {
+      "name": "from_branch",
+      "type": "decimal"
+    },
+    {
+      "name": "to_branch",
+      "type": "decimal"
+    }
+  ],
+  "Purchase_details": [
+    {
+      "name": "details_id",
+      "type": "decimal"
+    },
+    {
+      "name": "purchase_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "amount",
+      "type": "float"
+    },
+    {
+      "name": "bouns",
+      "type": "float"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "gain_price",
+      "type": "money"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "back",
+      "type": "char"
+    },
+    {
+      "name": "back_amount",
+      "type": "float"
+    },
+    {
+      "name": "back_price",
+      "type": "money"
+    },
+    {
+      "name": "back_bouns",
+      "type": "decimal"
+    },
+    {
+      "name": "back_tax_price",
+      "type": "money"
+    },
+    {
+      "name": "back_details_1",
+      "type": "money"
+    },
+    {
+      "name": "back_details_2",
+      "type": "money"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "co_tax_price",
+      "type": "money"
+    }
+  ],
+  "Employee_work_time": [
+    {
+      "name": "id",
+      "type": "decimal"
+    },
+    {
+      "name": "employee_id",
+      "type": "decimal"
+    },
+    {
+      "name": "day_start",
+      "type": "datetime"
+    },
+    {
+      "name": "daily_start",
+      "type": "datetime"
+    },
+    {
+      "name": "day_end",
+      "type": "datetime"
+    },
+    {
+      "name": "daily_end",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "day_class",
+      "type": "char"
+    }
+  ],
+  "Back_Sales_details": [
+    {
+      "name": "back_sales_id",
+      "type": "decimal"
+    },
+    {
+      "name": "sales_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "back_amount",
+      "type": "float"
+    },
+    {
+      "name": "back_unit_change",
+      "type": "decimal"
+    },
+    {
+      "name": "back_price",
+      "type": "money"
+    },
+    {
+      "name": "back_unit",
+      "type": "int"
+    },
+    {
+      "name": "back_gf_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_uid",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "disc_per",
+      "type": "float"
+    },
+    {
+      "name": "disc_money",
+      "type": "money"
+    },
+    {
+      "name": "details_id",
+      "type": "decimal"
+    },
+    {
+      "name": "back_sales_details_id",
+      "type": "decimal"
+    }
+  ],
+  "Purchase_header": [
+    {
+      "name": "purchase_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "order_id",
+      "type": "decimal"
+    },
+    {
+      "name": "class",
+      "type": "varchar"
+    },
+    {
+      "name": "product_number",
+      "type": "int"
+    },
+    {
+      "name": "total_bill",
+      "type": "money"
+    },
+    {
+      "name": "bill_disc_per",
+      "type": "float"
+    },
+    {
+      "name": "bill_disc_money",
+      "type": "money"
+    },
+    {
+      "name": "bill_other_expenses",
+      "type": "money"
+    },
+    {
+      "name": "cashier_id",
+      "type": "varchar"
+    },
+    {
+      "name": "bill_number",
+      "type": "varchar"
+    },
+    {
+      "name": "bill_date",
+      "type": "datetime"
+    },
+    {
+      "name": "back",
+      "type": "char"
+    },
+    {
+      "name": "total_back",
+      "type": "money"
+    },
+    {
+      "name": "total_after_back",
+      "type": "money"
+    },
+    {
+      "name": "notes",
+      "type": "text"
+    },
+    {
+      "name": "gf_id",
+      "type": "decimal"
+    },
+    {
+      "name": "back_number",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "sell_back",
+      "type": "char"
+    },
+    {
+      "name": "man_back_details",
+      "type": "varchar"
+    },
+    {
+      "name": "customer_id",
+      "type": "decimal"
+    },
+    {
+      "name": "bill_tax",
+      "type": "money"
+    }
+  ],
+  "Employee_over_commission": [
+    {
+      "name": "emp_id",
+      "type": "decimal"
+    },
+    {
+      "name": "emp_over_commission",
+      "type": "money"
+    },
+    {
+      "name": "month_salary",
+      "type": "datetime"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "Branches_Product_Amount": [
+    {
+      "name": "branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "amount",
+      "type": "float"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "pa_id",
+      "type": "decimal"
+    },
+    {
+      "name": "branch_pa_id",
+      "type": "decimal"
+    }
+  ],
+  "Gedo_Dividends_paied": [
+    {
+      "name": "dividends_id",
+      "type": "decimal"
+    },
+    {
+      "name": "coow_id",
+      "type": "decimal"
+    },
+    {
+      "name": "yaer_id",
+      "type": "int"
+    },
+    {
+      "name": "gf_id",
+      "type": "decimal"
+    },
+    {
+      "name": "paied_money",
+      "type": "money"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "Branches_Product_amount_Change": [
+    {
+      "name": "ch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "id",
+      "type": "decimal"
+    },
+    {
+      "name": "in_type",
+      "type": "char"
+    },
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "amount",
+      "type": "float"
+    },
+    {
+      "name": "exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "form_type",
+      "type": "int"
+    },
+    {
+      "name": "form_notice",
+      "type": "varchar"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "stock",
+      "type": "float"
+    }
+  ],
+  "user_login": [
+    {
+      "name": "lu_id",
+      "type": "decimal"
+    },
+    {
+      "name": "u_id",
+      "type": "decimal"
+    },
+    {
+      "name": "start_time",
+      "type": "datetime"
+    },
+    {
+      "name": "end_time",
+      "type": "datetime"
+    },
+    {
+      "name": "compu_name",
+      "type": "varchar"
+    }
+  ],
+  "Employee_salary": [
+    {
+      "name": "salary_id",
+      "type": "decimal"
+    },
+    {
+      "name": "emp_id",
+      "type": "decimal"
+    },
+    {
+      "name": "state",
+      "type": "char"
+    },
+    {
+      "name": "basic_salary",
+      "type": "money"
+    },
+    {
+      "name": "emp_commission",
+      "type": "money"
+    },
+    {
+      "name": "emp_over_commission",
+      "type": "money"
+    },
+    {
+      "name": "emp_deduction",
+      "type": "money"
+    },
+    {
+      "name": "emp_absence_money",
+      "type": "money"
+    },
+    {
+      "name": "total",
+      "type": "money"
+    },
+    {
+      "name": "month_salary",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "cash_advance",
+      "type": "money"
+    }
+  ],
+  "Branch_money_convert": [
+    {
+      "name": "branch_money_id",
+      "type": "decimal"
+    },
+    {
+      "name": "from_branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "from_cash_id",
+      "type": "decimal"
+    },
+    {
+      "name": "to_branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "to_cash_id",
+      "type": "decimal"
+    },
+    {
+      "name": "class",
+      "type": "char"
+    },
+    {
+      "name": "amount",
+      "type": "money"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "is_open",
+      "type": "char"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "Gedo_Vendors": [
+    {
+      "name": "gv_id",
+      "type": "decimal"
+    },
+    {
+      "name": "gf_id",
+      "type": "varchar"
+    },
+    {
+      "name": "Flag",
+      "type": "int"
+    },
+    {
+      "name": "gv_type",
+      "type": "char"
+    },
+    {
+      "name": "vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "gv_for_him",
+      "type": "money"
+    },
+    {
+      "name": "gv_for_me",
+      "type": "money"
+    },
+    {
+      "name": "total",
+      "type": "money"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    }
+  ],
+  "Branches_products_edit": [
+    {
+      "name": "product_edit_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_type",
+      "type": "char"
+    },
+    {
+      "name": "product_code",
+      "type": "varchar"
+    },
+    {
+      "name": "product_fast_code",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code",
+      "type": "varchar"
+    },
+    {
+      "name": "product_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "product_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "product_scientific_name",
+      "type": "nvarchar"
+    },
+    {
+      "name": "product_drug",
+      "type": "char"
+    },
+    {
+      "name": "company_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_has_expire",
+      "type": "char"
+    },
+    {
+      "name": "site_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_buy_number",
+      "type": "decimal"
+    },
+    {
+      "name": "product_big_number",
+      "type": "decimal"
+    },
+    {
+      "name": "product_small_number",
+      "type": "decimal"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "product_disc1",
+      "type": "decimal"
+    },
+    {
+      "name": "product_disc2",
+      "type": "decimal"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "active",
+      "type": "char"
+    },
+    {
+      "name": "product_unit1",
+      "type": "decimal"
+    },
+    {
+      "name": "product_unit2",
+      "type": "decimal"
+    },
+    {
+      "name": "product_unit3",
+      "type": "decimal"
+    },
+    {
+      "name": "product_unit1_2",
+      "type": "decimal"
+    },
+    {
+      "name": "product_unit1_3",
+      "type": "decimal"
+    },
+    {
+      "name": "product_sale_unit",
+      "type": "decimal"
+    },
+    {
+      "name": "group_id",
+      "type": "decimal"
+    },
+    {
+      "name": "pd_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_print_barcode",
+      "type": "int"
+    },
+    {
+      "name": "product_allow_disc",
+      "type": "int"
+    },
+    {
+      "name": "product_max_disc",
+      "type": "float"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "up_date",
+      "type": "datetime"
+    },
+    {
+      "name": "up_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "product_minus",
+      "type": "char"
+    },
+    {
+      "name": "product_made",
+      "type": "char"
+    },
+    {
+      "name": "product_int_code1",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code2",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code3",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code4",
+      "type": "varchar"
+    },
+    {
+      "name": "product_unit1_sale",
+      "type": "decimal"
+    },
+    {
+      "name": "unit2_sell_price",
+      "type": "money"
+    },
+    {
+      "name": "unit3_sell_price",
+      "type": "money"
+    },
+    {
+      "name": "sell_clause",
+      "type": "money"
+    },
+    {
+      "name": "unit2_sell_price_clause",
+      "type": "money"
+    },
+    {
+      "name": "unit3_sell_price_clause",
+      "type": "money"
+    },
+    {
+      "name": "amount_zero",
+      "type": "char"
+    },
+    {
+      "name": "no_print_name",
+      "type": "char"
+    }
+  ],
+  "Branch_money_order": [
+    {
+      "name": "branch_money_id",
+      "type": "decimal"
+    },
+    {
+      "name": "bill_id",
+      "type": "decimal"
+    },
+    {
+      "name": "from_branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "from_cash_id",
+      "type": "decimal"
+    },
+    {
+      "name": "to_branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "to_cash_id",
+      "type": "decimal"
+    },
+    {
+      "name": "class",
+      "type": "char"
+    },
+    {
+      "name": "amount",
+      "type": "money"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "is_open",
+      "type": "char"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "Gedo_employee": [
+    {
+      "name": "ge_id",
+      "type": "decimal"
+    },
+    {
+      "name": "gf_id",
+      "type": "varchar"
+    },
+    {
+      "name": "flag",
+      "type": "int"
+    },
+    {
+      "name": "ge_type",
+      "type": "char"
+    },
+    {
+      "name": "emp_id",
+      "type": "decimal"
+    },
+    {
+      "name": "ge_for_him",
+      "type": "money"
+    },
+    {
+      "name": "ge_for_me",
+      "type": "money"
+    },
+    {
+      "name": "total",
+      "type": "money"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "Back_purchase_details": [
+    {
+      "name": "details_id",
+      "type": "decimal"
+    },
+    {
+      "name": "back_purchase_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "amount",
+      "type": "float"
+    },
+    {
+      "name": "exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "customer_contracts": [
+    {
+      "name": "contract_id",
+      "type": "decimal"
+    },
+    {
+      "name": "customer_id",
+      "type": "decimal"
+    },
+    {
+      "name": "contract_code",
+      "type": "varchar"
+    },
+    {
+      "name": "contract_name",
+      "type": "varchar"
+    },
+    {
+      "name": "max_bill_money",
+      "type": "money"
+    },
+    {
+      "name": "bill_disc",
+      "type": "decimal"
+    },
+    {
+      "name": "customer_pay_rate",
+      "type": "decimal"
+    },
+    {
+      "name": "customer_pay_value",
+      "type": "money"
+    },
+    {
+      "name": "bill_disc_rule",
+      "type": "int"
+    },
+    {
+      "name": "company_pay_rule",
+      "type": "int"
+    },
+    {
+      "name": "active",
+      "type": "char"
+    },
+    {
+      "name": "product_disc",
+      "type": "char"
+    },
+    {
+      "name": "local_product_disc",
+      "type": "decimal"
+    },
+    {
+      "name": "imported_product_disc",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "decimal"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "decimal"
+    }
+  ],
+  "Branch_order_details": [
+    {
+      "name": "details_id",
+      "type": "decimal"
+    },
+    {
+      "name": "from_branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "branch_order_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "amount",
+      "type": "float"
+    },
+    {
+      "name": "exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "unit_id",
+      "type": "decimal"
+    },
+    {
+      "name": "vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "insert_uid",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "is_open",
+      "type": "char"
+    },
+    {
+      "name": "unit_change",
+      "type": "float"
+    }
+  ],
+  "Gedo_installment": [
+    {
+      "name": "gi_id",
+      "type": "decimal"
+    },
+    {
+      "name": "f_id",
+      "type": "varchar"
+    },
+    {
+      "name": "flag",
+      "type": "int"
+    },
+    {
+      "name": "gi_type",
+      "type": "char"
+    },
+    {
+      "name": "cu_id",
+      "type": "decimal"
+    },
+    {
+      "name": "gi_for_him",
+      "type": "money"
+    },
+    {
+      "name": "gi_for_me",
+      "type": "money"
+    },
+    {
+      "name": "total",
+      "type": "money"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "Sales_delivery_details": [
+    {
+      "name": "details_id",
+      "type": "decimal"
+    },
+    {
+      "name": "sales_delivery_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "amount",
+      "type": "float"
+    },
+    {
+      "name": "sale_unit",
+      "type": "int"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "disc_money",
+      "type": "money"
+    },
+    {
+      "name": "disc_per",
+      "type": "decimal"
+    },
+    {
+      "name": "total_sell",
+      "type": "money"
+    },
+    {
+      "name": "back",
+      "type": "char"
+    },
+    {
+      "name": "back_amount",
+      "type": "float"
+    },
+    {
+      "name": "back_price",
+      "type": "money"
+    },
+    {
+      "name": "back_unit",
+      "type": "int"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    }
+  ],
+  "Account_Tree": [
+    {
+      "name": "account_id",
+      "type": "decimal"
+    },
+    {
+      "name": "account_code",
+      "type": "varchar"
+    },
+    {
+      "name": "account_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "account_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "account_major",
+      "type": "decimal"
+    },
+    {
+      "name": "account_start_money",
+      "type": "money"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    }
+  ],
+  "Branch_order_header": [
+    {
+      "name": "branch_order_id",
+      "type": "decimal"
+    },
+    {
+      "name": "bill_id",
+      "type": "decimal"
+    },
+    {
+      "name": "from_branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "from_store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "to_branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "to_store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "class",
+      "type": "char"
+    },
+    {
+      "name": "total_sell_price",
+      "type": "money"
+    },
+    {
+      "name": "total_buy_price",
+      "type": "money"
+    },
+    {
+      "name": "product_number",
+      "type": "int"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "is_open",
+      "type": "char"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "installment": [
+    {
+      "name": "cu_id",
+      "type": "decimal"
+    },
+    {
+      "name": "cu_name",
+      "type": "varchar"
+    },
+    {
+      "name": "cu_code",
+      "type": "varchar"
+    },
+    {
+      "name": "cu_tel",
+      "type": "varchar"
+    },
+    {
+      "name": "cu_address",
+      "type": "varchar"
+    },
+    {
+      "name": "cu_man_name",
+      "type": "varchar"
+    },
+    {
+      "name": "cu_man_code",
+      "type": "varchar"
+    },
+    {
+      "name": "cu_man_tel",
+      "type": "varchar"
+    },
+    {
+      "name": "cu_man_address",
+      "type": "varchar"
+    },
+    {
+      "name": "cu_total",
+      "type": "money"
+    },
+    {
+      "name": "cu_start",
+      "type": "money"
+    },
+    {
+      "name": "cu_end",
+      "type": "money"
+    },
+    {
+      "name": "cu_month_num",
+      "type": "int"
+    },
+    {
+      "name": "cu_month_money",
+      "type": "money"
+    },
+    {
+      "name": "cu_sth_id",
+      "type": "decimal"
+    },
+    {
+      "name": "cu_emp",
+      "type": "decimal"
+    },
+    {
+      "name": "cu_current_credit",
+      "type": "money"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    }
+  ],
+  "Sales_delivery_header": [
+    {
+      "name": "sales_delivery_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "customer_id",
+      "type": "decimal"
+    },
+    {
+      "name": "class",
+      "type": "int"
+    },
+    {
+      "name": "product_number",
+      "type": "int"
+    },
+    {
+      "name": "total_bill",
+      "type": "money"
+    },
+    {
+      "name": "total_after_disc",
+      "type": "money"
+    },
+    {
+      "name": "total_bill_net",
+      "type": "money"
+    },
+    {
+      "name": "total_disc_per",
+      "type": "decimal"
+    },
+    {
+      "name": "total_disc_money",
+      "type": "money"
+    },
+    {
+      "name": "customer_disc_per",
+      "type": "decimal"
+    },
+    {
+      "name": "bill_cash",
+      "type": "money"
+    },
+    {
+      "name": "cashier_id",
+      "type": "varchar"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "bill_other_expenses",
+      "type": "money"
+    },
+    {
+      "name": "gf_id",
+      "type": "decimal"
+    },
+    {
+      "name": "contract_id",
+      "type": "decimal"
+    },
+    {
+      "name": "major_customer_part",
+      "type": "money"
+    },
+    {
+      "name": "bill_number",
+      "type": "varchar"
+    },
+    {
+      "name": "back",
+      "type": "char"
+    },
+    {
+      "name": "bill_date",
+      "type": "datetime"
+    },
+    {
+      "name": "compu_name",
+      "type": "varchar"
+    },
+    {
+      "name": "cashier_disk_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "sale_class",
+      "type": "int"
+    },
+    {
+      "name": "ticket_name",
+      "type": "char"
+    },
+    {
+      "name": "ticket_id",
+      "type": "char"
+    },
+    {
+      "name": "ticket_num",
+      "type": "char"
+    }
+  ],
+  "Sales_delivery_del_header": [
+    {
+      "name": "sales_delivery_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "customer_id",
+      "type": "decimal"
+    },
+    {
+      "name": "class",
+      "type": "int"
+    },
+    {
+      "name": "product_number",
+      "type": "int"
+    },
+    {
+      "name": "total_bill",
+      "type": "money"
+    },
+    {
+      "name": "total_after_disc",
+      "type": "money"
+    },
+    {
+      "name": "total_bill_net",
+      "type": "money"
+    },
+    {
+      "name": "total_disc_per",
+      "type": "decimal"
+    },
+    {
+      "name": "total_disc_money",
+      "type": "money"
+    },
+    {
+      "name": "customer_disc_per",
+      "type": "decimal"
+    },
+    {
+      "name": "bill_cash",
+      "type": "money"
+    },
+    {
+      "name": "cashier_id",
+      "type": "varchar"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "bill_other_expenses",
+      "type": "money"
+    },
+    {
+      "name": "gf_id",
+      "type": "decimal"
+    },
+    {
+      "name": "contract_id",
+      "type": "decimal"
+    },
+    {
+      "name": "major_customer_part",
+      "type": "money"
+    },
+    {
+      "name": "bill_number",
+      "type": "varchar"
+    },
+    {
+      "name": "back",
+      "type": "char"
+    },
+    {
+      "name": "bill_date",
+      "type": "datetime"
+    },
+    {
+      "name": "compu_name",
+      "type": "varchar"
+    },
+    {
+      "name": "cashier_disk_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "sale_class",
+      "type": "int"
+    },
+    {
+      "name": "ticket_name",
+      "type": "char"
+    },
+    {
+      "name": "ticket_id",
+      "type": "char"
+    },
+    {
+      "name": "ticket_num",
+      "type": "char"
+    }
+  ],
+  "Sales_details": [
+    {
+      "name": "details_id",
+      "type": "decimal"
+    },
+    {
+      "name": "sales_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "amount",
+      "type": "float"
+    },
+    {
+      "name": "sale_unit_change",
+      "type": "decimal"
+    },
+    {
+      "name": "sale_unit",
+      "type": "int"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "disc_money",
+      "type": "money"
+    },
+    {
+      "name": "disc_per",
+      "type": "decimal"
+    },
+    {
+      "name": "total_sell",
+      "type": "money"
+    },
+    {
+      "name": "back",
+      "type": "char"
+    },
+    {
+      "name": "back_amount",
+      "type": "float"
+    },
+    {
+      "name": "back_unit_change",
+      "type": "decimal"
+    },
+    {
+      "name": "back_price",
+      "type": "money"
+    },
+    {
+      "name": "back_unit",
+      "type": "int"
+    },
+    {
+      "name": "back_gf_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "sales_details_id",
+      "type": "decimal"
+    }
+  ],
+  "Branches": [
+    {
+      "name": "branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "branch_code",
+      "type": "varchar"
+    },
+    {
+      "name": "branch_name",
+      "type": "varchar"
+    },
+    {
+      "name": "branch_address",
+      "type": "varchar"
+    },
+    {
+      "name": "branch_tel",
+      "type": "varchar"
+    },
+    {
+      "name": "branch_mobile",
+      "type": "varchar"
+    },
+    {
+      "name": "active",
+      "type": "char"
+    },
+    {
+      "name": "branch_ip1",
+      "type": "varchar"
+    },
+    {
+      "name": "branch_ip2",
+      "type": "varchar"
+    },
+    {
+      "name": "rep_last_sales_id",
+      "type": "decimal"
+    },
+    {
+      "name": "rep_sales_date",
+      "type": "datetime"
+    },
+    {
+      "name": "rep_last_purchase_id",
+      "type": "decimal"
+    },
+    {
+      "name": "rep_purchase_date",
+      "type": "datetime"
+    },
+    {
+      "name": "rep_last_shortcoming_id",
+      "type": "decimal"
+    },
+    {
+      "name": "rep_shortcoming_date",
+      "type": "datetime"
+    },
+    {
+      "name": "rep_last_product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "rep_last_product_date",
+      "type": "datetime"
+    },
+    {
+      "name": "rep_last_cash_disk_id",
+      "type": "decimal"
+    },
+    {
+      "name": "rep_cash_disk_date",
+      "type": "datetime"
+    },
+    {
+      "name": "rep_back_purchase_id",
+      "type": "decimal"
+    },
+    {
+      "name": "rep_back_purchase_date",
+      "type": "datetime"
+    },
+    {
+      "name": "rep_store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "rep_last_unit_id",
+      "type": "decimal"
+    },
+    {
+      "name": "rep_last_group_id",
+      "type": "decimal"
+    },
+    {
+      "name": "rep_last_pd_id",
+      "type": "decimal"
+    },
+    {
+      "name": "rep_last_company_id",
+      "type": "decimal"
+    },
+    {
+      "name": "rep_last_unit_date",
+      "type": "datetime"
+    },
+    {
+      "name": "rep_last_group_date",
+      "type": "datetime"
+    },
+    {
+      "name": "rep_last_pd_date",
+      "type": "datetime"
+    },
+    {
+      "name": "rep_last_company_date",
+      "type": "datetime"
+    },
+    {
+      "name": "rep_last_pa_id",
+      "type": "decimal"
+    },
+    {
+      "name": "rep_last_pa_date",
+      "type": "datetime"
+    },
+    {
+      "name": "rep_last_customer_id",
+      "type": "decimal"
+    },
+    {
+      "name": "rep_customer_date",
+      "type": "datetime"
+    },
+    {
+      "name": "rep_last_vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "rep_vendor_date",
+      "type": "datetime"
+    },
+    {
+      "name": "rep_last_cash_disk_close_id",
+      "type": "decimal"
+    },
+    {
+      "name": "rep_cash_disk_close_date",
+      "type": "datetime"
+    },
+    {
+      "name": "is_server",
+      "type": "char"
+    },
+    {
+      "name": "barcode_name",
+      "type": "varchar"
+    },
+    {
+      "name": "barcode_tel",
+      "type": "varchar"
+    },
+    {
+      "name": "rep_last_master_pa_id",
+      "type": "decimal"
+    },
+    {
+      "name": "rep_last_master_pa_date",
+      "type": "datetime"
+    },
+    {
+      "name": "rep_last_emp_id",
+      "type": "decimal"
+    },
+    {
+      "name": "rep_last_master_pa_ch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "rep_last_pa_ch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "rep_last_sales_details_id",
+      "type": "decimal"
+    },
+    {
+      "name": "rep_last_emp_date",
+      "type": "datetime"
+    }
+  ],
+  "Cash_disk_close": [
+    {
+      "name": "cdc_id",
+      "type": "decimal"
+    },
+    {
+      "name": "cdc_cash_id",
+      "type": "decimal"
+    },
+    {
+      "name": "cdc_emp_id",
+      "type": "decimal"
+    },
+    {
+      "name": "cdc_shift_start_time",
+      "type": "datetime"
+    },
+    {
+      "name": "cdc_start_cash",
+      "type": "money"
+    },
+    {
+      "name": "cdc_curr_cash",
+      "type": "money"
+    },
+    {
+      "name": "cdc_act_cash",
+      "type": "money"
+    },
+    {
+      "name": "cdc_to_emp_id",
+      "type": "decimal"
+    },
+    {
+      "name": "cdc_fcs_id",
+      "type": "decimal"
+    },
+    {
+      "name": "cdc_trans_value",
+      "type": "money"
+    },
+    {
+      "name": "cdc_notice",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "last_gf_id",
+      "type": "decimal"
+    }
+  ],
+  "installment_state": [
+    {
+      "name": "id",
+      "type": "decimal"
+    },
+    {
+      "name": "details_id",
+      "type": "decimal"
+    },
+    {
+      "name": "cu_id",
+      "type": "decimal"
+    },
+    {
+      "name": "state",
+      "type": "char"
+    },
+    {
+      "name": "pay_month",
+      "type": "datetime"
+    },
+    {
+      "name": "installment_value",
+      "type": "money"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    }
+  ],
+  "Start_stock_header": [
+    {
+      "name": "sstock_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_number",
+      "type": "int"
+    },
+    {
+      "name": "total_bill",
+      "type": "money"
+    },
+    {
+      "name": "cashier_id",
+      "type": "decimal"
+    },
+    {
+      "name": "notes",
+      "type": "text"
+    },
+    {
+      "name": "insert_uid",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "decimal"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    }
+  ],
+  "Branches_purchase_details": [
+    {
+      "name": "branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "details_id",
+      "type": "decimal"
+    },
+    {
+      "name": "purchase_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "amount",
+      "type": "float"
+    },
+    {
+      "name": "bouns",
+      "type": "float"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "gain_price",
+      "type": "money"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "back",
+      "type": "char"
+    },
+    {
+      "name": "back_amount",
+      "type": "float"
+    },
+    {
+      "name": "back_price",
+      "type": "money"
+    },
+    {
+      "name": "back_bouns",
+      "type": "float"
+    },
+    {
+      "name": "back_tax_price",
+      "type": "money"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "co_tax_price",
+      "type": "money"
+    }
+  ],
+  "Sale_classes": [
+    {
+      "name": "sale_class_id",
+      "type": "decimal"
+    },
+    {
+      "name": "sale_class_code",
+      "type": "varchar"
+    },
+    {
+      "name": "sale_class_name",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "Flag": [
+    {
+      "name": "f_id",
+      "type": "decimal"
+    },
+    {
+      "name": "f_code",
+      "type": "varchar"
+    },
+    {
+      "name": "f_name",
+      "type": "varchar"
+    }
+  ],
+  "Start_stock_details": [
+    {
+      "name": "details_id",
+      "type": "decimal"
+    },
+    {
+      "name": "sstock_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "amount",
+      "type": "float"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "gain_price",
+      "type": "money"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "insert_uid",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "decimal"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "unit_id",
+      "type": "decimal"
+    },
+    {
+      "name": "unit_change",
+      "type": "decimal"
+    }
+  ],
+  "Store_convert_details": [
+    {
+      "name": "details_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_convert_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "amount",
+      "type": "float"
+    },
+    {
+      "name": "exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "unit_id",
+      "type": "decimal"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "Checks": [
+    {
+      "name": "ch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "gf_id",
+      "type": "decimal"
+    },
+    {
+      "name": "Flag",
+      "type": "int"
+    },
+    {
+      "name": "out_in",
+      "type": "char"
+    },
+    {
+      "name": "ch_number",
+      "type": "varchar"
+    },
+    {
+      "name": "ch_date_created",
+      "type": "smalldatetime"
+    },
+    {
+      "name": "ch_valid_date",
+      "type": "smalldatetime"
+    },
+    {
+      "name": "ch_status",
+      "type": "char"
+    },
+    {
+      "name": "ch_status_change_date",
+      "type": "datetime"
+    },
+    {
+      "name": "ch_expenses",
+      "type": "money"
+    },
+    {
+      "name": "name",
+      "type": "varchar"
+    },
+    {
+      "name": "cashed",
+      "type": "char"
+    },
+    {
+      "name": "gf_id_cash",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    }
+  ],
+  "Sales_delivery_del_details": [
+    {
+      "name": "details_id",
+      "type": "decimal"
+    },
+    {
+      "name": "sales_delivery_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "amount",
+      "type": "float"
+    },
+    {
+      "name": "sale_unit",
+      "type": "int"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "disc_money",
+      "type": "money"
+    },
+    {
+      "name": "disc_per",
+      "type": "decimal"
+    },
+    {
+      "name": "total_sell",
+      "type": "money"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    }
+  ],
+  "Sales_header": [
+    {
+      "name": "sales_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "customer_id",
+      "type": "decimal"
+    },
+    {
+      "name": "class",
+      "type": "int"
+    },
+    {
+      "name": "product_number",
+      "type": "int"
+    },
+    {
+      "name": "bill_money_befor",
+      "type": "money"
+    },
+    {
+      "name": "total_bill",
+      "type": "money"
+    },
+    {
+      "name": "total_after_disc",
+      "type": "money"
+    },
+    {
+      "name": "total_bill_net",
+      "type": "money"
+    },
+    {
+      "name": "total_disc_per",
+      "type": "decimal"
+    },
+    {
+      "name": "total_disc_money",
+      "type": "money"
+    },
+    {
+      "name": "total_product_disc",
+      "type": "money"
+    },
+    {
+      "name": "customer_disc_per",
+      "type": "decimal"
+    },
+    {
+      "name": "bill_cash",
+      "type": "money"
+    },
+    {
+      "name": "cashier_id",
+      "type": "varchar"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "bill_other_expenses",
+      "type": "money"
+    },
+    {
+      "name": "gf_id",
+      "type": "decimal"
+    },
+    {
+      "name": "contract_id",
+      "type": "decimal"
+    },
+    {
+      "name": "major_customer_part",
+      "type": "money"
+    },
+    {
+      "name": "bill_number",
+      "type": "varchar"
+    },
+    {
+      "name": "back",
+      "type": "char"
+    },
+    {
+      "name": "bill_date",
+      "type": "datetime"
+    },
+    {
+      "name": "compu_name",
+      "type": "varchar"
+    },
+    {
+      "name": "cashier_disk_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "cust_name",
+      "type": "varchar"
+    },
+    {
+      "name": "sale_class",
+      "type": "int"
+    },
+    {
+      "name": "network_id",
+      "type": "decimal"
+    },
+    {
+      "name": "network_money",
+      "type": "money"
+    },
+    {
+      "name": "money_change",
+      "type": "money"
+    },
+    {
+      "name": "delivery_man_id",
+      "type": "decimal"
+    },
+    {
+      "name": "ticket_name",
+      "type": "char"
+    },
+    {
+      "name": "ticket_id",
+      "type": "char"
+    },
+    {
+      "name": "ticket_num",
+      "type": "char"
+    }
+  ],
+  "Back_purchase_header": [
+    {
+      "name": "back_purchase_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "total",
+      "type": "money"
+    },
+    {
+      "name": "class",
+      "type": "char"
+    },
+    {
+      "name": "bill_number",
+      "type": "varchar"
+    },
+    {
+      "name": "gf_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_number",
+      "type": "int"
+    },
+    {
+      "name": "notes",
+      "type": "text"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "Product_Amount": [
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "amount",
+      "type": "decimal"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "Product_update",
+      "type": "char"
+    },
+    {
+      "name": "Product_update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "pa_id",
+      "type": "decimal"
+    }
+  ],
+  "Product_Vendor": [
+    {
+      "name": "PV_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "PV_code",
+      "type": "varchar"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "product_disc1",
+      "type": "decimal"
+    },
+    {
+      "name": "product_disc2",
+      "type": "decimal"
+    },
+    {
+      "name": "product_disc3",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    }
+  ],
+  "Branches_employee_edit": [
+    {
+      "name": "emp_edit_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_type",
+      "type": "char"
+    },
+    {
+      "name": "emp_id",
+      "type": "decimal"
+    },
+    {
+      "name": "emp_code",
+      "type": "varchar"
+    },
+    {
+      "name": "emp_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "emp_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "emp_gender",
+      "type": "varchar"
+    },
+    {
+      "name": "job_id",
+      "type": "decimal"
+    },
+    {
+      "name": "birth_date",
+      "type": "smalldatetime"
+    },
+    {
+      "name": "hire_date",
+      "type": "smalldatetime"
+    },
+    {
+      "name": "work_date",
+      "type": "smalldatetime"
+    },
+    {
+      "name": "mobile",
+      "type": "varchar"
+    },
+    {
+      "name": "home_tel",
+      "type": "varchar"
+    },
+    {
+      "name": "address",
+      "type": "varchar"
+    },
+    {
+      "name": "card_id",
+      "type": "varchar"
+    },
+    {
+      "name": "card_date",
+      "type": "datetime"
+    },
+    {
+      "name": "card_place",
+      "type": "varchar"
+    },
+    {
+      "name": "active",
+      "type": "char"
+    },
+    {
+      "name": "max_disc_per",
+      "type": "decimal"
+    },
+    {
+      "name": "max_disc_money",
+      "type": "money"
+    },
+    {
+      "name": "show_buy",
+      "type": "char"
+    },
+    {
+      "name": "show_cash_disk_history",
+      "type": "char"
+    },
+    {
+      "name": "show_total_sales_report",
+      "type": "char"
+    },
+    {
+      "name": "use_compu",
+      "type": "char"
+    },
+    {
+      "name": "username",
+      "type": "varchar"
+    },
+    {
+      "name": "pass",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "salary_typ",
+      "type": "varchar"
+    },
+    {
+      "name": "basic_salary",
+      "type": "money"
+    },
+    {
+      "name": "more_salary",
+      "type": "money"
+    },
+    {
+      "name": "emp_cust_max_money",
+      "type": "char"
+    },
+    {
+      "name": "emp_add_product",
+      "type": "char"
+    },
+    {
+      "name": "emp_edit_product",
+      "type": "char"
+    },
+    {
+      "name": "emp_r_sale_date",
+      "type": "char"
+    },
+    {
+      "name": "emp_r_sale_bill_num",
+      "type": "int"
+    },
+    {
+      "name": "emp_add_cust",
+      "type": "char"
+    },
+    {
+      "name": "emp_edit_cust",
+      "type": "char"
+    },
+    {
+      "name": "emp_del_cust",
+      "type": "char"
+    },
+    {
+      "name": "emp_commission1",
+      "type": "float"
+    },
+    {
+      "name": "emp_commission2",
+      "type": "float"
+    },
+    {
+      "name": "emp_edit_sell_price",
+      "type": "char"
+    },
+    {
+      "name": "absence_money",
+      "type": "money"
+    },
+    {
+      "name": "allaw_r_sale",
+      "type": "char"
+    },
+    {
+      "name": "emp_show_money",
+      "type": "char"
+    },
+    {
+      "name": "emp_change_cash_disk",
+      "type": "char"
+    },
+    {
+      "name": "numof_customer",
+      "type": "int"
+    },
+    {
+      "name": "allaw_sale_credit",
+      "type": "char"
+    },
+    {
+      "name": "allaw_un_sale",
+      "type": "char"
+    },
+    {
+      "name": "allaw_sale_delivery",
+      "type": "char"
+    },
+    {
+      "name": "allaw_save_cash_credit",
+      "type": "char"
+    },
+    {
+      "name": "emp_del_vendor",
+      "type": "char"
+    },
+    {
+      "name": "emp_del_product",
+      "type": "char"
+    }
+  ],
+  "Companys": [
+    {
+      "name": "company_id",
+      "type": "decimal"
+    },
+    {
+      "name": "company_code",
+      "type": "varchar"
+    },
+    {
+      "name": "co_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "co_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "mobile",
+      "type": "varchar"
+    },
+    {
+      "name": "tel",
+      "type": "varchar"
+    },
+    {
+      "name": "address",
+      "type": "varchar"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "active",
+      "type": "char"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    }
+  ],
+  "Products_online": [
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_code",
+      "type": "varchar"
+    },
+    {
+      "name": "product_fast_code",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code",
+      "type": "varchar"
+    },
+    {
+      "name": "product_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "product_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "product_scientific_name",
+      "type": "nvarchar"
+    },
+    {
+      "name": "product_drug",
+      "type": "char"
+    },
+    {
+      "name": "company_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_has_expire",
+      "type": "char"
+    },
+    {
+      "name": "site_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_buy_number",
+      "type": "decimal"
+    },
+    {
+      "name": "product_big_number",
+      "type": "decimal"
+    },
+    {
+      "name": "product_small_number",
+      "type": "decimal"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "product_disc1",
+      "type": "decimal"
+    },
+    {
+      "name": "product_disc2",
+      "type": "decimal"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "active",
+      "type": "char"
+    },
+    {
+      "name": "product_unit1",
+      "type": "decimal"
+    },
+    {
+      "name": "product_unit2",
+      "type": "decimal"
+    },
+    {
+      "name": "product_unit3",
+      "type": "decimal"
+    },
+    {
+      "name": "product_unit1_2",
+      "type": "decimal"
+    },
+    {
+      "name": "product_unit1_3",
+      "type": "decimal"
+    },
+    {
+      "name": "group_id",
+      "type": "decimal"
+    },
+    {
+      "name": "pd_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_print_barcode",
+      "type": "int"
+    },
+    {
+      "name": "product_allow_disc",
+      "type": "int"
+    },
+    {
+      "name": "product_max_disc",
+      "type": "float"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "up_date",
+      "type": "datetime"
+    },
+    {
+      "name": "up_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "product_minus",
+      "type": "char"
+    },
+    {
+      "name": "product_made",
+      "type": "char"
+    },
+    {
+      "name": "product_int_code1",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code2",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code3",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code4",
+      "type": "varchar"
+    },
+    {
+      "name": "product_sale_unit",
+      "type": "decimal"
+    },
+    {
+      "name": "product_unit1_sale",
+      "type": "decimal"
+    },
+    {
+      "name": "unit2_sell_price",
+      "type": "money"
+    },
+    {
+      "name": "unit3_sell_price",
+      "type": "money"
+    },
+    {
+      "name": "amount_zero",
+      "type": "char"
+    }
+  ],
+  "Customer": [
+    {
+      "name": "customer_id",
+      "type": "decimal"
+    },
+    {
+      "name": "customer_code",
+      "type": "varchar"
+    },
+    {
+      "name": "customer_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "customer_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "job_id",
+      "type": "varchar"
+    },
+    {
+      "name": "mobile",
+      "type": "varchar"
+    },
+    {
+      "name": "tel",
+      "type": "varchar"
+    },
+    {
+      "name": "address",
+      "type": "varchar"
+    },
+    {
+      "name": "customer_class_id",
+      "type": "decimal"
+    },
+    {
+      "name": "customer_major",
+      "type": "decimal"
+    },
+    {
+      "name": "active",
+      "type": "char"
+    },
+    {
+      "name": "start_work_date",
+      "type": "datetime"
+    },
+    {
+      "name": "customer_max_money",
+      "type": "money"
+    },
+    {
+      "name": "customer_current_money",
+      "type": "money"
+    },
+    {
+      "name": "customer_rate_pay",
+      "type": "float"
+    },
+    {
+      "name": "customer_house_no",
+      "type": "varchar"
+    },
+    {
+      "name": "customer_pay_type",
+      "type": "int"
+    },
+    {
+      "name": "customer_start_money",
+      "type": "money"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "contract_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "area_id",
+      "type": "decimal"
+    },
+    {
+      "name": "sales_man",
+      "type": "decimal"
+    },
+    {
+      "name": "sale_class_id",
+      "type": "decimal"
+    },
+    {
+      "name": "sell_price_buy",
+      "type": "char"
+    },
+    {
+      "name": "customer_disc_local",
+      "type": "float"
+    },
+    {
+      "name": "customer_disc_import",
+      "type": "float"
+    },
+    {
+      "name": "customer_insurance_code",
+      "type": "varchar"
+    }
+  ],
+  "Tuning_accounts": [
+    {
+      "name": "Tuning_accounts_id",
+      "type": "decimal"
+    },
+    {
+      "name": "class",
+      "type": "char"
+    },
+    {
+      "name": "who_class",
+      "type": "int"
+    },
+    {
+      "name": "who_id",
+      "type": "decimal"
+    },
+    {
+      "name": "Tuning_accounts_reason_id",
+      "type": "decimal"
+    },
+    {
+      "name": "Tuning_accounts_money",
+      "type": "money"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "Branches_purchase_header": [
+    {
+      "name": "branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "purchase_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "order_id",
+      "type": "decimal"
+    },
+    {
+      "name": "class",
+      "type": "varchar"
+    },
+    {
+      "name": "product_number",
+      "type": "int"
+    },
+    {
+      "name": "total_bill",
+      "type": "money"
+    },
+    {
+      "name": "bill_disc_per",
+      "type": "float"
+    },
+    {
+      "name": "bill_disc_money",
+      "type": "money"
+    },
+    {
+      "name": "bill_other_expenses",
+      "type": "money"
+    },
+    {
+      "name": "cashier_id",
+      "type": "varchar"
+    },
+    {
+      "name": "bill_number",
+      "type": "varchar"
+    },
+    {
+      "name": "bill_date",
+      "type": "datetime"
+    },
+    {
+      "name": "back",
+      "type": "char"
+    },
+    {
+      "name": "total_back",
+      "type": "money"
+    },
+    {
+      "name": "total_after_back",
+      "type": "money"
+    },
+    {
+      "name": "notes",
+      "type": "text"
+    },
+    {
+      "name": "gf_id",
+      "type": "decimal"
+    },
+    {
+      "name": "back_number",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "sell_back",
+      "type": "char"
+    },
+    {
+      "name": "man_back_details",
+      "type": "varchar"
+    },
+    {
+      "name": "customer_id",
+      "type": "decimal"
+    },
+    {
+      "name": "bill_tax",
+      "type": "money"
+    }
+  ],
+  "Customer_Class": [
+    {
+      "name": "customer_class_id",
+      "type": "decimal"
+    },
+    {
+      "name": "class_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "class_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    }
+  ],
+  "Tuning_accounts_reason": [
+    {
+      "name": "Tuning_accounts_reason_id",
+      "type": "decimal"
+    },
+    {
+      "name": "Tuning_accounts_reason_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "Tuning_accounts_reason_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    }
+  ],
+  "Co_bank": [
+    {
+      "name": "bank_id",
+      "type": "decimal"
+    },
+    {
+      "name": "bank_code",
+      "type": "varchar"
+    },
+    {
+      "name": "bank_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "bank_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "bank_address",
+      "type": "varchar"
+    },
+    {
+      "name": "bank_tel",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    }
+  ],
+  "Branches_sales_details": [
+    {
+      "name": "branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "details_id",
+      "type": "decimal"
+    },
+    {
+      "name": "sales_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "amount",
+      "type": "float"
+    },
+    {
+      "name": "sale_unit_change",
+      "type": "decimal"
+    },
+    {
+      "name": "sale_unit",
+      "type": "int"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "disc_money",
+      "type": "money"
+    },
+    {
+      "name": "disc_per",
+      "type": "decimal"
+    },
+    {
+      "name": "total_sell",
+      "type": "money"
+    },
+    {
+      "name": "back",
+      "type": "char"
+    },
+    {
+      "name": "back_amount",
+      "type": "float"
+    },
+    {
+      "name": "back_unit_change",
+      "type": "decimal"
+    },
+    {
+      "name": "back_price",
+      "type": "money"
+    },
+    {
+      "name": "back_unit",
+      "type": "int"
+    },
+    {
+      "name": "back_gf_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "sales_details_id",
+      "type": "decimal"
+    }
+  ],
+  "Branches_back_purchase_details": [
+    {
+      "name": "branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "details_id",
+      "type": "decimal"
+    },
+    {
+      "name": "back_purchase_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "amount",
+      "type": "float"
+    },
+    {
+      "name": "exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "insert_uid",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "unit_id",
+      "type": "decimal"
+    },
+    {
+      "name": "unit_ch",
+      "type": "decimal"
+    }
+  ],
+  "Product_description": [
+    {
+      "name": "pd_id",
+      "type": "decimal"
+    },
+    {
+      "name": "pd_code",
+      "type": "varchar"
+    },
+    {
+      "name": "pd_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "pd_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    }
+  ],
+  "Product_Changes": [
+    {
+      "name": "product_change_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "class",
+      "type": "char"
+    },
+    {
+      "name": "sell_price_old",
+      "type": "money"
+    },
+    {
+      "name": "buy_price_old",
+      "type": "money"
+    },
+    {
+      "name": "tax_price_old",
+      "type": "money"
+    },
+    {
+      "name": "unit1_2_old",
+      "type": "decimal"
+    },
+    {
+      "name": "unit1_3_old",
+      "type": "decimal"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "unit1_2",
+      "type": "decimal"
+    },
+    {
+      "name": "unit1_3",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "News_bar": [
+    {
+      "name": "id",
+      "type": "decimal"
+    },
+    {
+      "name": "news_id",
+      "type": "decimal"
+    },
+    {
+      "name": "news",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "syndicate_id",
+      "type": "decimal"
+    },
+    {
+      "name": "company_id",
+      "type": "char"
+    },
+    {
+      "name": "news_insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "deleted_date",
+      "type": "datetime"
+    }
+  ],
+  "Product_groups": [
+    {
+      "name": "group_id",
+      "type": "decimal"
+    },
+    {
+      "name": "group_code",
+      "type": "varchar"
+    },
+    {
+      "name": "group_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "group_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    }
+  ],
+  "Product_online_Changes": [
+    {
+      "name": "product_change_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "class",
+      "type": "char"
+    },
+    {
+      "name": "sell_price_old",
+      "type": "money"
+    },
+    {
+      "name": "buy_price_old",
+      "type": "money"
+    },
+    {
+      "name": "tax_price_old",
+      "type": "money"
+    },
+    {
+      "name": "unit1_2_old",
+      "type": "decimal"
+    },
+    {
+      "name": "unit1_3_old",
+      "type": "decimal"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "unit1_2",
+      "type": "decimal"
+    },
+    {
+      "name": "unit1_3",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_uid",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "Product_price_change": [
+    {
+      "name": "price_change_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "old_buy_price",
+      "type": "money"
+    },
+    {
+      "name": "old_tax_price",
+      "type": "money"
+    },
+    {
+      "name": "new_buy_price",
+      "type": "money"
+    },
+    {
+      "name": "new_tax_price",
+      "type": "money"
+    },
+    {
+      "name": "product_amount",
+      "type": "decimal"
+    },
+    {
+      "name": "unit_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    }
+  ],
+  "Product_units": [
+    {
+      "name": "unit_id",
+      "type": "decimal"
+    },
+    {
+      "name": "unit_code",
+      "type": "varchar"
+    },
+    {
+      "name": "unit_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "unit_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    }
+  ],
+  "Products": [
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_code",
+      "type": "varchar"
+    },
+    {
+      "name": "product_fast_code",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code",
+      "type": "varchar"
+    },
+    {
+      "name": "product_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "product_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "product_scientific_name",
+      "type": "nvarchar"
+    },
+    {
+      "name": "product_drug",
+      "type": "char"
+    },
+    {
+      "name": "company_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_has_expire",
+      "type": "char"
+    },
+    {
+      "name": "site_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_buy_number",
+      "type": "decimal"
+    },
+    {
+      "name": "product_big_number",
+      "type": "decimal"
+    },
+    {
+      "name": "product_small_number",
+      "type": "decimal"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "product_disc1",
+      "type": "decimal"
+    },
+    {
+      "name": "product_disc2",
+      "type": "decimal"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "active",
+      "type": "char"
+    },
+    {
+      "name": "product_unit1",
+      "type": "decimal"
+    },
+    {
+      "name": "product_unit2",
+      "type": "decimal"
+    },
+    {
+      "name": "product_unit3",
+      "type": "decimal"
+    },
+    {
+      "name": "product_unit1_2",
+      "type": "decimal"
+    },
+    {
+      "name": "product_unit1_3",
+      "type": "decimal"
+    },
+    {
+      "name": "group_id",
+      "type": "decimal"
+    },
+    {
+      "name": "pd_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_print_barcode",
+      "type": "int"
+    },
+    {
+      "name": "product_allow_disc",
+      "type": "int"
+    },
+    {
+      "name": "product_max_disc",
+      "type": "float"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "up_date",
+      "type": "datetime"
+    },
+    {
+      "name": "up_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "product_minus",
+      "type": "char"
+    },
+    {
+      "name": "product_made",
+      "type": "char"
+    },
+    {
+      "name": "product_int_code1",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code2",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code3",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code4",
+      "type": "varchar"
+    },
+    {
+      "name": "product_sale_unit",
+      "type": "decimal"
+    },
+    {
+      "name": "product_unit1_sale",
+      "type": "decimal"
+    },
+    {
+      "name": "unit2_sell_price",
+      "type": "money"
+    },
+    {
+      "name": "unit3_sell_price",
+      "type": "money"
+    },
+    {
+      "name": "sell_clause",
+      "type": "money"
+    },
+    {
+      "name": "unit2_sell_price_clause",
+      "type": "money"
+    },
+    {
+      "name": "unit3_sell_price_clause",
+      "type": "money"
+    },
+    {
+      "name": "amount_zero",
+      "type": "char"
+    },
+    {
+      "name": "product_int_code5",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code6",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code7",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code8",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code9",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code10",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code11",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code12",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code13",
+      "type": "varchar"
+    },
+    {
+      "name": "product_int_code14",
+      "type": "varchar"
+    },
+    {
+      "name": "no_print_name",
+      "type": "char"
+    }
+  ],
+  "Branches_sales_header": [
+    {
+      "name": "branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "sales_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "customer_id",
+      "type": "decimal"
+    },
+    {
+      "name": "class",
+      "type": "int"
+    },
+    {
+      "name": "product_number",
+      "type": "int"
+    },
+    {
+      "name": "bill_money_befor",
+      "type": "money"
+    },
+    {
+      "name": "total_bill",
+      "type": "money"
+    },
+    {
+      "name": "total_after_disc",
+      "type": "money"
+    },
+    {
+      "name": "total_bill_net",
+      "type": "money"
+    },
+    {
+      "name": "total_disc_per",
+      "type": "decimal"
+    },
+    {
+      "name": "total_disc_money",
+      "type": "money"
+    },
+    {
+      "name": "total_product_disc",
+      "type": "money"
+    },
+    {
+      "name": "customer_disc_per",
+      "type": "decimal"
+    },
+    {
+      "name": "bill_cash",
+      "type": "money"
+    },
+    {
+      "name": "cashier_id",
+      "type": "varchar"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "bill_other_expenses",
+      "type": "money"
+    },
+    {
+      "name": "gf_id",
+      "type": "decimal"
+    },
+    {
+      "name": "contract_id",
+      "type": "decimal"
+    },
+    {
+      "name": "major_customer_part",
+      "type": "money"
+    },
+    {
+      "name": "bill_number",
+      "type": "varchar"
+    },
+    {
+      "name": "back",
+      "type": "char"
+    },
+    {
+      "name": "bill_date",
+      "type": "datetime"
+    },
+    {
+      "name": "compu_name",
+      "type": "varchar"
+    },
+    {
+      "name": "cashier_disk_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "cust_name",
+      "type": "varchar"
+    },
+    {
+      "name": "sale_class",
+      "type": "int"
+    },
+    {
+      "name": "money_change",
+      "type": "money"
+    },
+    {
+      "name": "network_money",
+      "type": "money"
+    },
+    {
+      "name": "network_id",
+      "type": "decimal"
+    }
+  ],
+  "Branches_back_purchase_header": [
+    {
+      "name": "branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "back_purchase_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "total",
+      "type": "money"
+    },
+    {
+      "name": "class",
+      "type": "char"
+    },
+    {
+      "name": "bill_number",
+      "type": "varchar"
+    },
+    {
+      "name": "gf_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_number",
+      "type": "int"
+    },
+    {
+      "name": "notes",
+      "type": "text"
+    },
+    {
+      "name": "insert_uid",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "sysdiagrams": [
+    {
+      "name": "name",
+      "type": "nvarchar"
+    },
+    {
+      "name": "principal_id",
+      "type": "int"
+    },
+    {
+      "name": "diagram_id",
+      "type": "int"
+    },
+    {
+      "name": "version",
+      "type": "int"
+    },
+    {
+      "name": "definition",
+      "type": "varbinary"
+    }
+  ],
+  "co_inf": [
+    {
+      "name": "id",
+      "type": "decimal"
+    },
+    {
+      "name": "com_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "com_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "idl",
+      "type": "varchar"
+    },
+    {
+      "name": "ide",
+      "type": "varchar"
+    },
+    {
+      "name": "owner",
+      "type": "varchar"
+    },
+    {
+      "name": "manegar",
+      "type": "varchar"
+    },
+    {
+      "name": "tel",
+      "type": "varchar"
+    },
+    {
+      "name": "fax",
+      "type": "varchar"
+    },
+    {
+      "name": "address",
+      "type": "varchar"
+    },
+    {
+      "name": "up_date",
+      "type": "datetime"
+    },
+    {
+      "name": "uid",
+      "type": "varchar"
+    },
+    {
+      "name": "s_print_type",
+      "type": "char"
+    },
+    {
+      "name": "s_intro",
+      "type": "varchar"
+    },
+    {
+      "name": "s_co_name",
+      "type": "varchar"
+    },
+    {
+      "name": "s_co_tel",
+      "type": "varchar"
+    },
+    {
+      "name": "s_finish",
+      "type": "varchar"
+    },
+    {
+      "name": "s_idl",
+      "type": "varchar"
+    },
+    {
+      "name": "s_ide",
+      "type": "varchar"
+    },
+    {
+      "name": "s_cust",
+      "type": "char"
+    },
+    {
+      "name": "s_emp",
+      "type": "char"
+    },
+    {
+      "name": "mini_money",
+      "type": "money"
+    },
+    {
+      "name": "num_of_copy",
+      "type": "int"
+    },
+    {
+      "name": "bar_name",
+      "type": "varchar"
+    },
+    {
+      "name": "bar_tel",
+      "type": "varchar"
+    },
+    {
+      "name": "p_bar_name",
+      "type": "char"
+    },
+    {
+      "name": "p_bar_tel",
+      "type": "char"
+    },
+    {
+      "name": "bar_type",
+      "type": "char"
+    },
+    {
+      "name": "bar_size",
+      "type": "char"
+    },
+    {
+      "name": "syndicate_id",
+      "type": "decimal"
+    },
+    {
+      "name": "branch_id",
+      "type": "int"
+    },
+    {
+      "name": "master_branch_id",
+      "type": "int"
+    },
+    {
+      "name": "logo",
+      "type": "image"
+    },
+    {
+      "name": "main_eg1",
+      "type": "image"
+    },
+    {
+      "name": "main_eg2",
+      "type": "image"
+    },
+    {
+      "name": "online_product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_price_update_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_update_id",
+      "type": "decimal"
+    },
+    {
+      "name": "no_decimal",
+      "type": "char"
+    },
+    {
+      "name": "no_exp",
+      "type": "char"
+    },
+    {
+      "name": "auto_unsaved",
+      "type": "char"
+    },
+    {
+      "name": "trans_id",
+      "type": "decimal"
+    }
+  ],
+  "Branches_cash_depots": [
+    {
+      "name": "branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "cash_depot_id",
+      "type": "decimal"
+    },
+    {
+      "name": "cash_depot_code",
+      "type": "varchar"
+    },
+    {
+      "name": "cash_depot_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "cash_depot_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "cash_depot_class",
+      "type": "char"
+    },
+    {
+      "name": "cash_depot_current_money",
+      "type": "money"
+    },
+    {
+      "name": "account_number",
+      "type": "varchar"
+    },
+    {
+      "name": "bank_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    }
+  ],
+  "Gedo_customers": [
+    {
+      "name": "gc_id",
+      "type": "decimal"
+    },
+    {
+      "name": "gf_id",
+      "type": "varchar"
+    },
+    {
+      "name": "Flag",
+      "type": "int"
+    },
+    {
+      "name": "gc_type",
+      "type": "char"
+    },
+    {
+      "name": "customer_id",
+      "type": "decimal"
+    },
+    {
+      "name": "gc_for_him",
+      "type": "money"
+    },
+    {
+      "name": "gc_for_me",
+      "type": "money"
+    },
+    {
+      "name": "total",
+      "type": "money"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    }
+  ],
+  "Shortcoming": [
+    {
+      "name": "id",
+      "type": "decimal"
+    },
+    {
+      "name": "class",
+      "type": "char"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "general",
+      "type": "char"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "amount",
+      "type": "float"
+    }
+  ],
+  "Branches_Cash_disk_close": [
+    {
+      "name": "branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "cdc_id",
+      "type": "decimal"
+    },
+    {
+      "name": "cdc_cash_id",
+      "type": "decimal"
+    },
+    {
+      "name": "cdc_emp_id",
+      "type": "decimal"
+    },
+    {
+      "name": "cdc_shift_start_time",
+      "type": "datetime"
+    },
+    {
+      "name": "cdc_start_cash",
+      "type": "money"
+    },
+    {
+      "name": "cdc_curr_cash",
+      "type": "money"
+    },
+    {
+      "name": "cdc_act_cash",
+      "type": "money"
+    },
+    {
+      "name": "cdc_to_emp_id",
+      "type": "decimal"
+    },
+    {
+      "name": "cdc_fcs_id",
+      "type": "decimal"
+    },
+    {
+      "name": "cdc_trans_value",
+      "type": "money"
+    },
+    {
+      "name": "cdc_notice",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "versions": [
+    {
+      "name": "ver_id",
+      "type": "decimal"
+    },
+    {
+      "name": "ver_code",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    }
+  ],
+  "Vendor": [
+    {
+      "name": "vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "vendor_code",
+      "type": "varchar"
+    },
+    {
+      "name": "vendor_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "vendor_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "tel",
+      "type": "varchar"
+    },
+    {
+      "name": "mobile",
+      "type": "varchar"
+    },
+    {
+      "name": "address",
+      "type": "varchar"
+    },
+    {
+      "name": "company_code",
+      "type": "varchar"
+    },
+    {
+      "name": "vendor_max_money",
+      "type": "money"
+    },
+    {
+      "name": "vendor_current_money",
+      "type": "money"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "active",
+      "type": "char"
+    },
+    {
+      "name": "vendor_start_money",
+      "type": "money"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "emp_tel",
+      "type": "varchar"
+    },
+    {
+      "name": "emp_tel_details",
+      "type": "varchar"
+    },
+    {
+      "name": "emp_area_manegar",
+      "type": "varchar"
+    },
+    {
+      "name": "emp_area_manegar_details",
+      "type": "varchar"
+    },
+    {
+      "name": "emp_deliv",
+      "type": "varchar"
+    },
+    {
+      "name": "emp_deliv_details",
+      "type": "varchar"
+    },
+    {
+      "name": "emp_get_money",
+      "type": "varchar"
+    },
+    {
+      "name": "emp_get_money_details",
+      "type": "varchar"
+    },
+    {
+      "name": "ven_notes",
+      "type": "varchar"
+    },
+    {
+      "name": "ven_return",
+      "type": "varchar"
+    }
+  ],
+  "EMP_CONTROL": [
+    {
+      "name": "emp_id",
+      "type": "decimal"
+    },
+    {
+      "name": "A",
+      "type": "char"
+    },
+    {
+      "name": "A1",
+      "type": "char"
+    },
+    {
+      "name": "A2",
+      "type": "char"
+    },
+    {
+      "name": "A3",
+      "type": "char"
+    },
+    {
+      "name": "A4",
+      "type": "char"
+    },
+    {
+      "name": "A5",
+      "type": "char"
+    },
+    {
+      "name": "A6",
+      "type": "char"
+    },
+    {
+      "name": "A7",
+      "type": "char"
+    },
+    {
+      "name": "A8",
+      "type": "char"
+    },
+    {
+      "name": "A9",
+      "type": "char"
+    },
+    {
+      "name": "B",
+      "type": "char"
+    },
+    {
+      "name": "B1",
+      "type": "char"
+    },
+    {
+      "name": "B2",
+      "type": "char"
+    },
+    {
+      "name": "B3",
+      "type": "char"
+    },
+    {
+      "name": "B4",
+      "type": "char"
+    },
+    {
+      "name": "B5",
+      "type": "char"
+    },
+    {
+      "name": "B6",
+      "type": "char"
+    },
+    {
+      "name": "B7",
+      "type": "char"
+    },
+    {
+      "name": "B8",
+      "type": "char"
+    },
+    {
+      "name": "B9",
+      "type": "char"
+    },
+    {
+      "name": "B10",
+      "type": "char"
+    },
+    {
+      "name": "B11",
+      "type": "char"
+    },
+    {
+      "name": "B12",
+      "type": "char"
+    },
+    {
+      "name": "B13",
+      "type": "char"
+    },
+    {
+      "name": "B14",
+      "type": "char"
+    },
+    {
+      "name": "B15",
+      "type": "char"
+    },
+    {
+      "name": "B16",
+      "type": "char"
+    },
+    {
+      "name": "B17",
+      "type": "char"
+    },
+    {
+      "name": "B18",
+      "type": "char"
+    },
+    {
+      "name": "B19",
+      "type": "char"
+    },
+    {
+      "name": "B20",
+      "type": "char"
+    },
+    {
+      "name": "B21",
+      "type": "char"
+    },
+    {
+      "name": "B22",
+      "type": "char"
+    },
+    {
+      "name": "B23",
+      "type": "char"
+    },
+    {
+      "name": "B24",
+      "type": "char"
+    },
+    {
+      "name": "B25",
+      "type": "char"
+    },
+    {
+      "name": "B26",
+      "type": "char"
+    },
+    {
+      "name": "B27",
+      "type": "char"
+    },
+    {
+      "name": "B28",
+      "type": "char"
+    },
+    {
+      "name": "C",
+      "type": "char"
+    },
+    {
+      "name": "C1",
+      "type": "char"
+    },
+    {
+      "name": "C2",
+      "type": "char"
+    },
+    {
+      "name": "C3",
+      "type": "char"
+    },
+    {
+      "name": "C4",
+      "type": "char"
+    },
+    {
+      "name": "C5",
+      "type": "char"
+    },
+    {
+      "name": "C6",
+      "type": "char"
+    },
+    {
+      "name": "C7",
+      "type": "char"
+    },
+    {
+      "name": "D",
+      "type": "char"
+    },
+    {
+      "name": "D1",
+      "type": "char"
+    },
+    {
+      "name": "D2",
+      "type": "char"
+    },
+    {
+      "name": "D3",
+      "type": "char"
+    },
+    {
+      "name": "D4",
+      "type": "char"
+    },
+    {
+      "name": "D5",
+      "type": "char"
+    },
+    {
+      "name": "D6",
+      "type": "char"
+    },
+    {
+      "name": "D7",
+      "type": "char"
+    },
+    {
+      "name": "D8",
+      "type": "char"
+    },
+    {
+      "name": "D9",
+      "type": "char"
+    },
+    {
+      "name": "E",
+      "type": "char"
+    },
+    {
+      "name": "E1",
+      "type": "char"
+    },
+    {
+      "name": "E2",
+      "type": "char"
+    },
+    {
+      "name": "E3",
+      "type": "char"
+    },
+    {
+      "name": "E4",
+      "type": "char"
+    },
+    {
+      "name": "E5",
+      "type": "char"
+    },
+    {
+      "name": "F",
+      "type": "char"
+    },
+    {
+      "name": "F1",
+      "type": "char"
+    },
+    {
+      "name": "F2",
+      "type": "char"
+    },
+    {
+      "name": "F3",
+      "type": "char"
+    },
+    {
+      "name": "F4",
+      "type": "char"
+    },
+    {
+      "name": "F5",
+      "type": "char"
+    },
+    {
+      "name": "F6",
+      "type": "char"
+    },
+    {
+      "name": "F7",
+      "type": "char"
+    },
+    {
+      "name": "F8",
+      "type": "char"
+    },
+    {
+      "name": "F9",
+      "type": "char"
+    },
+    {
+      "name": "F10",
+      "type": "char"
+    },
+    {
+      "name": "F11",
+      "type": "char"
+    },
+    {
+      "name": "F12",
+      "type": "char"
+    },
+    {
+      "name": "F13",
+      "type": "char"
+    },
+    {
+      "name": "F14",
+      "type": "char"
+    },
+    {
+      "name": "F15",
+      "type": "char"
+    },
+    {
+      "name": "F16",
+      "type": "char"
+    },
+    {
+      "name": "F17",
+      "type": "char"
+    },
+    {
+      "name": "G",
+      "type": "char"
+    },
+    {
+      "name": "GA",
+      "type": "char"
+    },
+    {
+      "name": "GA1",
+      "type": "char"
+    },
+    {
+      "name": "GA2",
+      "type": "char"
+    },
+    {
+      "name": "GA3",
+      "type": "char"
+    },
+    {
+      "name": "GA4",
+      "type": "char"
+    },
+    {
+      "name": "GA5",
+      "type": "char"
+    },
+    {
+      "name": "GA6",
+      "type": "char"
+    },
+    {
+      "name": "G1",
+      "type": "char"
+    },
+    {
+      "name": "G2",
+      "type": "char"
+    },
+    {
+      "name": "G3",
+      "type": "char"
+    },
+    {
+      "name": "G4",
+      "type": "char"
+    },
+    {
+      "name": "G5",
+      "type": "char"
+    },
+    {
+      "name": "G6",
+      "type": "char"
+    },
+    {
+      "name": "G7",
+      "type": "char"
+    },
+    {
+      "name": "G8",
+      "type": "char"
+    },
+    {
+      "name": "G9",
+      "type": "char"
+    },
+    {
+      "name": "G10",
+      "type": "char"
+    },
+    {
+      "name": "G11",
+      "type": "char"
+    },
+    {
+      "name": "G12",
+      "type": "char"
+    },
+    {
+      "name": "G13",
+      "type": "char"
+    },
+    {
+      "name": "G14",
+      "type": "char"
+    },
+    {
+      "name": "G15",
+      "type": "char"
+    },
+    {
+      "name": "G16",
+      "type": "char"
+    },
+    {
+      "name": "G17",
+      "type": "char"
+    },
+    {
+      "name": "G18",
+      "type": "char"
+    },
+    {
+      "name": "G19",
+      "type": "char"
+    },
+    {
+      "name": "G20",
+      "type": "char"
+    },
+    {
+      "name": "H",
+      "type": "char"
+    },
+    {
+      "name": "H1",
+      "type": "char"
+    },
+    {
+      "name": "H2",
+      "type": "char"
+    },
+    {
+      "name": "I",
+      "type": "char"
+    },
+    {
+      "name": "I1",
+      "type": "char"
+    },
+    {
+      "name": "I2",
+      "type": "char"
+    },
+    {
+      "name": "I3",
+      "type": "char"
+    },
+    {
+      "name": "I4",
+      "type": "char"
+    },
+    {
+      "name": "I5",
+      "type": "char"
+    },
+    {
+      "name": "I6",
+      "type": "char"
+    },
+    {
+      "name": "G21",
+      "type": "char"
+    },
+    {
+      "name": "G22",
+      "type": "char"
+    },
+    {
+      "name": "F18",
+      "type": "char"
+    },
+    {
+      "name": "E6",
+      "type": "char"
+    },
+    {
+      "name": "E7",
+      "type": "char"
+    },
+    {
+      "name": "F19",
+      "type": "char"
+    },
+    {
+      "name": "F20",
+      "type": "char"
+    },
+    {
+      "name": "F21",
+      "type": "char"
+    },
+    {
+      "name": "I7",
+      "type": "char"
+    },
+    {
+      "name": "I8",
+      "type": "char"
+    },
+    {
+      "name": "I9",
+      "type": "char"
+    },
+    {
+      "name": "I10",
+      "type": "char"
+    },
+    {
+      "name": "I11",
+      "type": "char"
+    },
+    {
+      "name": "I12",
+      "type": "char"
+    },
+    {
+      "name": "I13",
+      "type": "char"
+    },
+    {
+      "name": "I14",
+      "type": "char"
+    },
+    {
+      "name": "I15",
+      "type": "char"
+    },
+    {
+      "name": "I16",
+      "type": "char"
+    },
+    {
+      "name": "I17",
+      "type": "char"
+    },
+    {
+      "name": "I18",
+      "type": "char"
+    },
+    {
+      "name": "B29",
+      "type": "char"
+    },
+    {
+      "name": "G23",
+      "type": "char"
+    },
+    {
+      "name": "D10",
+      "type": "char"
+    },
+    {
+      "name": "G24",
+      "type": "char"
+    },
+    {
+      "name": "A10",
+      "type": "char"
+    },
+    {
+      "name": "B0",
+      "type": "char"
+    },
+    {
+      "name": "F22",
+      "type": "char"
+    },
+    {
+      "name": "F23",
+      "type": "char"
+    },
+    {
+      "name": "E8",
+      "type": "char"
+    },
+    {
+      "name": "B30",
+      "type": "char"
+    },
+    {
+      "name": "B31",
+      "type": "char"
+    },
+    {
+      "name": "J",
+      "type": "char"
+    },
+    {
+      "name": "J1",
+      "type": "char"
+    },
+    {
+      "name": "J2",
+      "type": "char"
+    },
+    {
+      "name": "J3",
+      "type": "char"
+    },
+    {
+      "name": "J4",
+      "type": "char"
+    },
+    {
+      "name": "J5",
+      "type": "char"
+    },
+    {
+      "name": "J6",
+      "type": "char"
+    },
+    {
+      "name": "J7",
+      "type": "char"
+    },
+    {
+      "name": "J8",
+      "type": "char"
+    },
+    {
+      "name": "J9",
+      "type": "char"
+    },
+    {
+      "name": "J10",
+      "type": "char"
+    },
+    {
+      "name": "J11",
+      "type": "char"
+    },
+    {
+      "name": "J12",
+      "type": "char"
+    },
+    {
+      "name": "J13",
+      "type": "char"
+    },
+    {
+      "name": "J14",
+      "type": "char"
+    },
+    {
+      "name": "J15",
+      "type": "char"
+    },
+    {
+      "name": "J16",
+      "type": "char"
+    },
+    {
+      "name": "J17",
+      "type": "char"
+    },
+    {
+      "name": "J18",
+      "type": "char"
+    },
+    {
+      "name": "F24",
+      "type": "char"
+    },
+    {
+      "name": "J19",
+      "type": "char"
+    },
+    {
+      "name": "J20",
+      "type": "char"
+    },
+    {
+      "name": "J21",
+      "type": "char"
+    },
+    {
+      "name": "J22",
+      "type": "char"
+    },
+    {
+      "name": "J23",
+      "type": "char"
+    },
+    {
+      "name": "J24",
+      "type": "char"
+    },
+    {
+      "name": "B32",
+      "type": "char"
+    },
+    {
+      "name": "J25",
+      "type": "char"
+    },
+    {
+      "name": "25",
+      "type": "char"
+    },
+    {
+      "name": "B33",
+      "type": "char"
+    },
+    {
+      "name": "G26",
+      "type": "char"
+    },
+    {
+      "name": "G27",
+      "type": "char"
+    },
+    {
+      "name": "G28",
+      "type": "char"
+    },
+    {
+      "name": "G29",
+      "type": "char"
+    },
+    {
+      "name": "G30",
+      "type": "char"
+    },
+    {
+      "name": "F25",
+      "type": "char"
+    },
+    {
+      "name": "G25",
+      "type": "char"
+    },
+    {
+      "name": "F26",
+      "type": "char"
+    },
+    {
+      "name": "D11",
+      "type": "char"
+    },
+    {
+      "name": "I19",
+      "type": "char"
+    },
+    {
+      "name": "I20",
+      "type": "char"
+    },
+    {
+      "name": "I21",
+      "type": "char"
+    },
+    {
+      "name": "B34",
+      "type": "char"
+    },
+    {
+      "name": "F28",
+      "type": "char"
+    },
+    {
+      "name": "B35",
+      "type": "char"
+    },
+    {
+      "name": "F27",
+      "type": "char"
+    },
+    {
+      "name": "G31",
+      "type": "char"
+    }
+  ],
+  "Branches_company_edit": [
+    {
+      "name": "company_edit_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_type",
+      "type": "char"
+    },
+    {
+      "name": "company_id",
+      "type": "decimal"
+    },
+    {
+      "name": "company_code",
+      "type": "varchar"
+    },
+    {
+      "name": "co_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "co_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "mobile",
+      "type": "varchar"
+    },
+    {
+      "name": "tel",
+      "type": "varchar"
+    },
+    {
+      "name": "address",
+      "type": "varchar"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "active",
+      "type": "char"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    }
+  ],
+  "Gedo_Financial": [
+    {
+      "name": "gf_id",
+      "type": "decimal"
+    },
+    {
+      "name": "gf_code",
+      "type": "varchar"
+    },
+    {
+      "name": "gf_gedo_type",
+      "type": "int"
+    },
+    {
+      "name": "gf_value",
+      "type": "money"
+    },
+    {
+      "name": "gf_from_type",
+      "type": "int"
+    },
+    {
+      "name": "gf_from_id",
+      "type": "decimal"
+    },
+    {
+      "name": "gf_to_type",
+      "type": "int"
+    },
+    {
+      "name": "gf_to_id",
+      "type": "decimal"
+    },
+    {
+      "name": "gf_notes",
+      "type": "varchar"
+    },
+    {
+      "name": "gf_computer",
+      "type": "varchar"
+    },
+    {
+      "name": "gf_actual_cashier",
+      "type": "varchar"
+    },
+    {
+      "name": "gf_form_type",
+      "type": "int"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    }
+  ],
+  "Store_convert_header": [
+    {
+      "name": "store_convert_id",
+      "type": "decimal"
+    },
+    {
+      "name": "from_store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "to_store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "total_sell_price",
+      "type": "money"
+    },
+    {
+      "name": "total_buy_price",
+      "type": "money"
+    },
+    {
+      "name": "product_number",
+      "type": "int"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "DB_online_update_Error": [
+    {
+      "name": "error_id",
+      "type": "decimal"
+    },
+    {
+      "name": "trans_id",
+      "type": "decimal"
+    },
+    {
+      "name": "table_id",
+      "type": "int"
+    },
+    {
+      "name": "trans_type",
+      "type": "char"
+    },
+    {
+      "name": "trans",
+      "type": "text"
+    },
+    {
+      "name": "ex",
+      "type": "text"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "Branches_convert_details": [
+    {
+      "name": "details_id",
+      "type": "decimal"
+    },
+    {
+      "name": "from_branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "branch_convert_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "amount",
+      "type": "float"
+    },
+    {
+      "name": "exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "unit_id",
+      "type": "decimal"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "is_open",
+      "type": "char"
+    },
+    {
+      "name": "unit_change",
+      "type": "float"
+    }
+  ],
+  "Branches_shortcoming": [
+    {
+      "name": "branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "id",
+      "type": "decimal"
+    },
+    {
+      "name": "class",
+      "type": "char"
+    },
+    {
+      "name": "general",
+      "type": "char"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "amount",
+      "type": "float"
+    }
+  ],
+  "Branches_stores": [
+    {
+      "name": "branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_code",
+      "type": "varchar"
+    },
+    {
+      "name": "store_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "store_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "active",
+      "type": "char"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    }
+  ],
+  "Sales_header_Temp": [
+    {
+      "name": "sales_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "customer_id",
+      "type": "decimal"
+    },
+    {
+      "name": "class",
+      "type": "int"
+    },
+    {
+      "name": "product_number",
+      "type": "int"
+    },
+    {
+      "name": "bill_money_befor",
+      "type": "money"
+    },
+    {
+      "name": "total_bill",
+      "type": "money"
+    },
+    {
+      "name": "total_after_disc",
+      "type": "money"
+    },
+    {
+      "name": "total_bill_net",
+      "type": "money"
+    },
+    {
+      "name": "total_disc_per",
+      "type": "decimal"
+    },
+    {
+      "name": "total_disc_money",
+      "type": "money"
+    },
+    {
+      "name": "total_product_disc",
+      "type": "money"
+    },
+    {
+      "name": "customer_disc_per",
+      "type": "decimal"
+    },
+    {
+      "name": "bill_cash",
+      "type": "money"
+    },
+    {
+      "name": "cashier_id",
+      "type": "varchar"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "bill_other_expenses",
+      "type": "money"
+    },
+    {
+      "name": "gf_id",
+      "type": "decimal"
+    },
+    {
+      "name": "contract_id",
+      "type": "decimal"
+    },
+    {
+      "name": "major_customer_part",
+      "type": "money"
+    },
+    {
+      "name": "bill_number",
+      "type": "varchar"
+    },
+    {
+      "name": "back",
+      "type": "char"
+    },
+    {
+      "name": "bill_date",
+      "type": "datetime"
+    },
+    {
+      "name": "compu_name",
+      "type": "varchar"
+    },
+    {
+      "name": "cashier_disk_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "cust_name",
+      "type": "varchar"
+    },
+    {
+      "name": "ticket_name",
+      "type": "char"
+    },
+    {
+      "name": "ticket_id",
+      "type": "char"
+    },
+    {
+      "name": "ticket_num",
+      "type": "char"
+    }
+  ],
+  "company_Owner": [
+    {
+      "name": "coow_id",
+      "type": "decimal"
+    },
+    {
+      "name": "coow_code",
+      "type": "varchar"
+    },
+    {
+      "name": "coow_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "coow_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "tel",
+      "type": "varchar"
+    },
+    {
+      "name": "mobile",
+      "type": "varchar"
+    },
+    {
+      "name": "address",
+      "type": "varchar"
+    },
+    {
+      "name": "coow_current_money",
+      "type": "money"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "active",
+      "type": "char"
+    },
+    {
+      "name": "coow_start_money",
+      "type": "money"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    }
+  ],
+  "Order_header": [
+    {
+      "name": "order_id",
+      "type": "decimal"
+    },
+    {
+      "name": "order_class",
+      "type": "char"
+    },
+    {
+      "name": "vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_number",
+      "type": "int"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "buy_money",
+      "type": "money"
+    },
+    {
+      "name": "product_money",
+      "type": "money"
+    }
+  ],
+  "Branches_unit_edit": [
+    {
+      "name": "unit_edit_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_type",
+      "type": "char"
+    },
+    {
+      "name": "unit_id",
+      "type": "decimal"
+    },
+    {
+      "name": "unit_code",
+      "type": "varchar"
+    },
+    {
+      "name": "unit_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "unit_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    }
+  ],
+  "Branches_convert_header": [
+    {
+      "name": "branch_convert_id",
+      "type": "decimal"
+    },
+    {
+      "name": "from_branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "to_branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "from_store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "to_store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "total_sell_price",
+      "type": "money"
+    },
+    {
+      "name": "total_buy_price",
+      "type": "money"
+    },
+    {
+      "name": "product_number",
+      "type": "int"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "is_open",
+      "type": "char"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "Branches_customer": [
+    {
+      "name": "branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "customer_id",
+      "type": "decimal"
+    },
+    {
+      "name": "customer_code",
+      "type": "varchar"
+    },
+    {
+      "name": "customer_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "customer_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "job_id",
+      "type": "varchar"
+    },
+    {
+      "name": "mobile",
+      "type": "varchar"
+    },
+    {
+      "name": "tel",
+      "type": "varchar"
+    },
+    {
+      "name": "address",
+      "type": "varchar"
+    },
+    {
+      "name": "customer_class_id",
+      "type": "decimal"
+    },
+    {
+      "name": "customer_major",
+      "type": "decimal"
+    },
+    {
+      "name": "active",
+      "type": "char"
+    },
+    {
+      "name": "start_work_date",
+      "type": "datetime"
+    },
+    {
+      "name": "customer_max_money",
+      "type": "money"
+    },
+    {
+      "name": "customer_current_money",
+      "type": "money"
+    },
+    {
+      "name": "customer_rate_pay",
+      "type": "float"
+    },
+    {
+      "name": "customer_house_no",
+      "type": "varchar"
+    },
+    {
+      "name": "customer_pay_type",
+      "type": "int"
+    },
+    {
+      "name": "customer_start_money",
+      "type": "money"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "contract_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "area_id",
+      "type": "decimal"
+    },
+    {
+      "name": "sales_man",
+      "type": "decimal"
+    },
+    {
+      "name": "sale_class_id",
+      "type": "decimal"
+    },
+    {
+      "name": "sell_price_buy",
+      "type": "char"
+    }
+  ],
+  "Branches_Vendor": [
+    {
+      "name": "branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "vendor_code",
+      "type": "varchar"
+    },
+    {
+      "name": "vendor_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "vendor_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "tel",
+      "type": "varchar"
+    },
+    {
+      "name": "mobile",
+      "type": "varchar"
+    },
+    {
+      "name": "address",
+      "type": "varchar"
+    },
+    {
+      "name": "company_code",
+      "type": "varchar"
+    },
+    {
+      "name": "vendor_max_money",
+      "type": "money"
+    },
+    {
+      "name": "vendor_current_money",
+      "type": "money"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "active",
+      "type": "char"
+    },
+    {
+      "name": "vendor_start_money",
+      "type": "money"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    }
+  ],
+  "Employee_cash_advance": [
+    {
+      "name": "cash_advance_id",
+      "type": "decimal"
+    },
+    {
+      "name": "emp_id",
+      "type": "decimal"
+    },
+    {
+      "name": "cash_advance",
+      "type": "money"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "type",
+      "type": "char"
+    }
+  ],
+  "Cash_depots": [
+    {
+      "name": "cash_depot_id",
+      "type": "decimal"
+    },
+    {
+      "name": "cash_depot_code",
+      "type": "varchar"
+    },
+    {
+      "name": "cash_depot_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "cash_depot_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "cash_depot_class",
+      "type": "char"
+    },
+    {
+      "name": "cash_depot_current_money",
+      "type": "money"
+    },
+    {
+      "name": "account_number",
+      "type": "varchar"
+    },
+    {
+      "name": "bank_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    }
+  ],
+  "Sales_details_Temp": [
+    {
+      "name": "details_id",
+      "type": "decimal"
+    },
+    {
+      "name": "sales_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "amount",
+      "type": "float"
+    },
+    {
+      "name": "sale_unit_change",
+      "type": "decimal"
+    },
+    {
+      "name": "sale_unit",
+      "type": "int"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "disc_money",
+      "type": "money"
+    },
+    {
+      "name": "disc_per",
+      "type": "decimal"
+    },
+    {
+      "name": "total_sell",
+      "type": "money"
+    },
+    {
+      "name": "back",
+      "type": "char"
+    },
+    {
+      "name": "back_amount",
+      "type": "float"
+    },
+    {
+      "name": "back_unit_change",
+      "type": "decimal"
+    },
+    {
+      "name": "back_price",
+      "type": "money"
+    },
+    {
+      "name": "back_unit",
+      "type": "int"
+    },
+    {
+      "name": "back_gf_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    }
+  ],
+  "Temp_Purchase_header": [
+    {
+      "name": "temp_purchase_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "class",
+      "type": "varchar"
+    },
+    {
+      "name": "product_number",
+      "type": "int"
+    },
+    {
+      "name": "total_bill",
+      "type": "money"
+    },
+    {
+      "name": "bill_disc_per",
+      "type": "float"
+    },
+    {
+      "name": "bill_disc_money",
+      "type": "money"
+    },
+    {
+      "name": "bill_other_expenses",
+      "type": "money"
+    },
+    {
+      "name": "bill_number",
+      "type": "varchar"
+    },
+    {
+      "name": "bill_date",
+      "type": "datetime"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "bill_tax",
+      "type": "money"
+    }
+  ],
+  "Stores": [
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_code",
+      "type": "varchar"
+    },
+    {
+      "name": "store_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "store_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "active",
+      "type": "char"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "start_update_date",
+      "type": "datetime"
+    }
+  ],
+  "Employee": [
+    {
+      "name": "emp_id",
+      "type": "decimal"
+    },
+    {
+      "name": "emp_code",
+      "type": "varchar"
+    },
+    {
+      "name": "emp_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "emp_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "emp_gender",
+      "type": "varchar"
+    },
+    {
+      "name": "job_id",
+      "type": "decimal"
+    },
+    {
+      "name": "birth_date",
+      "type": "smalldatetime"
+    },
+    {
+      "name": "hire_date",
+      "type": "smalldatetime"
+    },
+    {
+      "name": "work_date",
+      "type": "smalldatetime"
+    },
+    {
+      "name": "mobile",
+      "type": "varchar"
+    },
+    {
+      "name": "home_tel",
+      "type": "varchar"
+    },
+    {
+      "name": "address",
+      "type": "varchar"
+    },
+    {
+      "name": "card_id",
+      "type": "varchar"
+    },
+    {
+      "name": "card_date",
+      "type": "datetime"
+    },
+    {
+      "name": "card_place",
+      "type": "varchar"
+    },
+    {
+      "name": "active",
+      "type": "char"
+    },
+    {
+      "name": "max_disc_per",
+      "type": "decimal"
+    },
+    {
+      "name": "max_disc_money",
+      "type": "money"
+    },
+    {
+      "name": "show_buy",
+      "type": "char"
+    },
+    {
+      "name": "show_cash_disk_history",
+      "type": "char"
+    },
+    {
+      "name": "show_total_sales_report",
+      "type": "char"
+    },
+    {
+      "name": "use_compu",
+      "type": "char"
+    },
+    {
+      "name": "username",
+      "type": "varchar"
+    },
+    {
+      "name": "pass",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "salary_typ",
+      "type": "varchar"
+    },
+    {
+      "name": "basic_salary",
+      "type": "money"
+    },
+    {
+      "name": "more_salary",
+      "type": "money"
+    },
+    {
+      "name": "emp_cust_max_money",
+      "type": "char"
+    },
+    {
+      "name": "emp_add_product",
+      "type": "char"
+    },
+    {
+      "name": "emp_edit_product",
+      "type": "char"
+    },
+    {
+      "name": "emp_r_sale_date",
+      "type": "char"
+    },
+    {
+      "name": "emp_r_sale_bill_num",
+      "type": "int"
+    },
+    {
+      "name": "emp_add_cust",
+      "type": "char"
+    },
+    {
+      "name": "emp_edit_cust",
+      "type": "char"
+    },
+    {
+      "name": "emp_del_cust",
+      "type": "char"
+    },
+    {
+      "name": "emp_commission1",
+      "type": "float"
+    },
+    {
+      "name": "emp_commission2",
+      "type": "float"
+    },
+    {
+      "name": "emp_edit_sell_price",
+      "type": "char"
+    },
+    {
+      "name": "absence_money",
+      "type": "money"
+    },
+    {
+      "name": "allaw_r_sale",
+      "type": "char"
+    },
+    {
+      "name": "numof_customer",
+      "type": "int"
+    },
+    {
+      "name": "emp_show_money",
+      "type": "char"
+    },
+    {
+      "name": "emp_change_cash_disk",
+      "type": "char"
+    },
+    {
+      "name": "allaw_sale_credit",
+      "type": "char"
+    },
+    {
+      "name": "allaw_un_sale",
+      "type": "char"
+    },
+    {
+      "name": "allaw_sale_delivery",
+      "type": "char"
+    },
+    {
+      "name": "cash_advance",
+      "type": "money"
+    },
+    {
+      "name": "allaw_save_cash_credit",
+      "type": "char"
+    },
+    {
+      "name": "emp_del_vendor",
+      "type": "char"
+    },
+    {
+      "name": "emp_del_product",
+      "type": "char"
+    }
+  ],
+  "Temp_Purchase_details": [
+    {
+      "name": "details_id",
+      "type": "decimal"
+    },
+    {
+      "name": "temp_purchase_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "amount",
+      "type": "float"
+    },
+    {
+      "name": "bouns",
+      "type": "float"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "gain_price",
+      "type": "money"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "Product_amount_reg_update": [
+    {
+      "name": "id",
+      "type": "decimal"
+    },
+    {
+      "name": "paru_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "old_amount",
+      "type": "float"
+    },
+    {
+      "name": "new_amount",
+      "type": "float"
+    },
+    {
+      "name": "new_exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "old_exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "store_date",
+      "type": "datetime"
+    },
+    {
+      "name": "vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_unit",
+      "type": "decimal"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_uid",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "Customer_Area": [
+    {
+      "name": "area_id",
+      "type": "decimal"
+    },
+    {
+      "name": "area_code",
+      "type": "varchar"
+    },
+    {
+      "name": "area_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "area_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    }
+  ],
+  "dtproperties": [
+    {
+      "name": "id",
+      "type": "int"
+    },
+    {
+      "name": "objectid",
+      "type": "int"
+    },
+    {
+      "name": "property",
+      "type": "varchar"
+    },
+    {
+      "name": "value",
+      "type": "varchar"
+    },
+    {
+      "name": "uvalue",
+      "type": "nvarchar"
+    },
+    {
+      "name": "lvalue",
+      "type": "image"
+    },
+    {
+      "name": "version",
+      "type": "int"
+    }
+  ],
+  "Back_sales_header": [
+    {
+      "name": "back_sales_id",
+      "type": "decimal"
+    },
+    {
+      "name": "sales_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "customer_id",
+      "type": "decimal"
+    },
+    {
+      "name": "class",
+      "type": "int"
+    },
+    {
+      "name": "r_money_befor",
+      "type": "money"
+    },
+    {
+      "name": "s_money_befor",
+      "type": "money"
+    },
+    {
+      "name": "r_total_bill",
+      "type": "money"
+    },
+    {
+      "name": "s_total_bill",
+      "type": "money"
+    },
+    {
+      "name": "total_bill_net",
+      "type": "money"
+    },
+    {
+      "name": "total_disc_per",
+      "type": "float"
+    },
+    {
+      "name": "bill_cash",
+      "type": "money"
+    },
+    {
+      "name": "cashier_id",
+      "type": "decimal"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "gf_id",
+      "type": "decimal"
+    },
+    {
+      "name": "contract_id",
+      "type": "decimal"
+    },
+    {
+      "name": "major_customer_part",
+      "type": "money"
+    },
+    {
+      "name": "compu_name",
+      "type": "varchar"
+    },
+    {
+      "name": "cashier_disk_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_uid",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "decimal"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "network_id",
+      "type": "decimal"
+    },
+    {
+      "name": "network_money",
+      "type": "money"
+    },
+    {
+      "name": "money_change",
+      "type": "money"
+    },
+    {
+      "name": "delivery_man_id",
+      "type": "decimal"
+    },
+    {
+      "name": "cashier_money",
+      "type": "money"
+    }
+  ],
+  "Product_Dose": [
+    {
+      "name": "dose_id",
+      "type": "decimal"
+    },
+    {
+      "name": "dose_code",
+      "type": "varchar"
+    },
+    {
+      "name": "dose_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "dose_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "decimal"
+    }
+  ],
+  "Branches_description_edit": [
+    {
+      "name": "pd_edit_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_type",
+      "type": "char"
+    },
+    {
+      "name": "pd_id",
+      "type": "decimal"
+    },
+    {
+      "name": "pd_code",
+      "type": "varchar"
+    },
+    {
+      "name": "pd_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "pd_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    }
+  ],
+  "Gedo_branches": [
+    {
+      "name": "gb_id",
+      "type": "decimal"
+    },
+    {
+      "name": "gf_id",
+      "type": "varchar"
+    },
+    {
+      "name": "Flag",
+      "type": "int"
+    },
+    {
+      "name": "gb_type",
+      "type": "char"
+    },
+    {
+      "name": "branch_id",
+      "type": "decimal"
+    },
+    {
+      "name": "gb_for_him",
+      "type": "money"
+    },
+    {
+      "name": "gb_for_me",
+      "type": "money"
+    },
+    {
+      "name": "total",
+      "type": "money"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    }
+  ],
+  "Employee_absence_money": [
+    {
+      "name": "emp_id",
+      "type": "decimal"
+    },
+    {
+      "name": "emp_absence_money",
+      "type": "money"
+    },
+    {
+      "name": "month_salary",
+      "type": "datetime"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "Jobs": [
+    {
+      "name": "job_id",
+      "type": "decimal"
+    },
+    {
+      "name": "job_code",
+      "type": "varchar"
+    },
+    {
+      "name": "job_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "job_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    }
+  ],
+  "Branches_group_edit": [
+    {
+      "name": "group_edit_id",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_type",
+      "type": "char"
+    },
+    {
+      "name": "group_id",
+      "type": "decimal"
+    },
+    {
+      "name": "group_code",
+      "type": "varchar"
+    },
+    {
+      "name": "group_name_ar",
+      "type": "varchar"
+    },
+    {
+      "name": "group_name_en",
+      "type": "varchar"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    }
+  ],
+  "Run_Backup": [
+    {
+      "name": "job_id",
+      "type": "decimal"
+    },
+    {
+      "name": "job_name",
+      "type": "varchar"
+    },
+    {
+      "name": "job_bath",
+      "type": "varchar"
+    },
+    {
+      "name": "every_hour",
+      "type": "int"
+    },
+    {
+      "name": "del_backup",
+      "type": "int"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    }
+  ],
+  "Employee_commission": [
+    {
+      "name": "emp_id",
+      "type": "decimal"
+    },
+    {
+      "name": "emp_commission",
+      "type": "money"
+    },
+    {
+      "name": "month_salary",
+      "type": "datetime"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    }
+  ],
+  "Product_amount_Change": [
+    {
+      "name": "id",
+      "type": "decimal"
+    },
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "old_amount",
+      "type": "float"
+    },
+    {
+      "name": "new_amount",
+      "type": "float"
+    },
+    {
+      "name": "exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "form_type",
+      "type": "int"
+    },
+    {
+      "name": "form_notice",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "in_type",
+      "type": "char"
+    }
+  ],
+  "Product_amount_update": [
+    {
+      "name": "id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "store_id",
+      "type": "decimal"
+    },
+    {
+      "name": "counter_id",
+      "type": "decimal"
+    },
+    {
+      "name": "old_amount",
+      "type": "float"
+    },
+    {
+      "name": "new_amount",
+      "type": "float"
+    },
+    {
+      "name": "new_exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "old_exp_date",
+      "type": "datetime"
+    },
+    {
+      "name": "sell_price",
+      "type": "money"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "store_date",
+      "type": "datetime"
+    },
+    {
+      "name": "vendor_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_unit",
+      "type": "decimal"
+    },
+    {
+      "name": "notes",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    }
+  ],
+  "Sites": [
+    {
+      "name": "site_id",
+      "type": "decimal"
+    },
+    {
+      "name": "site_code",
+      "type": "varchar"
+    },
+    {
+      "name": "site_name",
+      "type": "varchar"
+    },
+    {
+      "name": "site_full_name",
+      "type": "varchar"
+    },
+    {
+      "name": "site_major",
+      "type": "decimal"
+    },
+    {
+      "name": "deleted",
+      "type": "char"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    }
+  ],
+  "Order_details": [
+    {
+      "name": "details_id",
+      "type": "decimal"
+    },
+    {
+      "name": "order_id",
+      "type": "decimal"
+    },
+    {
+      "name": "product_id",
+      "type": "decimal"
+    },
+    {
+      "name": "amount",
+      "type": "float"
+    },
+    {
+      "name": "insert_uid",
+      "type": "decimal"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "product_price",
+      "type": "money"
+    },
+    {
+      "name": "product_disc",
+      "type": "float"
+    },
+    {
+      "name": "buy_price",
+      "type": "money"
+    },
+    {
+      "name": "tax_price",
+      "type": "money"
+    },
+    {
+      "name": "buy_amount",
+      "type": "decimal"
+    }
+  ],
+  "barcode_temp": [
+    {
+      "name": "co_tel1",
+      "type": "varchar"
+    },
+    {
+      "name": "co_name1",
+      "type": "varchar"
+    },
+    {
+      "name": "barcode1",
+      "type": "varchar"
+    },
+    {
+      "name": "name1",
+      "type": "varchar"
+    },
+    {
+      "name": "code1",
+      "type": "varchar"
+    },
+    {
+      "name": "exp1",
+      "type": "varchar"
+    },
+    {
+      "name": "sell1",
+      "type": "varchar"
+    },
+    {
+      "name": "co_tel2",
+      "type": "varchar"
+    },
+    {
+      "name": "co_name2",
+      "type": "varchar"
+    },
+    {
+      "name": "barcode2",
+      "type": "varchar"
+    },
+    {
+      "name": "name2",
+      "type": "varchar"
+    },
+    {
+      "name": "code2",
+      "type": "varchar"
+    },
+    {
+      "name": "exp2",
+      "type": "varchar"
+    },
+    {
+      "name": "sell2",
+      "type": "varchar"
+    },
+    {
+      "name": "co_tel3",
+      "type": "varchar"
+    },
+    {
+      "name": "co_name3",
+      "type": "varchar"
+    },
+    {
+      "name": "barcode3",
+      "type": "varchar"
+    },
+    {
+      "name": "name3",
+      "type": "varchar"
+    },
+    {
+      "name": "code3",
+      "type": "varchar"
+    },
+    {
+      "name": "exp3",
+      "type": "varchar"
+    },
+    {
+      "name": "sell3",
+      "type": "varchar"
+    },
+    {
+      "name": "co_tel4",
+      "type": "varchar"
+    },
+    {
+      "name": "co_name4",
+      "type": "varchar"
+    },
+    {
+      "name": "barcode4",
+      "type": "varchar"
+    },
+    {
+      "name": "name4",
+      "type": "varchar"
+    },
+    {
+      "name": "code4",
+      "type": "varchar"
+    },
+    {
+      "name": "exp4",
+      "type": "varchar"
+    },
+    {
+      "name": "sell4",
+      "type": "varchar"
+    },
+    {
+      "name": "co_tel5",
+      "type": "varchar"
+    },
+    {
+      "name": "co_name5",
+      "type": "varchar"
+    },
+    {
+      "name": "barcode5",
+      "type": "varchar"
+    },
+    {
+      "name": "name5",
+      "type": "varchar"
+    },
+    {
+      "name": "code5",
+      "type": "varchar"
+    },
+    {
+      "name": "exp5",
+      "type": "varchar"
+    },
+    {
+      "name": "sell5",
+      "type": "varchar"
+    },
+    {
+      "name": "co_tel6",
+      "type": "varchar"
+    },
+    {
+      "name": "co_name6",
+      "type": "varchar"
+    },
+    {
+      "name": "barcode6",
+      "type": "varchar"
+    },
+    {
+      "name": "name6",
+      "type": "varchar"
+    },
+    {
+      "name": "code6",
+      "type": "varchar"
+    },
+    {
+      "name": "exp6",
+      "type": "varchar"
+    },
+    {
+      "name": "sell6",
+      "type": "varchar"
+    }
+  ],
+  "Employee_daily_time": [
+    {
+      "name": "emp_code",
+      "type": "decimal"
+    },
+    {
+      "name": "start_end",
+      "type": "char"
+    },
+    {
+      "name": "Saturday",
+      "type": "varchar"
+    },
+    {
+      "name": "Sunday",
+      "type": "varchar"
+    },
+    {
+      "name": "Monday",
+      "type": "varchar"
+    },
+    {
+      "name": "Tuesday",
+      "type": "varchar"
+    },
+    {
+      "name": "Wednesday",
+      "type": "varchar"
+    },
+    {
+      "name": "Thursday",
+      "type": "varchar"
+    },
+    {
+      "name": "Friday",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_uid",
+      "type": "varchar"
+    },
+    {
+      "name": "insert_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_date",
+      "type": "datetime"
+    },
+    {
+      "name": "update_uid",
+      "type": "varchar"
+    }
+  ]
+}

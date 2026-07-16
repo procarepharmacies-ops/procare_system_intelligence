@@ -37,14 +37,42 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_origins=[
+        "http://localhost:3000", 
+        "http://127.0.0.1:3000",
+        "http://localhost:5173",
+        "http://localhost:5174",
+        "http://localhost:5175",
+        "http://localhost:5177",
+        "http://localhost:5178",
+        "http://127.0.0.1:5178"
+    ],
+    allow_origin_regex="https://.*",
+
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+import os
+
 app.include_router(api_router, prefix="/api")
 
+# Serve the production React frontend
+frontend_dist = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "frontend", "dist")
+if os.path.exists(frontend_dist):
+    app.mount("/assets", StaticFiles(directory=os.path.join(frontend_dist, "assets")), name="assets")
+    
+    @app.get("/{full_path:path}")
+    async def serve_frontend(full_path: str):
+        # Serve the requested file if it exists (e.g. logo.png, favicon)
+        requested_file = os.path.join(frontend_dist, full_path)
+        if os.path.isfile(requested_file):
+            return FileResponse(requested_file)
+        # Otherwise, fallback to index.html for React Router
+        return FileResponse(os.path.join(frontend_dist, "index.html"))
 
 if __name__ == "__main__":
     import uvicorn

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from './components/theme-provider';
 import Layout from './Layout';
@@ -7,6 +7,19 @@ import Products from './Products';
 import Stores from './Stores';
 import SalesInvoice from './SalesInvoice';
 import PurchaseInvoice from './PurchaseInvoice';
+import HeroLanding from './components/HeroLanding';
+import Customers from './Customers';
+import Vendors from './Vendors';
+import Employees from './Employees';
+import Accounts from './Accounts';
+import Shortages from './Shortages';
+import Expired from './Expired';
+import CompanyInfo from './CompanyInfo';
+import Branches from './Branches';
+import CashInventory from './CashInventory';
+import ProductUnits from './ProductUnits';
+import Manufacturers from './Manufacturers';
+import ProductGroups from './ProductGroups';
 
 const Placeholder = ({ title }) => (
   <div style={{
@@ -18,21 +31,27 @@ const Placeholder = ({ title }) => (
 );
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
   return (
-    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-      <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      {showSplash ? (
+        <HeroLanding onComplete={() => setShowSplash(false)} />
+      ) : (
+        <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           
           {/* General Data */}
           <Route path="general" element={<Placeholder title="البيانات العامة" />} />
-          <Route path="general/company" element={<Placeholder title="بيانات الشركة" />} />
+          <Route path="general/company" element={<CompanyInfo />} />
           <Route path="general/backup" element={<Placeholder title="النسخ الاحتياطي" />} />
           
           {/* Products */}
           <Route path="products" element={<Products />} />
-          <Route path="products/doses" element={<Placeholder title="الجرعات الدوائية" />} />
+          <Route path="products/doses" element={<ProductUnits />} />
+          <Route path="products/groups" element={<ProductGroups />} />
           
           {/* Stores */}
           <Route path="stores" element={<Stores />} />
@@ -40,8 +59,9 @@ function App() {
           <Route path="stores/inventory" element={<Placeholder title="جرد مخزني" />} />
           
           {/* Vendors */}
-          <Route path="vendors" element={<Placeholder title="الموردين" />} />
+          <Route path="vendors" element={<Vendors />} />
           <Route path="vendors/opening-balances" element={<Placeholder title="الأرصدة الافتتاحية للموردين" />} />
+          <Route path="vendors/manufacturers" element={<Manufacturers />} />
           
           {/* Purchases */}
           <Route path="purchases" element={<PurchaseInvoice />} />
@@ -50,39 +70,41 @@ function App() {
           <Route path="purchases/return" element={<Placeholder title="مرتجع مشتريات" />} />
           
           {/* Customers */}
-          <Route path="customers" element={<Placeholder title="العملاء" />} />
+          <Route path="customers" element={<Customers />} />
           
           {/* Sales */}
           <Route path="sales" element={<SalesInvoice />} />
-          <Route path="sales/return" element={<Placeholder title="مرتجع مبيعات" />} />
+          <Route path="sales/return" element={<Placeholder title="مرتبط مبيعات" />} />
           <Route path="sales/pending" element={<Placeholder title="مبيعات معلقة" />} />
           
           {/* Accounts */}
-          <Route path="accounts" element={<Placeholder title="الحسابات" />} />
+          <Route path="accounts" element={<Accounts />} />
           <Route path="accounts/treasury" element={<Placeholder title="الخزينة" />} />
           <Route path="accounts/banks" element={<Placeholder title="حسابات البنوك" />} />
           <Route path="accounts/tuning" element={<Placeholder title="تسوية الحسابات" />} />
           
           {/* Employees */}
-          <Route path="employees" element={<Placeholder title="شئون العاملين" />} />
+          <Route path="employees" element={<Employees />} />
           <Route path="employees/card" element={<Placeholder title="بطاقة موظف" />} />
           <Route path="employees/salary" element={<Placeholder title="الرواتب والسلف" />} />
           
           {/* Branches */}
-          <Route path="branches" element={<Placeholder title="فروع" />} />
+          <Route path="branches" element={<Branches />} />
           <Route path="branches/money-convert" element={<Placeholder title="تحويل نقدي لفرع" />} />
           
           {/* Reports */}
+          <Route path="reports/products-inactive" element={<Expired />} />
           <Route path="reports/*" element={<Placeholder title="تقرير (قيد التطوير)" />} />
           
           {/* Quick Access */}
-          <Route path="shortages" element={<Placeholder title="النواقص" />} />
-          <Route path="cash-inventory" element={<Placeholder title="جرد نقدية" />} />
+          <Route path="shortages" element={<Shortages />} />
+          <Route path="cash-inventory" element={<CashInventory />} />
           
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>
+      )}
     </ThemeProvider>
   );
 }

@@ -30,7 +30,8 @@ const Layout = () => {
       path: '/products-menu',
       items: [
         { label: t('menus.add_edit_product'), path: '/products' },
-        { label: t('menus.doses'), path: '/products/doses' },
+        { label: t('menus.doses') || 'الوحدات والجرعات', path: '/products/doses' },
+        { label: 'المجموعات والأقسام', path: '/products/groups' },
         { 
           label: t('menus.product_reports'), 
           path: '#',
@@ -66,6 +67,7 @@ const Layout = () => {
       path: '/vendors-menu',
       items: [
         { label: t('menus.vendor_data'), path: '/vendors' },
+        { label: 'الشركات المصنعة', path: '/vendors/manufacturers' },
         { label: t('menus.vendor_opening'), path: '/vendors/opening-balances' },
         { 
           label: t('menus.vendor_reports'), 

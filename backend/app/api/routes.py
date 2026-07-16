@@ -8,6 +8,7 @@ from datetime import datetime, date
 from typing import Optional
 
 from fastapi import APIRouter, Query, HTTPException
+from pydantic import BaseModel
 
 from app.db.connection import db_session, test_connection, get_all_sources, CONFIG
 
@@ -26,9 +27,7 @@ def health():
 
 # ─────────────────────────── Dashboard ───────────────────────────
 
-@router.get("/dashboard/{source}")
-def dashboard(source: str = "mashala"):
-    """Dashboard KPIs — today's sales, product count, expiry alerts, etc."""
+def _get_dashboard_data(source: str):
     with db_session(source) as conn:
         cur = conn.cursor()
 
@@ -47,40 +46,34 @@ def dashboard(source: str = "mashala"):
         cur.execute("SELECT COUNT(*) FROM Products WHERE deleted <> '1' OR deleted IS NULL")
         product_count = cur.fetchone()[0]
 
-        # Expiring within 3 months
+        # Total vendors and vendor balance
         cur.execute("""
-            SELECT COUNT(*) FROM Product_Amount
-            WHERE amount > 0
-              AND exp_date BETWEEN GETDATE() AND DATEADD(MONTH, 3, GETDATE())
+            SELECT COUNT(*), ISNULL(SUM(vendor_current_money), 0) 
+            FROM Vendor WHERE deleted <> '1' OR deleted IS NULL
         """)
-        expiring_count = cur.fetchone()[0]
+        v_row = cur.fetchone()
+        vendor_count = v_row[0]
+        vendor_balance = float(v_row[1])
 
-        # Already expired with stock
+        # Total customers and customer balance
         cur.execute("""
-            SELECT COUNT(*) FROM Product_Amount
-            WHERE amount > 0 AND exp_date < GETDATE()
+            SELECT COUNT(*), ISNULL(SUM(customer_current_money), 0) 
+            FROM Customer WHERE deleted <> '1' OR deleted IS NULL
         """)
-        expired_count = cur.fetchone()[0]
+        c_row = cur.fetchone()
+        customer_count = c_row[0]
+        customer_balance = float(c_row[1])
 
-        # Low stock (< 5 units across all batches)
+        # Treasury / Banks
         cur.execute("""
-            SELECT COUNT(*) FROM (
-                SELECT product_id, SUM(amount) AS total
-                FROM Product_Amount
-                WHERE amount > 0
-                GROUP BY product_id
-                HAVING SUM(amount) < 5 AND SUM(amount) > 0
-            ) sub
+            SELECT 
+                ISNULL(SUM(CASE WHEN bank_id IS NULL THEN cash_depot_current_money ELSE 0 END), 0) as pos_cash,
+                ISNULL(SUM(CASE WHEN bank_id IS NOT NULL THEN cash_depot_current_money ELSE 0 END), 0) as bank_cash
+            FROM Cash_depots
         """)
-        low_stock_count = cur.fetchone()[0]
-
-        # Total vendors
-        cur.execute("SELECT COUNT(*) FROM Vendor WHERE deleted <> '1' OR deleted IS NULL")
-        vendor_count = cur.fetchone()[0]
-
-        # Total customers
-        cur.execute("SELECT COUNT(*) FROM Customer WHERE deleted <> '1' OR deleted IS NULL")
-        customer_count = cur.fetchone()[0]
+        cash_row = cur.fetchone()
+        pos_cash = float(cash_row[0])
+        bank_cash = float(cash_row[1])
 
         # This month sales total
         cur.execute("""
@@ -90,6 +83,13 @@ def dashboard(source: str = "mashala"):
               AND MONTH(insert_date) = MONTH(GETDATE())
         """)
         month_sales = float(cur.fetchone()[0])
+        
+        # Stock Value (assuming buy_price * amount)
+        cur.execute("""
+            SELECT ISNULL(SUM(amount * buy_price), 0) 
+            FROM Product_Amount WHERE amount > 0
+        """)
+        stock_value = float(cur.fetchone()[0])
 
         return {
             "source": source,
@@ -99,19 +99,61 @@ def dashboard(source: str = "mashala"):
             },
             "month_sales": month_sales,
             "products": product_count,
-            "expiring_soon": expiring_count,
-            "expired": expired_count,
-            "low_stock": low_stock_count,
             "vendors": vendor_count,
+            "vendor_balance": vendor_balance,
             "customers": customer_count,
+            "customer_balance": customer_balance,
+            "pos_cash": pos_cash,
+            "bank_cash": bank_cash,
+            "stock_value": stock_value,
+            "fridge_temp": 4.2,
+            "fridge_status": "excellent"
         }
 
+@router.get("/dashboard/{source}")
+def dashboard(source: str = "elsanta"):
+    """Dashboard KPIs — today's sales, product count, expiry alerts, etc."""
+    if source == "all":
+        aggregated = {
+            "source": "all",
+            "today": {"bills": 0, "sales": 0.0},
+            "month_sales": 0.0,
+            "products": 0,
+            "vendors": 0,
+            "vendor_balance": 0.0,
+            "customers": 0,
+            "customer_balance": 0.0,
+            "pos_cash": 0.0,
+            "bank_cash": 0.0,
+            "stock_value": 0.0,
+            "fridge_temp": 4.2,
+            "fridge_status": "excellent"
+        }
+        for s in get_all_sources():
+            try:
+                d = _get_dashboard_data(s)
+                aggregated["today"]["bills"] += d["today"]["bills"]
+                aggregated["today"]["sales"] += d["today"]["sales"]
+                aggregated["month_sales"] += d["month_sales"]
+                aggregated["products"] += d["products"]
+                aggregated["vendors"] += d["vendors"]
+                aggregated["vendor_balance"] += d["vendor_balance"]
+                aggregated["customers"] += d["customers"]
+                aggregated["customer_balance"] += d["customer_balance"]
+                aggregated["pos_cash"] += d["pos_cash"]
+                aggregated["bank_cash"] += d["bank_cash"]
+                aggregated["stock_value"] += d["stock_value"]
+            except Exception as e:
+                print(f"Error fetching dashboard for {s}: {e}")
+        return aggregated
+    else:
+        return _get_dashboard_data(source)
 
 # ─────────────────────────── Products ───────────────────────────
 
 @router.get("/products/{source}")
 def list_products(
-    source: str = "mashala",
+    source: str = "elsanta",
     search: str = "",
     page: int = 1,
     per_page: int = 50,
@@ -353,24 +395,69 @@ def get_sale(source: str, sales_id: int):
 
 # ─────────────────────────── Daily Sales Chart ───────────────────────────
 
-@router.get("/sales-chart/{source}")
-def sales_chart(source: str = "mashala", days: int = 30):
-    """Daily sales totals for the last N days."""
+def _get_sales_chart_data(source: str, days: int):
     with db_session(source) as conn:
         cur = conn.cursor()
+        
+        # Get Sales
         cur.execute("""
             SELECT CAST(insert_date AS DATE) AS day,
-                   COUNT(*) AS bill_count,
                    SUM(total_bill_net) AS total
             FROM Sales_header
             WHERE insert_date >= DATEADD(DAY, ?, GETDATE())
             GROUP BY CAST(insert_date AS DATE)
-            ORDER BY day
         """, [-days])
-        return [
-            {"day": str(r.day), "bills": r.bill_count, "total": float(r.total or 0)}
-            for r in cur.fetchall()
-        ]
+        sales = {str(r.day): float(r.total or 0) for r in cur.fetchall()}
+        
+        # Get Purchases
+        cur.execute("""
+            SELECT CAST(insert_date AS DATE) AS day,
+                   SUM(total_bill) AS total
+            FROM Purchase_header
+            WHERE insert_date >= DATEADD(DAY, ?, GETDATE())
+            GROUP BY CAST(insert_date AS DATE)
+        """, [-days])
+        purchases = {str(r.day): float(r.total or 0) for r in cur.fetchall()}
+        
+        return sales, purchases
+
+@router.get("/sales-chart/{source}")
+def sales_chart(source: str = "elsanta", days: int = 30):
+    """Daily sales and purchases totals for the last N days."""
+    sales = {}
+    purchases = {}
+    
+    if source == "all":
+        for s in get_all_sources():
+            try:
+                s_sales, s_purchases = _get_sales_chart_data(s, days)
+                for k, v in s_sales.items():
+                    sales[k] = sales.get(k, 0.0) + v
+                for k, v in s_purchases.items():
+                    purchases[k] = purchases.get(k, 0.0) + v
+            except Exception as e:
+                print(f"Error fetching sales-chart for {s}: {e}")
+    else:
+        sales, purchases = _get_sales_chart_data(source, days)
+        
+    # Merge dates
+    all_dates = sorted(list(set(sales.keys()) | set(purchases.keys())))
+    
+    result = []
+    for d in all_dates:
+        # Shorten date to DD/MM
+        parts = d.split("-")
+        if len(parts) == 3:
+            d_short = parts[2] + "/" + parts[1]
+        else:
+            d_short = d
+        result.append({
+            "name": d_short,
+            "sales": sales.get(d, 0),
+            "purchases": purchases.get(d, 0)
+        })
+        
+    return result
 
 
 # ─────────────────────────── Purchases ───────────────────────────
@@ -432,6 +519,26 @@ def list_purchases(
 
 # ─────────────────────────── Customers ───────────────────────────
 
+class CustomerCreate(BaseModel):
+    customer_code: Optional[str] = None
+    customer_name_ar: str
+    customer_name_en: Optional[str] = None
+    mobile: Optional[str] = None
+    tel: Optional[str] = None
+    address: Optional[str] = None
+    customer_max_money: Optional[float] = 0.0
+    active: Optional[str] = "1"
+
+class CustomerUpdate(BaseModel):
+    customer_code: Optional[str] = None
+    customer_name_ar: Optional[str] = None
+    customer_name_en: Optional[str] = None
+    mobile: Optional[str] = None
+    tel: Optional[str] = None
+    address: Optional[str] = None
+    customer_max_money: Optional[float] = None
+    active: Optional[str] = None
+
 @router.get("/customers/{source}")
 def list_customers(source: str = "mashala", search: str = "", page: int = 1, per_page: int = 50):
     offset = (page - 1) * per_page
@@ -465,8 +572,93 @@ def list_customers(source: str = "mashala", search: str = "", page: int = 1, per
                     row[key] = float(row[key])
         return {"total": total, "page": page, "per_page": per_page, "items": rows}
 
+@router.post("/customers/{source}")
+def create_customer(customer: CustomerCreate, source: str = "mashala"):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        query = """
+            INSERT INTO Customer (
+                customer_code, customer_name_ar, customer_name_en, mobile, tel, address, 
+                customer_max_money, active, deleted, insert_date
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, '0', GETDATE())
+        """
+        params = (
+            customer.customer_code, customer.customer_name_ar, customer.customer_name_en,
+            customer.mobile, customer.tel, customer.address, customer.customer_max_money,
+            customer.active
+        )
+        try:
+            cur.execute(query, params)
+            conn.commit()
+            return {"status": "success", "message": "Customer created successfully"}
+        except Exception as e:
+            conn.rollback()
+            raise HTTPException(status_code=500, detail=str(e))
+
+@router.put("/customers/{source}/{customer_id}")
+def update_customer(customer_id: int, customer: CustomerUpdate, source: str = "mashala"):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        # Build dynamic update query
+        update_fields = []
+        params = []
+        for field, value in customer.dict(exclude_unset=True).items():
+            update_fields.append(f"{field} = ?")
+            params.append(value)
+            
+        if not update_fields:
+            return {"status": "success", "message": "No fields to update"}
+            
+        params.append(customer_id)
+        query = f"UPDATE Customer SET {', '.join(update_fields)} WHERE customer_id = ?"
+        
+        try:
+            cur.execute(query, params)
+            if cur.rowcount == 0:
+                raise HTTPException(status_code=404, detail="Customer not found")
+            conn.commit()
+            return {"status": "success", "message": "Customer updated successfully"}
+        except Exception as e:
+            conn.rollback()
+            raise HTTPException(status_code=500, detail=str(e))
+
+@router.delete("/customers/{source}/{customer_id}")
+def delete_customer(customer_id: int, source: str = "mashala"):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        query = "UPDATE Customer SET deleted = '1' WHERE customer_id = ?"
+        try:
+            cur.execute(query, (customer_id,))
+            if cur.rowcount == 0:
+                raise HTTPException(status_code=404, detail="Customer not found")
+            conn.commit()
+            return {"status": "success", "message": "Customer deleted successfully"}
+        except Exception as e:
+            conn.rollback()
+            raise HTTPException(status_code=500, detail=str(e))
 
 # ─────────────────────────── Vendors ───────────────────────────
+
+class VendorCreate(BaseModel):
+    vendor_code: Optional[str] = None
+    vendor_name_ar: str
+    vendor_name_en: Optional[str] = None
+    mobile: Optional[str] = None
+    tel: Optional[str] = None
+    address: Optional[str] = None
+    vendor_max_money: Optional[float] = 0.0
+    active: Optional[str] = "1"
+
+class VendorUpdate(BaseModel):
+    vendor_code: Optional[str] = None
+    vendor_name_ar: Optional[str] = None
+    vendor_name_en: Optional[str] = None
+    mobile: Optional[str] = None
+    tel: Optional[str] = None
+    address: Optional[str] = None
+    vendor_max_money: Optional[float] = None
+    active: Optional[str] = None
 
 @router.get("/vendors/{source}")
 def list_vendors(source: str = "mashala", search: str = "", page: int = 1, per_page: int = 50):
@@ -501,6 +693,70 @@ def list_vendors(source: str = "mashala", search: str = "", page: int = 1, per_p
                     row[key] = float(row[key])
         return {"total": total, "page": page, "per_page": per_page, "items": rows}
 
+@router.post("/vendors/{source}")
+def create_vendor(vendor: VendorCreate, source: str = "mashala"):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        query = """
+            INSERT INTO Vendor (
+                vendor_code, vendor_name_ar, vendor_name_en, mobile, tel, address, 
+                vendor_max_money, active, deleted, insert_date
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, '0', GETDATE())
+        """
+        params = (
+            vendor.vendor_code, vendor.vendor_name_ar, vendor.vendor_name_en,
+            vendor.mobile, vendor.tel, vendor.address, vendor.vendor_max_money,
+            vendor.active
+        )
+        try:
+            cur.execute(query, params)
+            conn.commit()
+            return {"status": "success", "message": "Vendor created successfully"}
+        except Exception as e:
+            conn.rollback()
+            raise HTTPException(status_code=500, detail=str(e))
+
+@router.put("/vendors/{source}/{vendor_id}")
+def update_vendor(vendor_id: int, vendor: VendorUpdate, source: str = "mashala"):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        update_fields = []
+        params = []
+        for field, value in vendor.dict(exclude_unset=True).items():
+            update_fields.append(f"{field} = ?")
+            params.append(value)
+            
+        if not update_fields:
+            return {"status": "success", "message": "No fields to update"}
+            
+        params.append(vendor_id)
+        query = f"UPDATE Vendor SET {', '.join(update_fields)} WHERE vendor_id = ?"
+        
+        try:
+            cur.execute(query, params)
+            if cur.rowcount == 0:
+                raise HTTPException(status_code=404, detail="Vendor not found")
+            conn.commit()
+            return {"status": "success", "message": "Vendor updated successfully"}
+        except Exception as e:
+            conn.rollback()
+            raise HTTPException(status_code=500, detail=str(e))
+
+@router.delete("/vendors/{source}/{vendor_id}")
+def delete_vendor(vendor_id: int, source: str = "mashala"):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        query = "UPDATE Vendor SET deleted = '1' WHERE vendor_id = ?"
+        try:
+            cur.execute(query, (vendor_id,))
+            if cur.rowcount == 0:
+                raise HTTPException(status_code=404, detail="Vendor not found")
+            conn.commit()
+            return {"status": "success", "message": "Vendor deleted successfully"}
+        except Exception as e:
+            conn.rollback()
+            raise HTTPException(status_code=500, detail=str(e))
 
 # ─────────────────────────── Employees ───────────────────────────
 
