@@ -1245,3 +1245,100 @@ def list_banks(source: str = "elsanta"):
         rows = [dict(zip(columns, row)) for row in cur.fetchall()]
         return {"items": rows}
 
+
+# ??????????????????????????? Employees (Phase 2) ???????????????????????????
+
+@router.get("/employees/{source}")
+def list_employees(source: str = "elsanta"):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        cur.execute("""
+            SELECT emp_id, emp_code, emp_name_ar, emp_gender, mobile, 
+                   address, active, basic_salary, hire_date
+            FROM Employee
+            WHERE deleted <> '1' OR deleted IS NULL
+            ORDER BY emp_name_ar
+        """)
+        columns = [desc[0] for desc in cur.description]
+        rows = [dict(zip(columns, row)) for row in cur.fetchall()]
+        for row in rows:
+            if row.get("basic_salary") is not None:
+                row["basic_salary"] = float(row["basic_salary"])
+            if row.get("hire_date"):
+                row["hire_date"] = str(row["hire_date"])
+        return {"items": rows}
+
+@router.get("/salaries/{source}")
+def list_salaries(source: str = "elsanta"):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        cur.execute("""
+            SELECT s.salary_id, s.emp_id, e.emp_name_ar, s.state, s.month_salary,
+                   s.basic_salary, s.emp_commission, s.emp_deduction, s.total
+            FROM Employee_salary s
+            LEFT JOIN Employee e ON s.emp_id = e.emp_id
+            ORDER BY s.month_salary DESC
+        """)
+        columns = [desc[0] for desc in cur.description]
+        rows = [dict(zip(columns, row)) for row in cur.fetchall()]
+        for row in rows:
+            for k in ["basic_salary", "emp_commission", "emp_deduction", "total"]:
+                if row.get(k) is not None:
+                    row[k] = float(row[k])
+            if row.get("month_salary"):
+                row["month_salary"] = str(row["month_salary"])
+        return {"items": rows}
+
+# ??????????????????????????? Advanced Accounts (Phase 2) ???????????????????????????
+
+@router.get("/tuning/{source}")
+def list_tuning_accounts(source: str = "elsanta"):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        cur.execute("""
+            SELECT TOP 100 Tuning_accounts_id, class, Tuning_accounts_money, notes, insert_date
+            FROM Tuning_accounts
+            ORDER BY insert_date DESC
+        """)
+        columns = [desc[0] for desc in cur.description]
+        rows = [dict(zip(columns, row)) for row in cur.fetchall()]
+        for row in rows:
+            if row.get("Tuning_accounts_money") is not None:
+                row["Tuning_accounts_money"] = float(row["Tuning_accounts_money"])
+            if row.get("insert_date"):
+                row["insert_date"] = str(row["insert_date"])
+        return {"items": rows}
+
+@router.get("/account-tree/{source}")
+def list_account_tree(source: str = "elsanta"):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        cur.execute("""
+            SELECT account_id, account_code, account_name_ar, account_major, account_start_money
+            FROM Account_Tree
+            ORDER BY account_code
+        """)
+        columns = [desc[0] for desc in cur.description]
+        rows = [dict(zip(columns, row)) for row in cur.fetchall()]
+        for row in rows:
+            if row.get("account_start_money") is not None:
+                row["account_start_money"] = float(row["account_start_money"])
+        return {"items": rows}
+
+@router.get("/gedo-financial/{source}")
+def list_gedo_financial(source: str = "elsanta"):
+    with db_session(source) as conn:
+        cur = conn.cursor()
+        cur.execute("""
+            SELECT TOP 100 gf_id, gf_code, gf_gedo_type, gf_value, gf_notes, insert_date
+            FROM Gedo_Financial
+            ORDER BY insert_date DESC
+        """)
+        columns = [desc[0] for desc in cur.description]
+        rows = [dict(zip(columns, row)) for row in cur.fetchall()]
+        for row in rows:
+            if row.get("gf_value") is not None:
+                row["gf_value"] = float(row["gf_value"])
+            if row.get("insert_date"):
+                row["insert_date"] = str(row["insert_date"])
+        return {"items": rows}

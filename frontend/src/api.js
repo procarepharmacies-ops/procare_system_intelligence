@@ -147,3 +147,28 @@ export const getBanks = async (source = 'elsanta') => {
   const response = await fetch(${API_URL}/banks/);
   return response.json();
 };
+
+export const getEmployees = async (source = 'elsanta') => {
+  const response = await fetch(${API_URL}/employees/);
+  return response.json();
+};
+
+export const getSalaries = async (source = 'elsanta') => {
+  const response = await fetch(${API_URL}/salaries/);
+  return response.json();
+};
+
+export const getTuningAccounts = async (source = 'elsanta') => {
+  const response = await fetch(${API_URL}/tuning/);
+  return response.json();
+};
+
+export const getAccountTree = async (source = 'elsanta') => {
+  const response = await fetch(${API_URL}/account-tree/);
+  return response.json();
+};
+
+export const getGedoFinancial = async (source = 'elsanta') => {
+  const response = await fetch(${API_URL}/gedo-financial/);
+  return response.json();
+};

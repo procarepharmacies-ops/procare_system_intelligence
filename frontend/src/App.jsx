@@ -25,6 +25,11 @@ import PurchaseRequest from './PurchaseRequest';
 import BranchOrder from './BranchOrder';
 import Treasury from './Treasury';
 import Banks from './Banks';
+import EmployeeCard from './EmployeeCard';
+import Salary from './Salary';
+import Tuning from './Tuning';
+import AccountsTree from './AccountsTree';
+import PrivateAccounts from './PrivateAccounts';
 
 const Placeholder = ({ title }) => (
   <div style={{
@@ -91,18 +96,18 @@ function App() {
           <Route path="accounts" element={<Accounts />} />
           <Route path="accounts/treasury" element={<Treasury />} />
           <Route path="accounts/banks" element={<Banks />} />
-          <Route path="accounts/tuning" element={<Placeholder title="تسوية الحسابات" />} />
+          <Route path="accounts/tuning" element={<Tuning />} />
           
           {/* Private Accounts */}
-          <Route path="private-accounts" element={<Placeholder title="الحسابات الخاصة" />} />
+          <Route path="private-accounts" element={<PrivateAccounts />} />
 
           {/* Public Accounts */}
-          <Route path="public-accounts" element={<Placeholder title="الحسابات العامة" />} />
+          <Route path="public-accounts" element={<AccountsTree />} />
           
           {/* Employees */}
           <Route path="employees" element={<Employees />} />
-          <Route path="employees/card" element={<Placeholder title="بطاقة موظف" />} />
-          <Route path="employees/salary" element={<Placeholder title="الرواتب والسلف" />} />
+          <Route path="employees/card" element={<EmployeeCard />} />
+          <Route path="employees/salary" element={<Salary />} />
           
           {/* Branches */}
           <Route path="branches" element={<Branches />} />
